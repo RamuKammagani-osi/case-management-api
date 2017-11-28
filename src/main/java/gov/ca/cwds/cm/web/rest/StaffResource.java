@@ -4,8 +4,12 @@ import com.codahale.metrics.annotation.Timed;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.google.inject.Inject;
 import gov.ca.cwds.ObjectMapperUtils;
+import gov.ca.cwds.cm.service.StaffService;
 import gov.ca.cwds.cm.service.dto.ClientDTO;
+import gov.ca.cwds.cm.service.dto.CollectionDTO;
+import gov.ca.cwds.cm.service.facade.ClientFacade;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.testing.FixtureHelpers;
 import io.swagger.annotations.Api;
@@ -34,7 +38,10 @@ import static gov.ca.cwds.cm.Constants.API.STAFF;
 @Path(value = STAFF)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class StaffMockResource {
+public class StaffResource {
+
+  @Inject
+  private ClientFacade clientFacade;
 
   @GET
   @Path("/{id}/clients")
@@ -58,21 +65,8 @@ public class StaffMockResource {
               value = "The unique caseworker(staff person) ID",
               example = "q48"
           )
-          String caseworkerId)
+          String staffId)
       throws IOException {
-
-    if (!"q48".equals(caseworkerId)) {
-      return Response.ok().status(Response.Status.NOT_FOUND).build();
-    }
-
-    return Response.ok().entity(getMockedData()).build();
-  }
-
-  private List<ClientDTO> getMockedData() throws IOException {
-    ObjectMapper objectMapper = ObjectMapperUtils.createObjectMapper();
-    objectMapper.registerModule(new Jdk8Module()).registerModule(new JavaTimeModule());
-    String json = FixtureHelpers.fixture("fixtures/list_of_related_clients_by_staff_id.json");
-    ClientDTO[] array = objectMapper.readValue(json, ClientDTO[].class);
-    return Arrays.asList(array);
+    return ResponseUtil.responseOrNotFound(new CollectionDTO(clientFacade.find(staffId)));
   }
 }

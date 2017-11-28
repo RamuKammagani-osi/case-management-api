@@ -60,7 +60,7 @@ public class ChildClientResource {
          final String id) {
     ChildClientParameterObject childClientParameterObject = new ChildClientParameterObject();
     childClientParameterObject.setChildClientId(id);
-    return Response.ok().entity(clientFacade.find(childClientParameterObject, ClientType.CHILD_CLIENT)).build();
+    return ResponseUtil.responseOrNotFound(clientFacade.find(childClientParameterObject, ClientType.CHILD_CLIENT));
   }
 
   @GET
