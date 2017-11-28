@@ -3,18 +3,11 @@ package gov.ca.cwds.cm.service.dto.system;
 import com.codahale.metrics.health.HealthCheck;
 import gov.ca.cwds.cm.service.dto.BaseDTO;
 import java.util.HashMap;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 /**
  * @author CWDS CALS API Team
  */
-@Data
-@EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
-@AllArgsConstructor
+
 @SuppressWarnings("squid:S2160")
 public class HealthCheckResultDTO extends BaseDTO {
 
@@ -32,5 +25,49 @@ public class HealthCheckResultDTO extends BaseDTO {
     setError(result.getError());
     setDetails((HashMap<String, Object>) result.getDetails());
     setTimestamp(result.getTimestamp());
+  }
+
+  public static long getSerialVersionUID() {
+    return serialVersionUID;
+  }
+
+  public boolean isHealthy() {
+    return healthy;
+  }
+
+  public void setHealthy(boolean healthy) {
+    this.healthy = healthy;
+  }
+
+  public String getMessage() {
+    return message;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+  public Throwable getError() {
+    return error;
+  }
+
+  public void setError(Throwable error) {
+    this.error = error;
+  }
+
+  public HashMap<String, Object> getDetails() {
+    return details;
+  }
+
+  public void setDetails(HashMap<String, Object> details) {
+    this.details = details;
+  }
+
+  public String getTimestamp() {
+    return timestamp;
+  }
+
+  public void setTimestamp(String timestamp) {
+    this.timestamp = timestamp;
   }
 }

@@ -5,19 +5,11 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.rest.api.Response;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 /**
  * @author CWDS TPT-3 Team
  */
 
-@Data
-@EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
-@AllArgsConstructor
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @ApiModel(description = "The place where a CLIENT may be located and/or communicated with.")
 public class AddressDTO extends BaseDTO implements Response {
@@ -190,5 +182,183 @@ public class AddressDTO extends BaseDTO implements Response {
   )
   private String zipSuffix;
 
+  public static long getSerialVersionUID() {
+    return serialVersionUID;
+  }
 
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public String getCity() {
+    return city;
+  }
+
+  public void setCity(String city) {
+    this.city = city;
+  }
+
+  public String getEmergencyPhone() {
+    return emergencyPhone;
+  }
+
+  public void setEmergencyPhone(String emergencyPhone) {
+    this.emergencyPhone = emergencyPhone;
+  }
+
+  public String getEmergencyPhoneExtension() {
+    return emergencyPhoneExtension;
+  }
+
+  public void setEmergencyPhoneExtension(String emergencyPhoneExtension) {
+    this.emergencyPhoneExtension = emergencyPhoneExtension;
+  }
+
+  public Boolean getForeignAddressExists() {
+    return foreignAddressExists;
+  }
+
+  public void setForeignAddressExists(Boolean foreignAddressExists) {
+    this.foreignAddressExists = foreignAddressExists;
+  }
+
+  public Short getGovernmentEntityCode() {
+    return governmentEntityCode;
+  }
+
+  public void setGovernmentEntityCode(Short governmentEntityCode) {
+    this.governmentEntityCode = governmentEntityCode;
+  }
+
+  public String getMessagePhone() {
+    return messagePhone;
+  }
+
+  public void setMessagePhone(String messagePhone) {
+    this.messagePhone = messagePhone;
+  }
+
+  public String getMessagePhoneExtension() {
+    return messagePhoneExtension;
+  }
+
+  public void setMessagePhoneExtension(String messagePhoneExtension) {
+    this.messagePhoneExtension = messagePhoneExtension;
+  }
+
+  public String getOtherHeaderAddress() {
+    return otherHeaderAddress;
+  }
+
+  public void setOtherHeaderAddress(String otherHeaderAddress) {
+    this.otherHeaderAddress = otherHeaderAddress;
+  }
+
+  public String getPostDirectionTextCode() {
+    return postDirectionTextCode;
+  }
+
+  public void setPostDirectionTextCode(String postDirectionTextCode) {
+    this.postDirectionTextCode = postDirectionTextCode;
+  }
+
+  public String getPreDirectionTextCode() {
+    return preDirectionTextCode;
+  }
+
+  public void setPreDirectionTextCode(String preDirectionTextCode) {
+    this.preDirectionTextCode = preDirectionTextCode;
+  }
+
+  public String getPrimaryPhone() {
+    return primaryPhone;
+  }
+
+  public void setPrimaryPhone(String primaryPhone) {
+    this.primaryPhone = primaryPhone;
+  }
+
+  public String getPrimaryPhoneExtension() {
+    return primaryPhoneExtension;
+  }
+
+  public void setPrimaryPhoneExtension(String primaryPhoneExtension) {
+    this.primaryPhoneExtension = primaryPhoneExtension;
+  }
+
+  public Short getStateCode() {
+    return stateCode;
+  }
+
+  public void setStateCode(Short stateCode) {
+    this.stateCode = stateCode;
+  }
+
+  public String getStreetName() {
+    return streetName;
+  }
+
+  public void setStreetName(String streetName) {
+    this.streetName = streetName;
+  }
+
+  public String getStreetNumber() {
+    return streetNumber;
+  }
+
+  public void setStreetNumber(String streetNumber) {
+    this.streetNumber = streetNumber;
+  }
+
+  public Short getStreetSuffixCode() {
+    return streetSuffixCode;
+  }
+
+  public void setStreetSuffixCode(Short streetSuffixCode) {
+    this.streetSuffixCode = streetSuffixCode;
+  }
+
+  public Short getUnitDesignatorCode() {
+    return unitDesignatorCode;
+  }
+
+  public void setUnitDesignatorCode(Short unitDesignatorCode) {
+    this.unitDesignatorCode = unitDesignatorCode;
+  }
+
+  public String getUnitNumber() {
+    return unitNumber;
+  }
+
+  public void setUnitNumber(String unitNumber) {
+    this.unitNumber = unitNumber;
+  }
+
+  public String getZip() {
+    return zip;
+  }
+
+  public void setZip(String zip) {
+    this.zip = zip;
+  }
+
+  public String getZipSuffix() {
+    return zipSuffix;
+  }
+
+  public void setZipSuffix(String zipSuffix) {
+    this.zipSuffix = zipSuffix;
+  }
 }

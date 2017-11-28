@@ -1,28 +1,19 @@
 package gov.ca.cwds.cm.service.dto;
 
+import static gov.ca.cwds.rest.api.domain.DomainObject.DATE_FORMAT;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.rest.validation.Date;
 import io.dropwizard.validation.OneOf;
 import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-
-import static gov.ca.cwds.rest.api.domain.DomainObject.DATE_FORMAT;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /** @author CWDS TPT-3 Team */
-@Data
-@EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
-@AllArgsConstructor
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @SuppressWarnings({"squid:S3437"})
 public class ClientDTO extends BaseDTO {
@@ -707,4 +698,562 @@ public class ClientDTO extends BaseDTO {
   )
   private String sciIndexNumber;
 
+  public static long getSerialVersionUID() {
+    return serialVersionUID;
+  }
+
+  public String getIdentifier() {
+    return identifier;
+  }
+
+  public void setIdentifier(String identifier) {
+    this.identifier = identifier;
+  }
+
+  public String getAdoptionStatusCode() {
+    return adoptionStatusCode;
+  }
+
+  public void setAdoptionStatusCode(String adoptionStatusCode) {
+    this.adoptionStatusCode = adoptionStatusCode;
+  }
+
+  public String getAlienRegistrationNumber() {
+    return alienRegistrationNumber;
+  }
+
+  public void setAlienRegistrationNumber(String alienRegistrationNumber) {
+    this.alienRegistrationNumber = alienRegistrationNumber;
+  }
+
+  public LocalDate getBirthDt() {
+    return birthDt;
+  }
+
+  public void setBirthDt(LocalDate birthDt) {
+    this.birthDt = birthDt;
+  }
+
+  public String getBirthFacilityName() {
+    return birthFacilityName;
+  }
+
+  public void setBirthFacilityName(String birthFacilityName) {
+    this.birthFacilityName = birthFacilityName;
+  }
+
+  public Short getBirthCountryCode() {
+    return birthCountryCode;
+  }
+
+  public void setBirthCountryCode(Short birthCountryCode) {
+    this.birthCountryCode = birthCountryCode;
+  }
+
+  public Short getBirthStateCodeType() {
+    return birthStateCodeType;
+  }
+
+  public void setBirthStateCodeType(Short birthStateCodeType) {
+    this.birthStateCodeType = birthStateCodeType;
+  }
+
+  public String getChildClientIndVar() {
+    return childClientIndVar;
+  }
+
+  public void setChildClientIndVar(String childClientIndVar) {
+    this.childClientIndVar = childClientIndVar;
+  }
+
+  public String getCommonFirstName() {
+    return commonFirstName;
+  }
+
+  public void setCommonFirstName(String commonFirstName) {
+    this.commonFirstName = commonFirstName;
+  }
+
+  public String getCommonLastName() {
+    return commonLastName;
+  }
+
+  public void setCommonLastName(String commonLastName) {
+    this.commonLastName = commonLastName;
+  }
+
+  public String getCommonMiddleName() {
+    return commonMiddleName;
+  }
+
+  public void setCommonMiddleName(String commonMiddleName) {
+    this.commonMiddleName = commonMiddleName;
+  }
+
+  public String getConfidentialityInEffectInd() {
+    return confidentialityInEffectInd;
+  }
+
+  public void setConfidentialityInEffectInd(String confidentialityInEffectInd) {
+    this.confidentialityInEffectInd = confidentialityInEffectInd;
+  }
+
+  public LocalDate getConfidentialityActionDate() {
+    return confidentialityActionDate;
+  }
+
+  public void setConfidentialityActionDate(LocalDate confidentialityActionDate) {
+    this.confidentialityActionDate = confidentialityActionDate;
+  }
+
+  public LocalDate getCreationDate() {
+    return creationDate;
+  }
+
+  public void setCreationDate(LocalDate creationDate) {
+    this.creationDate = creationDate;
+  }
+
+  public LocalDate getDeathDate() {
+    return deathDate;
+  }
+
+  public void setDeathDate(LocalDate deathDate) {
+    this.deathDate = deathDate;
+  }
+
+  public String getDeathReason() {
+    return deathReason;
+  }
+
+  public void setDeathReason(String deathReason) {
+    this.deathReason = deathReason;
+  }
+
+  public String getDriverLicensNumber() {
+    return driverLicensNumber;
+  }
+
+  public void setDriverLicensNumber(String driverLicensNumber) {
+    this.driverLicensNumber = driverLicensNumber;
+  }
+
+  public Short getDriverLicenseStateCodeType() {
+    return driverLicenseStateCodeType;
+  }
+
+  public void setDriverLicenseStateCodeType(Short driverLicenseStateCodeType) {
+    this.driverLicenseStateCodeType = driverLicenseStateCodeType;
+  }
+
+  public String getGenderCode() {
+    return genderCode;
+  }
+
+  public void setGenderCode(String genderCode) {
+    this.genderCode = genderCode;
+  }
+
+  public Short getImmigrationCountryCodeType() {
+    return immigrationCountryCodeType;
+  }
+
+  public void setImmigrationCountryCodeType(Short immigrationCountryCodeType) {
+    this.immigrationCountryCodeType = immigrationCountryCodeType;
+  }
+
+  public Short getImmigrationStatusType() {
+    return immigrationStatusType;
+  }
+
+  public void setImmigrationStatusType(Short immigrationStatusType) {
+    this.immigrationStatusType = immigrationStatusType;
+  }
+
+  public String getIncapacitatedParentCode() {
+    return incapacitatedParentCode;
+  }
+
+  public void setIncapacitatedParentCode(String incapacitatedParentCode) {
+    this.incapacitatedParentCode = incapacitatedParentCode;
+  }
+
+  public String getLitrateCode() {
+    return litrateCode;
+  }
+
+  public void setLitrateCode(String litrateCode) {
+    this.litrateCode = litrateCode;
+  }
+
+  public String getMaritalCohabitatnIndicator() {
+    return maritalCohabitatnIndicator;
+  }
+
+  public void setMaritalCohabitatnIndicator(String maritalCohabitatnIndicator) {
+    this.maritalCohabitatnIndicator = maritalCohabitatnIndicator;
+  }
+
+  public Short getMaterialStatusType() {
+    return materialStatusType;
+  }
+
+  public void setMaterialStatusType(Short materialStatusType) {
+    this.materialStatusType = materialStatusType;
+  }
+
+  public String getMilitaryStatusCode() {
+    return militaryStatusCode;
+  }
+
+  public void setMilitaryStatusCode(String militaryStatusCode) {
+    this.militaryStatusCode = militaryStatusCode;
+  }
+
+  public String getNamePrefixDescription() {
+    return namePrefixDescription;
+  }
+
+  public void setNamePrefixDescription(String namePrefixDescription) {
+    this.namePrefixDescription = namePrefixDescription;
+  }
+
+  public Short getNameType() {
+    return nameType;
+  }
+
+  public void setNameType(Short nameType) {
+    this.nameType = nameType;
+  }
+
+  public String getOutstandingWarrantIndicator() {
+    return outstandingWarrantIndicator;
+  }
+
+  public void setOutstandingWarrantIndicator(String outstandingWarrantIndicator) {
+    this.outstandingWarrantIndicator = outstandingWarrantIndicator;
+  }
+
+  public Short getPrimaryEthnicityType() {
+    return primaryEthnicityType;
+  }
+
+  public void setPrimaryEthnicityType(Short primaryEthnicityType) {
+    this.primaryEthnicityType = primaryEthnicityType;
+  }
+
+  public Short getPrimaryLanguageType() {
+    return primaryLanguageType;
+  }
+
+  public void setPrimaryLanguageType(Short primaryLanguageType) {
+    this.primaryLanguageType = primaryLanguageType;
+  }
+
+  public Short getReligionType() {
+    return religionType;
+  }
+
+  public void setReligionType(Short religionType) {
+    this.religionType = religionType;
+  }
+
+  public Short getSecondaryLanguageType() {
+    return secondaryLanguageType;
+  }
+
+  public void setSecondaryLanguageType(Short secondaryLanguageType) {
+    this.secondaryLanguageType = secondaryLanguageType;
+  }
+
+  public String getSensivityIndicator() {
+    return sensivityIndicator;
+  }
+
+  public void setSensivityIndicator(String sensivityIndicator) {
+    this.sensivityIndicator = sensivityIndicator;
+  }
+
+  public String getSensivityHealthInfoOnFileIndicator() {
+    return sensivityHealthInfoOnFileIndicator;
+  }
+
+  public void setSensivityHealthInfoOnFileIndicator(String sensivityHealthInfoOnFileIndicator) {
+    this.sensivityHealthInfoOnFileIndicator = sensivityHealthInfoOnFileIndicator;
+  }
+
+  public String getSocialSecurityNumber() {
+    return socialSecurityNumber;
+  }
+
+  public void setSocialSecurityNumber(String socialSecurityNumber) {
+    this.socialSecurityNumber = socialSecurityNumber;
+  }
+
+  public String getSocialSecurityNumberChangedCode() {
+    return socialSecurityNumberChangedCode;
+  }
+
+  public void setSocialSecurityNumberChangedCode(String socialSecurityNumberChangedCode) {
+    this.socialSecurityNumberChangedCode = socialSecurityNumberChangedCode;
+  }
+
+  public String getSuffixTitleDescription() {
+    return suffixTitleDescription;
+  }
+
+  public void setSuffixTitleDescription(String suffixTitleDescription) {
+    this.suffixTitleDescription = suffixTitleDescription;
+  }
+
+  public String getUnemployedParentCode() {
+    return unemployedParentCode;
+  }
+
+  public void setUnemployedParentCode(String unemployedParentCode) {
+    this.unemployedParentCode = unemployedParentCode;
+  }
+
+  public String getLstUpdateId() {
+    return lstUpdateId;
+  }
+
+  public void setLstUpdateId(String lstUpdateId) {
+    this.lstUpdateId = lstUpdateId;
+  }
+
+  public Timestamp getLastUpdateTimestamp() {
+    return lastUpdateTimestamp;
+  }
+
+  public void setLastUpdateTimestamp(Timestamp lastUpdateTimestamp) {
+    this.lastUpdateTimestamp = lastUpdateTimestamp;
+  }
+
+  public String getCommentDescription() {
+    return commentDescription;
+  }
+
+  public void setCommentDescription(String commentDescription) {
+    this.commentDescription = commentDescription;
+  }
+
+  public String getEstimatedDobCode() {
+    return estimatedDobCode;
+  }
+
+  public void setEstimatedDobCode(String estimatedDobCode) {
+    this.estimatedDobCode = estimatedDobCode;
+  }
+
+  public String getBirthplaceVerifiedIdentificator() {
+    return birthplaceVerifiedIdentificator;
+  }
+
+  public void setBirthplaceVerifiedIdentificator(String birthplaceVerifiedIdentificator) {
+    this.birthplaceVerifiedIdentificator = birthplaceVerifiedIdentificator;
+  }
+
+  public String getHispanicOriginCode() {
+    return hispanicOriginCode;
+  }
+
+  public void setHispanicOriginCode(String hispanicOriginCode) {
+    this.hispanicOriginCode = hispanicOriginCode;
+  }
+
+  public String getChildrenServIdentificator() {
+    return childrenServIdentificator;
+  }
+
+  public void setChildrenServIdentificator(String childrenServIdentificator) {
+    this.childrenServIdentificator = childrenServIdentificator;
+  }
+
+  public String getCurrentlyRegionalCenteerIdentificator() {
+    return currentlyRegionalCenteerIdentificator;
+  }
+
+  public void setCurrentlyRegionalCenteerIdentificator(
+      String currentlyRegionalCenteerIdentificator) {
+    this.currentlyRegionalCenteerIdentificator = currentlyRegionalCenteerIdentificator;
+  }
+
+  public String getCurrentlyOtherDescription() {
+    return currentlyOtherDescription;
+  }
+
+  public void setCurrentlyOtherDescription(String currentlyOtherDescription) {
+    this.currentlyOtherDescription = currentlyOtherDescription;
+  }
+
+  public String getPreviouslyReceivedIdentificator() {
+    return previouslyReceivedIdentificator;
+  }
+
+  public void setPreviouslyReceivedIdentificator(String previouslyReceivedIdentificator) {
+    this.previouslyReceivedIdentificator = previouslyReceivedIdentificator;
+  }
+
+  public String getPreviouslyRegionalCenterIdentificator() {
+    return previouslyRegionalCenterIdentificator;
+  }
+
+  public void setPreviouslyRegionalCenterIdentificator(
+      String previouslyRegionalCenterIdentificator) {
+    this.previouslyRegionalCenterIdentificator = previouslyRegionalCenterIdentificator;
+  }
+
+  public String getPreviouslyOtherDescription() {
+    return previouslyOtherDescription;
+  }
+
+  public void setPreviouslyOtherDescription(String previouslyOtherDescription) {
+    this.previouslyOtherDescription = previouslyOtherDescription;
+  }
+
+  public String getHealthCarePlanIdentificator() {
+    return healthCarePlanIdentificator;
+  }
+
+  public void setHealthCarePlanIdentificator(String healthCarePlanIdentificator) {
+    this.healthCarePlanIdentificator = healthCarePlanIdentificator;
+  }
+
+  public String getLimitationOnSCPHealthIndicator() {
+    return limitationOnSCPHealthIndicator;
+  }
+
+  public void setLimitationOnSCPHealthIndicator(String limitationOnSCPHealthIndicator) {
+    this.limitationOnSCPHealthIndicator = limitationOnSCPHealthIndicator;
+  }
+
+  public String getBirthCity() {
+    return birthCity;
+  }
+
+  public void setBirthCity(String birthCity) {
+    this.birthCity = birthCity;
+  }
+
+  public String getHealthTxt() {
+    return healthTxt;
+  }
+
+  public void setHealthTxt(String healthTxt) {
+    this.healthTxt = healthTxt;
+  }
+
+  public LocalDate getMotherParentalTermDate() {
+    return motherParentalTermDate;
+  }
+
+  public void setMotherParentalTermDate(LocalDate motherParentalTermDate) {
+    this.motherParentalTermDate = motherParentalTermDate;
+  }
+
+  public LocalDate getFatherParentalTermDate() {
+    return fatherParentalTermDate;
+  }
+
+  public void setFatherParentalTermDate(LocalDate fatherParentalTermDate) {
+    this.fatherParentalTermDate = fatherParentalTermDate;
+  }
+
+  public String getZippyIdentificator() {
+    return zippyIdentificator;
+  }
+
+  public void setZippyIdentificator(String zippyIdentificator) {
+    this.zippyIdentificator = zippyIdentificator;
+  }
+
+  public String getDeathPlace() {
+    return deathPlace;
+  }
+
+  public void setDeathPlace(String deathPlace) {
+    this.deathPlace = deathPlace;
+  }
+
+  public String getTribalMemberVerificationIdentificator() {
+    return tribalMemberVerificationIdentificator;
+  }
+
+  public void setTribalMemberVerificationIdentificator(
+      String tribalMemberVerificationIdentificator) {
+    this.tribalMemberVerificationIdentificator = tribalMemberVerificationIdentificator;
+  }
+
+  public String getTribalAncestryClientIdentificator() {
+    return tribalAncestryClientIdentificator;
+  }
+
+  public void setTribalAncestryClientIdentificator(String tribalAncestryClientIdentificator) {
+    this.tribalAncestryClientIdentificator = tribalAncestryClientIdentificator;
+  }
+
+  public String getSoc158Ind() {
+    return soc158Ind;
+  }
+
+  public void setSoc158Ind(String soc158Ind) {
+    this.soc158Ind = soc158Ind;
+  }
+
+  public String getDeathDateVerifiedIdentificator() {
+    return deathDateVerifiedIdentificator;
+  }
+
+  public void setDeathDateVerifiedIdentificator(String deathDateVerifiedIdentificator) {
+    this.deathDateVerifiedIdentificator = deathDateVerifiedIdentificator;
+  }
+
+  public String getEmailAddr() {
+    return emailAddr;
+  }
+
+  public void setEmailAddr(String emailAddr) {
+    this.emailAddr = emailAddr;
+  }
+
+  public String getAdjudicatedDelinquentIdentificator() {
+    return adjudicatedDelinquentIdentificator;
+  }
+
+  public void setAdjudicatedDelinquentIdentificator(String adjudicatedDelinquentIdentificator) {
+    this.adjudicatedDelinquentIdentificator = adjudicatedDelinquentIdentificator;
+  }
+
+  public String getEthUnableToDeterminCode() {
+    return ethUnableToDeterminCode;
+  }
+
+  public void setEthUnableToDeterminCode(String ethUnableToDeterminCode) {
+    this.ethUnableToDeterminCode = ethUnableToDeterminCode;
+  }
+
+  public String getHispUnableToDeterminateReasonCode() {
+    return hispUnableToDeterminateReasonCode;
+  }
+
+  public void setHispUnableToDeterminateReasonCode(String hispUnableToDeterminateReasonCode) {
+    this.hispUnableToDeterminateReasonCode = hispUnableToDeterminateReasonCode;
+  }
+
+  public String getSoc158PlacementCode() {
+    return soc158PlacementCode;
+  }
+
+  public void setSoc158PlacementCode(String soc158PlacementCode) {
+    this.soc158PlacementCode = soc158PlacementCode;
+  }
+
+  public String getSciIndexNumber() {
+    return sciIndexNumber;
+  }
+
+  public void setSciIndexNumber(String sciIndexNumber) {
+    this.sciIndexNumber = sciIndexNumber;
+  }
 }

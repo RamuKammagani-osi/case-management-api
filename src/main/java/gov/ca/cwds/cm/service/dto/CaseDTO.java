@@ -11,19 +11,11 @@ import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDate;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 /**
  * @author CWDS TPT-3 Team
  */
 
-@Data
-@EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
-@AllArgsConstructor
 @SuppressWarnings({"squid:S3437"})
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class CaseDTO extends BaseDTO implements RequestResponse {
@@ -199,4 +191,263 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(required = true, value = "Tickle indicator", example = "true")
   private Boolean tickle;
 
+  public static long getSerialVersionUID() {
+    return serialVersionUID;
+  }
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public String getAlertText() {
+    return alertText;
+  }
+
+  public void setAlertText(String alertText) {
+    this.alertText = alertText;
+  }
+
+  public String getApprovalNumber() {
+    return approvalNumber;
+  }
+
+  public void setApprovalNumber(String approvalNumber) {
+    this.approvalNumber = approvalNumber;
+  }
+
+  public String getApprovalStatus() {
+    return approvalStatus;
+  }
+
+  public void setApprovalStatus(String approvalStatus) {
+    this.approvalStatus = approvalStatus;
+  }
+
+  public String getCaseClosureReason() {
+    return caseClosureReason;
+  }
+
+  public void setCaseClosureReason(String caseClosureReason) {
+    this.caseClosureReason = caseClosureReason;
+  }
+
+  public Boolean getCaseplanChildrenDetail() {
+    return caseplanChildrenDetail;
+  }
+
+  public void setCaseplanChildrenDetail(Boolean caseplanChildrenDetail) {
+    this.caseplanChildrenDetail = caseplanChildrenDetail;
+  }
+
+  public String getClosureStatementText() {
+    return closureStatementText;
+  }
+
+  public void setClosureStatementText(String closureStatementText) {
+    this.closureStatementText = closureStatementText;
+  }
+
+  public String getCountry() {
+    return country;
+  }
+
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+  public String getCountySpecificCode() {
+    return countySpecificCode;
+  }
+
+  public void setCountySpecificCode(String countySpecificCode) {
+    this.countySpecificCode = countySpecificCode;
+  }
+
+  public String getDrmsNotesDoc() {
+    return drmsNotesDoc;
+  }
+
+  public void setDrmsNotesDoc(String drmsNotesDoc) {
+    this.drmsNotesDoc = drmsNotesDoc;
+  }
+
+  public LocalDate getEmancipationDate() {
+    return emancipationDate;
+  }
+
+  public void setEmancipationDate(LocalDate emancipationDate) {
+    this.emancipationDate = emancipationDate;
+  }
+
+  public LocalDate getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(LocalDate endDate) {
+    this.endDate = endDate;
+  }
+
+  public String getChildClient() {
+    return childClient;
+  }
+
+  public void setChildClient(String childClient) {
+    this.childClient = childClient;
+  }
+
+  public String getReferralId() {
+    return referralId;
+  }
+
+  public void setReferralId(String referralId) {
+    this.referralId = referralId;
+  }
+
+  public String getStaffPerson() {
+    return staffPerson;
+  }
+
+  public void setStaffPerson(String staffPerson) {
+    this.staffPerson = staffPerson;
+  }
+
+  public String getCounty() {
+    return county;
+  }
+
+  public void setCounty(String county) {
+    this.county = county;
+  }
+
+  public Boolean getIcpcOutgoingPlacementStatus() {
+    return icpcOutgoingPlacementStatus;
+  }
+
+  public void setIcpcOutgoingPlacementStatus(Boolean icpcOutgoingPlacementStatus) {
+    this.icpcOutgoingPlacementStatus = icpcOutgoingPlacementStatus;
+  }
+
+  public Boolean getIcpcOutgoingRequest() {
+    return icpcOutgoingRequest;
+  }
+
+  public void setIcpcOutgoingRequest(Boolean icpcOutgoingRequest) {
+    this.icpcOutgoingRequest = icpcOutgoingRequest;
+  }
+
+  public String getLimitedAccess() {
+    return limitedAccess;
+  }
+
+  public void setLimitedAccess(String limitedAccess) {
+    this.limitedAccess = limitedAccess;
+  }
+
+  public LocalDate getLimitedAccessDate() {
+    return limitedAccessDate;
+  }
+
+  public void setLimitedAccessDate(LocalDate limitedAccessDate) {
+    this.limitedAccessDate = limitedAccessDate;
+  }
+
+  public String getLimitedAccessDesc() {
+    return limitedAccessDesc;
+  }
+
+  public void setLimitedAccessDesc(String limitedAccessDesc) {
+    this.limitedAccessDesc = limitedAccessDesc;
+  }
+
+  public String getLimitedAccessCounty() {
+    return limitedAccessCounty;
+  }
+
+  public void setLimitedAccessCounty(String limitedAccessCounty) {
+    this.limitedAccessCounty = limitedAccessCounty;
+  }
+
+  public String getCaseName() {
+    return caseName;
+  }
+
+  public void setCaseName(String caseName) {
+    this.caseName = caseName;
+  }
+
+  public LocalDate getNextTilpDueDate() {
+    return nextTilpDueDate;
+  }
+
+  public void setNextTilpDueDate(LocalDate nextTilpDueDate) {
+    this.nextTilpDueDate = nextTilpDueDate;
+  }
+
+  public LocalDate getProjectedEndDate() {
+    return projectedEndDate;
+  }
+
+  public void setProjectedEndDate(LocalDate projectedEndDate) {
+    this.projectedEndDate = projectedEndDate;
+  }
+
+  public String getResponsibleAgency() {
+    return responsibleAgency;
+  }
+
+  public void setResponsibleAgency(String responsibleAgency) {
+    this.responsibleAgency = responsibleAgency;
+  }
+
+  public Boolean getSpecialProjectCase() {
+    return specialProjectCase;
+  }
+
+  public void setSpecialProjectCase(Boolean specialProjectCase) {
+    this.specialProjectCase = specialProjectCase;
+  }
+
+  public LocalDate getStartDate() {
+    return startDate;
+  }
+
+  public void setStartDate(LocalDate startDate) {
+    this.startDate = startDate;
+  }
+
+  public String getState() {
+    return state;
+  }
+
+  public void setState(String state) {
+    this.state = state;
+  }
+
+  public String getActiveServiceComponent() {
+    return activeServiceComponent;
+  }
+
+  public void setActiveServiceComponent(String activeServiceComponent) {
+    this.activeServiceComponent = activeServiceComponent;
+  }
+
+  public LocalDate getActiveServiceComponentStartDate() {
+    return activeServiceComponentStartDate;
+  }
+
+  public void setActiveServiceComponentStartDate(LocalDate activeServiceComponentStartDate) {
+    this.activeServiceComponentStartDate = activeServiceComponentStartDate;
+  }
+
+  public Boolean getTickle() {
+    return tickle;
+  }
+
+  public void setTickle(Boolean tickle) {
+    this.tickle = tickle;
+  }
 }

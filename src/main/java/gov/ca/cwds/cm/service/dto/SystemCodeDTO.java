@@ -5,19 +5,11 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.rest.api.Response;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 /**
  * @author CWDS TPT-3 Team
  */
 
-@Data
-@EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
-@AllArgsConstructor
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @ApiModel(
     description = "The collection of all logical code tables identified during various analysis "
@@ -110,4 +102,79 @@ public class SystemCodeDTO extends BaseDTO implements Response {
   )
   private String longDescription;
 
+  public static long getSerialVersionUID() {
+    return serialVersionUID;
+  }
+
+  public Short getSystemId() {
+    return systemId;
+  }
+
+  public void setSystemId(Short systemId) {
+    this.systemId = systemId;
+  }
+
+  public String getMetaCode() {
+    return metaCode;
+  }
+
+  public void setMetaCode(String metaCode) {
+    this.metaCode = metaCode;
+  }
+
+  public Short getCategoryId() {
+    return categoryId;
+  }
+
+  public void setCategoryId(Short categoryId) {
+    this.categoryId = categoryId;
+  }
+
+  public String getLogicalId() {
+    return logicalId;
+  }
+
+  public void setLogicalId(String logicalId) {
+    this.logicalId = logicalId;
+  }
+
+  public String getThirdId() {
+    return thirdId;
+  }
+
+  public void setThirdId(String thirdId) {
+    this.thirdId = thirdId;
+  }
+
+  public String getOtherCode() {
+    return otherCode;
+  }
+
+  public void setOtherCode(String otherCode) {
+    this.otherCode = otherCode;
+  }
+
+  public Boolean getInactiveIndicator() {
+    return inactiveIndicator;
+  }
+
+  public void setInactiveIndicator(Boolean inactiveIndicator) {
+    this.inactiveIndicator = inactiveIndicator;
+  }
+
+  public String getShortDescription() {
+    return shortDescription;
+  }
+
+  public void setShortDescription(String shortDescription) {
+    this.shortDescription = shortDescription;
+  }
+
+  public String getLongDescription() {
+    return longDescription;
+  }
+
+  public void setLongDescription(String longDescription) {
+    this.longDescription = longDescription;
+  }
 }

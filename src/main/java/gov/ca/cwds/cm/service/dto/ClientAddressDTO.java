@@ -9,19 +9,11 @@ import gov.ca.cwds.rest.api.Response;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDate;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 /**
  * @author CWDS TPT-3 Team
  */
 
-@Data
-@EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
-@AllArgsConstructor
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @ApiModel(
     description = "A specific ADDRESS (e.g., home, business, school, prison, etc.) defined for a "
@@ -97,4 +89,79 @@ public class ClientAddressDTO extends BaseDTO implements Response {
   )
   private String referralId;
 
+  public static long getSerialVersionUID() {
+    return serialVersionUID;
+  }
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public AddressDTO getAddress() {
+    return address;
+  }
+
+  public void setAddress(AddressDTO address) {
+    this.address = address;
+  }
+
+  public Short getAddressType() {
+    return addressType;
+  }
+
+  public void setAddressType(Short addressType) {
+    this.addressType = addressType;
+  }
+
+  public String getBookingOrInmateId() {
+    return bookingOrInmateId;
+  }
+
+  public void setBookingOrInmateId(String bookingOrInmateId) {
+    this.bookingOrInmateId = bookingOrInmateId;
+  }
+
+  public LocalDate getEffectiveEndDate() {
+    return effectiveEndDate;
+  }
+
+  public void setEffectiveEndDate(LocalDate effectiveEndDate) {
+    this.effectiveEndDate = effectiveEndDate;
+  }
+
+  public LocalDate getEffectiveStartDate() {
+    return effectiveStartDate;
+  }
+
+  public void setEffectiveStartDate(LocalDate effectiveStartDate) {
+    this.effectiveStartDate = effectiveStartDate;
+  }
+
+  public Boolean getHomelessIndicator() {
+    return homelessIndicator;
+  }
+
+  public void setHomelessIndicator(Boolean homelessIndicator) {
+    this.homelessIndicator = homelessIndicator;
+  }
+
+  public String getClientId() {
+    return clientId;
+  }
+
+  public void setClientId(String clientId) {
+    this.clientId = clientId;
+  }
+
+  public String getReferralId() {
+    return referralId;
+  }
+
+  public void setReferralId(String referralId) {
+    this.referralId = referralId;
+  }
 }

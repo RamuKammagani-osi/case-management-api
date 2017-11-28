@@ -9,23 +9,14 @@ import gov.ca.cwds.cm.RequestResponse;
 import io.dropwizard.validation.OneOf;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDateTime;
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * @author CWDS TPT-3 Team
  */
 
-@Data
-@EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
-@AllArgsConstructor
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @SuppressWarnings({"squid:S3437"})
 public class ChildClientDTO extends BaseClientDTO implements RequestResponse {
@@ -248,4 +239,338 @@ public class ChildClientDTO extends BaseClientDTO implements RequestResponse {
   @ApiModelProperty(required = true)
   private ClientDTO client;
 
+  public static long getSerialVersionUID() {
+    return serialVersionUID;
+  }
+
+  public String getVictimClientId() {
+    return victimClientId;
+  }
+
+  public void setVictimClientId(String victimClientId) {
+    this.victimClientId = victimClientId;
+  }
+
+  public String getAdoptableCode() {
+    return adoptableCode;
+  }
+
+  public void setAdoptableCode(String adoptableCode) {
+    this.adoptableCode = adoptableCode;
+  }
+
+  public Short getAdoptedAge() {
+    return adoptedAge;
+  }
+
+  public void setAdoptedAge(Short adoptedAge) {
+    this.adoptedAge = adoptedAge;
+  }
+
+  public Boolean getAfdcFcEligibilityIndicatorVar() {
+    return afdcFcEligibilityIndicatorVar;
+  }
+
+  public void setAfdcFcEligibilityIndicatorVar(Boolean afdcFcEligibilityIndicatorVar) {
+    this.afdcFcEligibilityIndicatorVar = afdcFcEligibilityIndicatorVar;
+  }
+
+  public Boolean getAllEducationInfoOnFileIndicator() {
+    return allEducationInfoOnFileIndicator;
+  }
+
+  public void setAllEducationInfoOnFileIndicator(Boolean allEducationInfoOnFileIndicator) {
+    this.allEducationInfoOnFileIndicator = allEducationInfoOnFileIndicator;
+  }
+
+  public Boolean getAllHealthInfoOnFileIndicator() {
+    return allHealthInfoOnFileIndicator;
+  }
+
+  public void setAllHealthInfoOnFileIndicator(Boolean allHealthInfoOnFileIndicator) {
+    this.allHealthInfoOnFileIndicator = allHealthInfoOnFileIndicator;
+  }
+
+  public String getAttemptToAcquireEducInfoDesc() {
+    return attemptToAcquireEducInfoDesc;
+  }
+
+  public void setAttemptToAcquireEducInfoDesc(String attemptToAcquireEducInfoDesc) {
+    this.attemptToAcquireEducInfoDesc = attemptToAcquireEducInfoDesc;
+  }
+
+  public String getAttemptToAcquireHlthInfoDesc() {
+    return attemptToAcquireHlthInfoDesc;
+  }
+
+  public void setAttemptToAcquireHlthInfoDesc(String attemptToAcquireHlthInfoDesc) {
+    this.attemptToAcquireHlthInfoDesc = attemptToAcquireHlthInfoDesc;
+  }
+
+  public String getAwolAbductedCode() {
+    return awolAbductedCode;
+  }
+
+  public void setAwolAbductedCode(String awolAbductedCode) {
+    this.awolAbductedCode = awolAbductedCode;
+  }
+
+  public Boolean getBirthHistoryIndicatorVar() {
+    return birthHistoryIndicatorVar;
+  }
+
+  public void setBirthHistoryIndicatorVar(Boolean birthHistoryIndicatorVar) {
+    this.birthHistoryIndicatorVar = birthHistoryIndicatorVar;
+  }
+
+  public Boolean getChildIndianAncestryIndicator() {
+    return childIndianAncestryIndicator;
+  }
+
+  public void setChildIndianAncestryIndicator(Boolean childIndianAncestryIndicator) {
+    this.childIndianAncestryIndicator = childIndianAncestryIndicator;
+  }
+
+  public Boolean getCollegeIndicator() {
+    return collegeIndicator;
+  }
+
+  public void setCollegeIndicator(Boolean collegeIndicator) {
+    this.collegeIndicator = collegeIndicator;
+  }
+
+  public String getCurrentCaseId() {
+    return currentCaseId;
+  }
+
+  public void setCurrentCaseId(String currentCaseId) {
+    this.currentCaseId = currentCaseId;
+  }
+
+  public String getDeathCircumstancesType() {
+    return deathCircumstancesType;
+  }
+
+  public void setDeathCircumstancesType(String deathCircumstancesType) {
+    this.deathCircumstancesType = deathCircumstancesType;
+  }
+
+  public String getDisabilityDiagnosedCode() {
+    return disabilityDiagnosedCode;
+  }
+
+  public void setDisabilityDiagnosedCode(String disabilityDiagnosedCode) {
+    this.disabilityDiagnosedCode = disabilityDiagnosedCode;
+  }
+
+  public String getDrmsHePassportDocOld() {
+    return drmsHePassportDocOld;
+  }
+
+  public void setDrmsHePassportDocOld(String drmsHePassportDocOld) {
+    this.drmsHePassportDocOld = drmsHePassportDocOld;
+  }
+
+  public String getDrmsHealthEducPassportDoc() {
+    return drmsHealthEducPassportDoc;
+  }
+
+  public void setDrmsHealthEducPassportDoc(String drmsHealthEducPassportDoc) {
+    this.drmsHealthEducPassportDoc = drmsHealthEducPassportDoc;
+  }
+
+  public String getDrmsVoluntaryPlcmntAgrmntDoc() {
+    return drmsVoluntaryPlcmntAgrmntDoc;
+  }
+
+  public void setDrmsVoluntaryPlcmntAgrmntDoc(String drmsVoluntaryPlcmntAgrmntDoc) {
+    this.drmsVoluntaryPlcmntAgrmntDoc = drmsVoluntaryPlcmntAgrmntDoc;
+  }
+
+  public Boolean getFc2EligApplicationIndicatorVar() {
+    return fc2EligApplicationIndicatorVar;
+  }
+
+  public void setFc2EligApplicationIndicatorVar(Boolean fc2EligApplicationIndicatorVar) {
+    this.fc2EligApplicationIndicatorVar = fc2EligApplicationIndicatorVar;
+  }
+
+  public LocalDateTime getFoodStampsApplicationDate() {
+    return foodStampsApplicationDate;
+  }
+
+  public void setFoodStampsApplicationDate(LocalDateTime foodStampsApplicationDate) {
+    this.foodStampsApplicationDate = foodStampsApplicationDate;
+  }
+
+  public Boolean getFoodStampsApplicationIndicator() {
+    return foodStampsApplicationIndicator;
+  }
+
+  public void setFoodStampsApplicationIndicator(Boolean foodStampsApplicationIndicator) {
+    this.foodStampsApplicationIndicator = foodStampsApplicationIndicator;
+  }
+
+  public String getIcwaEligibilityCode() {
+    return icwaEligibilityCode;
+  }
+
+  public void setIcwaEligibilityCode(String icwaEligibilityCode) {
+    this.icwaEligibilityCode = icwaEligibilityCode;
+  }
+
+  public Boolean getIntercountryAdoptDisruptedIndicator() {
+    return intercountryAdoptDisruptedIndicator;
+  }
+
+  public void setIntercountryAdoptDisruptedIndicator(Boolean intercountryAdoptDisruptedIndicator) {
+    this.intercountryAdoptDisruptedIndicator = intercountryAdoptDisruptedIndicator;
+  }
+
+  public Boolean getIntercountryAdoptDissolvedIndicator() {
+    return intercountryAdoptDissolvedIndicator;
+  }
+
+  public void setIntercountryAdoptDissolvedIndicator(Boolean intercountryAdoptDissolvedIndicator) {
+    this.intercountryAdoptDissolvedIndicator = intercountryAdoptDissolvedIndicator;
+  }
+
+  public Boolean getMedEligibilityApplicationIndicatorVar() {
+    return medEligibilityApplicationIndicatorVar;
+  }
+
+  public void setMedEligibilityApplicationIndicatorVar(
+      Boolean medEligibilityApplicationIndicatorVar) {
+    this.medEligibilityApplicationIndicatorVar = medEligibilityApplicationIndicatorVar;
+  }
+
+  public Boolean getMinorNmdParentIndicator() {
+    return minorNmdParentIndicator;
+  }
+
+  public void setMinorNmdParentIndicator(Boolean minorNmdParentIndicator) {
+    this.minorNmdParentIndicator = minorNmdParentIndicator;
+  }
+
+  public Boolean getParentalRightsLimitedIndicator() {
+    return parentalRightsLimitedIndicator;
+  }
+
+  public void setParentalRightsLimitedIndicator(Boolean parentalRightsLimitedIndicator) {
+    this.parentalRightsLimitedIndicator = parentalRightsLimitedIndicator;
+  }
+
+  public Boolean getParentalRightsTermintnIndicatorVar() {
+    return parentalRightsTermintnIndicatorVar;
+  }
+
+  public void setParentalRightsTermintnIndicatorVar(Boolean parentalRightsTermintnIndicatorVar) {
+    this.parentalRightsTermintnIndicatorVar = parentalRightsTermintnIndicatorVar;
+  }
+
+  public Boolean getPaternityIndividualIndicatorVar() {
+    return paternityIndividualIndicatorVar;
+  }
+
+  public void setPaternityIndividualIndicatorVar(Boolean paternityIndividualIndicatorVar) {
+    this.paternityIndividualIndicatorVar = paternityIndividualIndicatorVar;
+  }
+
+  public Boolean getPostsecVocIndicator() {
+    return postsecVocIndicator;
+  }
+
+  public void setPostsecVocIndicator(Boolean postsecVocIndicator) {
+    this.postsecVocIndicator = postsecVocIndicator;
+  }
+
+  public String getPreviouslyAdopted() {
+    return previouslyAdopted;
+  }
+
+  public void setPreviouslyAdopted(String previouslyAdopted) {
+    this.previouslyAdopted = previouslyAdopted;
+  }
+
+  public Boolean getSafelySurrendedBabiesIndicatorVar() {
+    return safelySurrendedBabiesIndicatorVar;
+  }
+
+  public void setSafelySurrendedBabiesIndicatorVar(Boolean safelySurrendedBabiesIndicatorVar) {
+    this.safelySurrendedBabiesIndicatorVar = safelySurrendedBabiesIndicatorVar;
+  }
+
+  public Boolean getSaw1EligApplicationIndicatorVar() {
+    return saw1EligApplicationIndicatorVar;
+  }
+
+  public void setSaw1EligApplicationIndicatorVar(Boolean saw1EligApplicationIndicatorVar) {
+    this.saw1EligApplicationIndicatorVar = saw1EligApplicationIndicatorVar;
+  }
+
+  public Integer getSawsCaseSerialNumber() {
+    return sawsCaseSerialNumber;
+  }
+
+  public void setSawsCaseSerialNumber(Integer sawsCaseSerialNumber) {
+    this.sawsCaseSerialNumber = sawsCaseSerialNumber;
+  }
+
+  public LocalDateTime getSijsScheduledInterviewDate() {
+    return sijsScheduledInterviewDate;
+  }
+
+  public void setSijsScheduledInterviewDate(LocalDateTime sijsScheduledInterviewDate) {
+    this.sijsScheduledInterviewDate = sijsScheduledInterviewDate;
+  }
+
+  public LocalDateTime getSiiNextScreeningDueDate() {
+    return siiNextScreeningDueDate;
+  }
+
+  public void setSiiNextScreeningDueDate(LocalDateTime siiNextScreeningDueDate) {
+    this.siiNextScreeningDueDate = siiNextScreeningDueDate;
+  }
+
+  public Boolean getSsiSspApplicationIndicator() {
+    return ssiSspApplicationIndicator;
+  }
+
+  public void setSsiSspApplicationIndicator(Boolean ssiSspApplicationIndicator) {
+    this.ssiSspApplicationIndicator = ssiSspApplicationIndicator;
+  }
+
+  public Boolean getTribalAncestryNotifctnIndicatorVar() {
+    return tribalAncestryNotifctnIndicatorVar;
+  }
+
+  public void setTribalAncestryNotifctnIndicatorVar(Boolean tribalAncestryNotifctnIndicatorVar) {
+    this.tribalAncestryNotifctnIndicatorVar = tribalAncestryNotifctnIndicatorVar;
+  }
+
+  public LocalDateTime getTribalCustomaryAdoptionDate() {
+    return tribalCustomaryAdoptionDate;
+  }
+
+  public void setTribalCustomaryAdoptionDate(LocalDateTime tribalCustomaryAdoptionDate) {
+    this.tribalCustomaryAdoptionDate = tribalCustomaryAdoptionDate;
+  }
+
+  public Boolean getTribalCustomaryAdoptionIndicator() {
+    return tribalCustomaryAdoptionIndicator;
+  }
+
+  public void setTribalCustomaryAdoptionIndicator(Boolean tribalCustomaryAdoptionIndicator) {
+    this.tribalCustomaryAdoptionIndicator = tribalCustomaryAdoptionIndicator;
+  }
+
+  @Override
+  public ClientDTO getClient() {
+    return client;
+  }
+
+  @Override
+  public void setClient(ClientDTO client) {
+    this.client = client;
+  }
 }
