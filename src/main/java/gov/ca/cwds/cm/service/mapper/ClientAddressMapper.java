@@ -7,11 +7,8 @@ import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-/**
- * @author CWDS TPT-3 Team
- */
-
-@Mapper(uses = { LegacyBooleanToStringMapper.class, AddressMapper.class })
+/** @author CWDS TPT-3 Team */
+@Mapper(uses = {LegacyBooleanToStringMapper.class, AddressMapper.class})
 public interface ClientAddressMapper {
 
   @Mapping(target = "messages", ignore = true)
@@ -24,5 +21,4 @@ public interface ClientAddressMapper {
   @Mapping(target = "lastUpdatedId", ignore = true)
   @Mapping(target = "lastUpdatedTime", ignore = true)
   ClientAddress toEntity(ClientAddressDTO clientAddressDTO);
-
 }

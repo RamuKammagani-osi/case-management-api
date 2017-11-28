@@ -13,9 +13,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Map;
 
-/**
- * @author CWDS TPT-3 Team
- */
+/** @author CWDS TPT-3 Team */
 public class DatabaseHelper {
 
   private Database database;
@@ -37,6 +35,7 @@ public class DatabaseHelper {
       throw new LiquibaseException(e);
     }
   }
+
   public void runScript(String script, Map<String, Object> parameters, String schema)
       throws LiquibaseException {
     try {
@@ -65,8 +64,9 @@ public class DatabaseHelper {
   private Database getDatabase() throws SQLException, DatabaseException {
     if (database == null) {
       Connection connection = DriverManager.getConnection(url, user, password);
-      database = DatabaseFactory.getInstance()
-          .findCorrectDatabaseImplementation(new JdbcConnection(connection));
+      database =
+          DatabaseFactory.getInstance()
+              .findCorrectDatabaseImplementation(new JdbcConnection(connection));
     }
 
     return database;

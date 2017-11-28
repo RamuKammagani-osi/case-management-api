@@ -21,9 +21,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-/**
- * @author CWDS TPT-3 Team
- */
+/** @author CWDS TPT-3 Team */
 @Api(value = SYSTEM_INFORMATION_PATH)
 @Path(SYSTEM_INFORMATION_PATH)
 @Produces(MediaType.APPLICATION_JSON)
@@ -44,8 +42,8 @@ public class SystemInformationResource {
    * @param applicationName The name of the application
    */
   @Inject
-  public SystemInformationResource(@Named("app.name") String applicationName,
-      Environment environment) {
+  public SystemInformationResource(
+      @Named("app.name") String applicationName, Environment environment) {
     this.applicationName = applicationName;
     this.environment = environment;
     Properties versionProperties = getVersionProperties();
@@ -77,9 +75,10 @@ public class SystemInformationResource {
     systemInformationDTO.setVersion(version);
     systemInformationDTO.setBuildNumber(buildNumber);
 
-    SortedMap<String, HealthCheck.Result> healthChecks = environment.healthChecks()
-        .runHealthChecks();
-    systemInformationDTO.setCwscms(getHealthCheckResultDTO(healthChecks.get(Constants.UnitOfWork.CMS)));
+    SortedMap<String, HealthCheck.Result> healthChecks =
+        environment.healthChecks().runHealthChecks();
+    systemInformationDTO.setCwscms(
+        getHealthCheckResultDTO(healthChecks.get(Constants.UnitOfWork.CMS)));
     systemInformationDTO.setDeadlocks(getHealthCheckResultDTO(healthChecks.get("deadlocks")));
 
     return systemInformationDTO;

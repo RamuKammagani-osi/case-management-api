@@ -1,8 +1,8 @@
 package gov.ca.cwds.cm.service.mapper.tool;
 
 /**
- * The mapper to map legacy db number columns to number fields in DTO and vice versa
- * using zero value in legacy entity and null value in DTO.
+ * The mapper to map legacy db number columns to number fields in DTO and vice versa using zero
+ * value in legacy entity and null value in DTO.
  *
  * @author CWDS TPT-3 Team
  */
@@ -16,9 +16,7 @@ public class LegacyZeroNumberToNullNumberMapper {
    */
   @ZeroNumberToNullNumberField
   public Short zeroToNull(final Short input) {
-    return input == null || input == 0
-        ? null
-        : input;
+    return input == null || input == 0 ? null : input;
   }
 
   /**
@@ -29,13 +27,12 @@ public class LegacyZeroNumberToNullNumberMapper {
    */
   @ZeroNumberToNullNumberField
   public Long zeroToNull(final Long input) {
-    return input == null || input == 0L
-        ? null
-        : input;
+    return input == null || input == 0L ? null : input;
   }
 
   /**
    * Mapper method to make zero from null value of Short type.
+   *
    * @param input - Short instance
    * @return - zero when null input or input in other cases
    */
@@ -46,6 +43,7 @@ public class LegacyZeroNumberToNullNumberMapper {
 
   /**
    * Mapper method to make zero from null value of Long type.
+   *
    * @param input - Long instance
    * @return - zero when null input or input in other cases
    */
@@ -53,5 +51,4 @@ public class LegacyZeroNumberToNullNumberMapper {
   public Long nullToZero(final Long input) {
     return input == null ? 0L : input;
   }
-
 }

@@ -10,10 +10,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-/**
- * @author CWDS TPT-3 Team
- */
-
+/** @author CWDS TPT-3 Team */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Builder
@@ -26,5 +23,4 @@ public class CollectionDTO<T extends BaseDTO> extends BaseDTO implements Respons
   private static final long serialVersionUID = -8348328384818361345L;
 
   private Collection<T> items;
-
 }

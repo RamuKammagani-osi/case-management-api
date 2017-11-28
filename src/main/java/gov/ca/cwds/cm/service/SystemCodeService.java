@@ -11,16 +11,15 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * @author CWDS TPT-3 Team
- */
+/** @author CWDS TPT-3 Team */
 public class SystemCodeService extends CrudServiceAdapter {
 
   private final SystemCodeDao systemCodeDao;
   private final SystemCodeMapper systemCodeMapper;
 
   @Inject
-  public SystemCodeService(final SystemCodeDao systemCodeDao, final SystemCodeMapper systemCodeMapper) {
+  public SystemCodeService(
+      final SystemCodeDao systemCodeDao, final SystemCodeMapper systemCodeMapper) {
     this.systemCodeDao = systemCodeDao;
     this.systemCodeMapper = systemCodeMapper;
   }
@@ -28,9 +27,8 @@ public class SystemCodeService extends CrudServiceAdapter {
   public Collection<SystemCodeDTO> findByMetaCode(final String metaCode) {
     final Collection<SystemCode> systemCodes = systemCodeDao.findByMetaCode(metaCode);
 
-    final List<SystemCodeDTO> dtos = systemCodes.stream()
-        .map(systemCodeMapper::toDto)
-        .collect(Collectors.toList());
+    final List<SystemCodeDTO> dtos =
+        systemCodes.stream().map(systemCodeMapper::toDto).collect(Collectors.toList());
 
     return ImmutableList.<SystemCodeDTO>builder().addAll(dtos).build();
   }

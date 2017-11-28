@@ -28,42 +28,35 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-
 import static gov.ca.cwds.cm.Constants.API.STAFF;
 
-/**
- * @author CWDS TPT-3 Team
- */
+/** @author CWDS TPT-3 Team */
 @Api(tags = STAFF, value = STAFF)
 @Path(value = STAFF)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class StaffResource {
 
-  @Inject
-  private ClientFacade clientFacade;
+  @Inject private ClientFacade clientFacade;
 
   @GET
   @Path("/{id}/clients")
   @ApiResponses(
-      value = {
-          @ApiResponse(code = 401, message = "Not Authorized"),
-          @ApiResponse(code = 404, message = "Not found"),
-          @ApiResponse(code = 406, message = "Accept Header not supported")
-      }
+    value = {
+      @ApiResponse(code = 401, message = "Not Authorized"),
+      @ApiResponse(code = 404, message = "Not found"),
+      @ApiResponse(code = 406, message = "Accept Header not supported")
+    }
   )
-  @ApiOperation(
-      value = "Find clients by caseworker ID from cases",
-      response = ClientDTO[].class
-  )
+  @ApiOperation(value = "Find clients by caseworker ID from cases", response = ClientDTO[].class)
   @UnitOfWork
   @Timed
   public Response getClients(
-          @PathParam("id")
+      @PathParam("id")
           @ApiParam(
-              required = true,
-              value = "The unique caseworker(staff person) ID",
-              example = "q48"
+            required = true,
+            value = "The unique caseworker(staff person) ID",
+            example = "q48"
           )
           String staffId)
       throws IOException {

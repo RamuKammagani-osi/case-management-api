@@ -20,9 +20,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-/**
- * @author CWDS TPT-3 Team
- */
+/** @author CWDS TPT-3 Team */
 @Api(tags = CASE, value = CASE)
 @Path(value = CASE)
 @Produces(MediaType.APPLICATION_JSON)
@@ -39,19 +37,19 @@ public class CaseResource {
   @GET
   @Path("/{id}")
   @ApiResponses(
-      value = {
-          @ApiResponse(code = 401, message = "Not Authorized"),
-          @ApiResponse(code = 404, message = "Not found"),
-          @ApiResponse(code = 406, message = "Accept Header not supported")
-      }
+    value = {
+      @ApiResponse(code = 401, message = "Not Authorized"),
+      @ApiResponse(code = 404, message = "Not found"),
+      @ApiResponse(code = 406, message = "Accept Header not supported")
+    }
   )
   @UnitOfWork
   @Timed
   @ApiOperation(value = "Find Case by case ID", response = CaseDTO.class)
   public Response get(
       @PathParam("id")
-      @ApiParam(required = true, value = "The unique case ID", example = "AadfKnG07n")
-      String id) {
+          @ApiParam(required = true, value = "The unique case ID", example = "AadfKnG07n")
+          String id) {
     CaseDTO caseDTO = caseService.find(id);
     return ResponseUtil.responseOrNotFound(caseDTO);
   }

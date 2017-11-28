@@ -20,10 +20,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-/**
- * @author CWDS TPT-3 Team
- */
-
+/** @author CWDS TPT-3 Team */
 @Api(value = ADDRESSES, tags = ADDRESSES)
 @Path(value = ADDRESSES)
 @Produces(MediaType.APPLICATION_JSON)
@@ -40,19 +37,24 @@ public class AddressResource {
   @UnitOfWork
   @GET
   @Path("/{id}")
-  @ApiResponses(value = {
+  @ApiResponses(
+    value = {
       @ApiResponse(code = 401, message = "Not Authorized"),
       @ApiResponse(code = 404, message = "Not found")
-  })
+    }
+  )
   @ApiOperation(value = "Find Address by id", response = AddressDTO.class)
   @Timed
   public Response get(
       @PathParam("id")
-      @ApiParam(required = true, name = "id", value = "The id of the Address to find", example = "AaQshqm0Mb")
-      final String id
-  ) {
+          @ApiParam(
+            required = true,
+            name = "id",
+            value = "The id of the Address to find",
+            example = "AaQshqm0Mb"
+          )
+          final String id) {
     final gov.ca.cwds.rest.api.Response response = addressService.find(id);
     return ResponseUtil.responseOrNotFound(response);
   }
-
 }

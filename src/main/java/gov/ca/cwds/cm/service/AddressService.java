@@ -7,9 +7,7 @@ import gov.ca.cwds.cm.service.mapper.AddressMapper;
 import gov.ca.cwds.rest.api.Response;
 import java.io.Serializable;
 
-/**
- * @author CWDS TPT-3 Team
- */
+/** @author CWDS TPT-3 Team */
 public class AddressService extends CrudServiceAdapter {
 
   private final AddressDao addressDao;

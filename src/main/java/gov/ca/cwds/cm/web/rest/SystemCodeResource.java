@@ -21,10 +21,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-/**
- * @author CWDS TPT-3 Team
- */
-
+/** @author CWDS TPT-3 Team */
 @Api(value = SYSTEM_CODES, tags = SYSTEM_CODES)
 @Path(value = SYSTEM_CODES)
 @Produces(MediaType.APPLICATION_JSON)
@@ -41,17 +38,23 @@ public class SystemCodeResource {
   @UnitOfWork
   @GET
   @Path("/{metaCode}")
-  @ApiResponses(value = {
+  @ApiResponses(
+    value = {
       @ApiResponse(code = 401, message = "Not Authorized"),
       @ApiResponse(code = 404, message = "Not Found")
-  })
+    }
+  )
   @ApiOperation(value = "Find System Codes by meta code", response = SystemCodeDTO.class)
   @Timed
   public Response get(
       @PathParam("metaCode")
-      @ApiParam(required = true, name = "metaCode", value = "The meta code to find System Codes by", example = "GVR_ENTC")
-      final String metaCode
-  ) {
+          @ApiParam(
+            required = true,
+            name = "metaCode",
+            value = "The meta code to find System Codes by",
+            example = "GVR_ENTC"
+          )
+          final String metaCode) {
     final Collection<SystemCodeDTO> serviceCodes = systemCodeService.findByMetaCode(metaCode);
     return ResponseUtil.responseOrNotFound(serviceCodes);
   }

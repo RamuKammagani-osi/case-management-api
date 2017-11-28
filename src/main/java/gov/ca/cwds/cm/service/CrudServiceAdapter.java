@@ -5,9 +5,7 @@ import gov.ca.cwds.rest.api.Response;
 import gov.ca.cwds.rest.services.CrudsService;
 import java.io.Serializable;
 
-/**
- * @author CWDS TPT-3 Team
- */
+/** @author CWDS TPT-3 Team */
 public class CrudServiceAdapter implements CrudsService {
 
   @Override

@@ -7,10 +7,7 @@ import gov.ca.cwds.cm.inject.DataAccessModule;
 import io.dropwizard.hibernate.UnitOfWorkAwareProxyFactory;
 import io.dropwizard.setup.Bootstrap;
 
-/**
- * @author CWDS TPT-3 Team
- */
-
+/** @author CWDS TPT-3 Team */
 public class CmApiApplication extends BaseCmApiApplication<CmApiConfiguration> {
 
   public static void main(String[] args) throws Exception {
@@ -24,18 +21,15 @@ public class CmApiApplication extends BaseCmApiApplication<CmApiConfiguration> {
       @Override
       protected void configure() {
         super.configure();
-        install(new DataAccessModule(bootstrap) {
+        install(
+            new DataAccessModule(bootstrap) {
 
-          @Provides
-          UnitOfWorkAwareProxyFactory provideUnitOfWorkAwareProxyFactory() {
-            return new UnitOfWorkAwareProxyFactory(
-                    getCmsHibernateBundle());
-          }
-
-        });
+              @Provides
+              UnitOfWorkAwareProxyFactory provideUnitOfWorkAwareProxyFactory() {
+                return new UnitOfWorkAwareProxyFactory(getCmsHibernateBundle());
+              }
+            });
       }
-
     };
   }
-
 }

@@ -12,78 +12,76 @@ import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-/**
- * @author CWDS TPT-3 Team
- */
-
-@Mapper(uses = {
+/** @author CWDS TPT-3 Team */
+@Mapper(
+  uses = {
     LegacyBooleanToStringMapper.class,
     LegacyZeroNumberToNullStringMapper.class,
     LegacyZeroNumberToNullNumberMapper.class
-})
+  }
+)
 public interface AddressMapper {
 
   @Mapping(target = "messages", ignore = true)
   @Mapping(
-      source = "emergencyPhone",
-      target = "emergencyPhone",
-      qualifiedBy = ZeroNumberToNullStringField.class
+    source = "emergencyPhone",
+    target = "emergencyPhone",
+    qualifiedBy = ZeroNumberToNullStringField.class
   )
   @Mapping(
-      source = "emergencyPhoneExtension",
-      target = "emergencyPhoneExtension",
-      qualifiedBy = ZeroNumberToNullStringField.class
+    source = "emergencyPhoneExtension",
+    target = "emergencyPhoneExtension",
+    qualifiedBy = ZeroNumberToNullStringField.class
   )
   @Mapping(
-      source = "messagePhone",
-      target = "messagePhone",
-      qualifiedBy = ZeroNumberToNullStringField.class
+    source = "messagePhone",
+    target = "messagePhone",
+    qualifiedBy = ZeroNumberToNullStringField.class
   )
   @Mapping(
-      source = "messagePhoneExtension",
-      target = "messagePhoneExtension",
-      qualifiedBy = ZeroNumberToNullStringField.class
+    source = "messagePhoneExtension",
+    target = "messagePhoneExtension",
+    qualifiedBy = ZeroNumberToNullStringField.class
   )
   @Mapping(
-      source = "primaryPhone",
-      target = "primaryPhone",
-      qualifiedBy = ZeroNumberToNullStringField.class
+    source = "primaryPhone",
+    target = "primaryPhone",
+    qualifiedBy = ZeroNumberToNullStringField.class
   )
   @Mapping(
-      source = "primaryPhoneExtension",
-      target = "primaryPhoneExtension",
-      qualifiedBy = ZeroNumberToNullStringField.class
+    source = "primaryPhoneExtension",
+    target = "primaryPhoneExtension",
+    qualifiedBy = ZeroNumberToNullStringField.class
   )
   @Mapping(
-      source = "streetSuffixCode",
-      target = "streetSuffixCode",
-      qualifiedBy = ZeroNumberToNullNumberField.class
+    source = "streetSuffixCode",
+    target = "streetSuffixCode",
+    qualifiedBy = ZeroNumberToNullNumberField.class
   )
   @Mapping(
-      source = "unitDesignatorCode",
-      target = "unitDesignatorCode",
-      qualifiedBy = ZeroNumberToNullNumberField.class
+    source = "unitDesignatorCode",
+    target = "unitDesignatorCode",
+    qualifiedBy = ZeroNumberToNullNumberField.class
   )
   @Mapping(
-      source = "zipSuffix",
-      target = "zipSuffix",
-      qualifiedBy = ZeroNumberToNullStringField.class
+    source = "zipSuffix",
+    target = "zipSuffix",
+    qualifiedBy = ZeroNumberToNullStringField.class
   )
   AddressDTO toDto(Address address);
 
   @InheritInverseConfiguration
   @Mapping(
-      source = "streetSuffixCode",
-      target = "streetSuffixCode",
-      qualifiedBy = NullNumberToZeroNumberField.class
+    source = "streetSuffixCode",
+    target = "streetSuffixCode",
+    qualifiedBy = NullNumberToZeroNumberField.class
   )
   @Mapping(
-      source = "unitDesignatorCode",
-      target = "unitDesignatorCode",
-      qualifiedBy = NullNumberToZeroNumberField.class
+    source = "unitDesignatorCode",
+    target = "unitDesignatorCode",
+    qualifiedBy = NullNumberToZeroNumberField.class
   )
   @Mapping(target = "lastUpdatedId", ignore = true)
   @Mapping(target = "lastUpdatedTime", ignore = true)
   Address toEntity(AddressDTO dto);
-
 }

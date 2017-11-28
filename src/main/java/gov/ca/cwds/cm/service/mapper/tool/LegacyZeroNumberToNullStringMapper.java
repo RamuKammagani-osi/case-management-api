@@ -9,7 +9,6 @@ import java.math.BigDecimal;
  *
  * @author CWDS TPT-3 Team
  */
-
 @ZeroNumberToNullStringField
 public class LegacyZeroNumberToNullStringMapper {
 
@@ -30,27 +29,18 @@ public class LegacyZeroNumberToNullStringMapper {
   }
 
   public String toStringFromDecimal(final BigDecimal number) {
-    return (number == null || BigDecimal.ZERO.compareTo(number) == 0)
-        ? null
-        : number.toString();
+    return (number == null || BigDecimal.ZERO.compareTo(number) == 0) ? null : number.toString();
   }
 
   public String toStringFromLong(final Long number) {
-    return (number == null || number == 0L)
-        ? null
-        : number.toString();
+    return (number == null || number == 0L) ? null : number.toString();
   }
 
   public String toStringFromInteger(final Integer number) {
-    return (number == null || number == 0)
-        ? null
-        : number.toString();
+    return (number == null || number == 0) ? null : number.toString();
   }
 
   public String toStringFromShort(final Short number) {
-    return (number == null || number == 0)
-        ? null
-        : number.toString();
+    return (number == null || number == 0) ? null : number.toString();
   }
-
 }

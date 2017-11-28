@@ -6,15 +6,11 @@ import gov.ca.cwds.data.legacy.cms.entity.syscodes.SystemCode;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-/**
- * @author CWDS TPT-3 Team
- */
-
-@Mapper(uses = { LegacyBooleanToStringMapper.class })
+/** @author CWDS TPT-3 Team */
+@Mapper(uses = {LegacyBooleanToStringMapper.class})
 public interface SystemCodeMapper {
 
   @Mapping(target = "messages", ignore = true)
   @Mapping(source = "fkMeta", target = "metaCode")
   SystemCodeDTO toDto(SystemCode address);
-
 }

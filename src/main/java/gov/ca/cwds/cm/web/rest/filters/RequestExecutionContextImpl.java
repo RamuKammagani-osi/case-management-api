@@ -1,6 +1,5 @@
 package gov.ca.cwds.cm.web.rest.filters;
 
-
 import gov.ca.cwds.cm.auth.PerryUserIdentity;
 import java.util.Date;
 import java.util.EnumMap;
@@ -23,9 +22,7 @@ class RequestExecutionContextImpl implements RequestExecutionContext {
 
   private static final String DEFAULT_USER_ID = "0X5";
 
-  /**
-   * Context parameters
-   */
+  /** Context parameters */
   private EnumMap<Parameter, Object> contextParameters = new EnumMap<>(Parameter.class);
 
   /**
@@ -64,9 +61,7 @@ class RequestExecutionContextImpl implements RequestExecutionContext {
     RequestExecutionContextRegistry.register(new RequestExecutionContextImpl(userIdentity));
   }
 
-  /**
-   * Perform cleanup after request completion
-   */
+  /** Perform cleanup after request completion */
   static void stopRequest() {
     RequestExecutionContextRegistry.remove();
   }

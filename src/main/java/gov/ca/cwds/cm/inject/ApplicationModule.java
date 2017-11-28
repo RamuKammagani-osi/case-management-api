@@ -13,7 +13,6 @@ import io.dropwizard.setup.Bootstrap;
  *
  * @author CWDS TPT-3 Team
  */
-
 public class ApplicationModule<T extends CmApiConfiguration> extends AbstractModule {
 
   private Bootstrap<T> bootstrap;
@@ -27,7 +26,7 @@ public class ApplicationModule<T extends CmApiConfiguration> extends AbstractMod
    * Configure and initialize API components, including services, rest, data access objects (DAO),
    * web service filters, and auditing.
    *
-   * {@inheritDoc}
+   * <p>{@inheritDoc}
    */
   @Override
   protected void configure() {
@@ -57,6 +56,4 @@ public class ApplicationModule<T extends CmApiConfiguration> extends AbstractMod
   public String appVersion(T configuration) {
     return configuration.getVersion();
   }
-
-
 }

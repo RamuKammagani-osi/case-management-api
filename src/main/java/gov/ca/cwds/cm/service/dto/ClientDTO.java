@@ -708,5 +708,4 @@ public class ClientDTO extends BaseDTO {
     example = " "
   )
   private String sciIndexNumber;
-
 }

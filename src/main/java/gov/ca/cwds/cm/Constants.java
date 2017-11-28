@@ -1,8 +1,6 @@
 package gov.ca.cwds.cm;
 
-/**
- * @author CWDS TPT-3 Team
- */
+/** @author CWDS TPT-3 Team */
 public final class Constants {
 
   public static final String Y = "Y";
@@ -15,8 +13,7 @@ public final class Constants {
 
   public static final String RETURNED_CLASS_NAME_PARAM = "returnedClassName";
 
-  private Constants() {
-  }
+  private Constants() {}
 
   public static class API {
 
@@ -36,31 +33,25 @@ public final class Constants {
 
     public static final String STAFF = "staff";
 
-    private API() {
-    }
+    private API() {}
 
     public static class PathParams {
 
       public static final String CM_NAME_PARAMETER = "caseName";
       public static final String CM_ID_PARAMETER = "caseId";
 
-
-      private PathParams() {
-      }
+      private PathParams() {}
     }
   }
 
   public static class ExpectedExceptionMessages {
 
-    private ExpectedExceptionMessages() {
-    }
-
+    private ExpectedExceptionMessages() {}
   }
 
   public static class Validation {
 
-    private Validation() {
-    }
+    private Validation() {}
   }
 
   public static class UnitOfWork {
@@ -69,8 +60,6 @@ public final class Constants {
 
     public static final String XA_CMS = "xa_cwscms";
 
-    private UnitOfWork() {
-    }
+    private UnitOfWork() {}
   }
-
 }

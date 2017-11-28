@@ -35,9 +35,7 @@ import org.bouncycastle.util.io.TeeOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * @author CWDS API Team
- */
+/** @author CWDS API Team */
 @Provider
 public class RequestResponseLoggingFilter implements Filter {
 
@@ -68,12 +66,13 @@ public class RequestResponseLoggingFilter implements Filter {
 
       HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 
-      loggingContext.setLogParameter(LogParameter.USER_ID,
-          RequestExecutionContext.instance().getUserId());
-      loggingContext.setLogParameter(LogParameter.REQUEST_START_TIME,
+      loggingContext.setLogParameter(
+          LogParameter.USER_ID, RequestExecutionContext.instance().getUserId());
+      loggingContext.setLogParameter(
+          LogParameter.REQUEST_START_TIME,
           DomainChef.cookStrictTimestamp(RequestExecutionContext.instance().getRequestStartTime()));
-      loggingContext.setLogParameter(LogParameter.REMOTE_ADDRESS,
-          httpServletRequest.getRemoteAddr());
+      loggingContext.setLogParameter(
+          LogParameter.REMOTE_ADDRESS, httpServletRequest.getRemoteAddr());
       loggingContext.setLogParameter(LogParameter.REQUEST_ID, Thread.currentThread().getName());
 
       RequestResponseLoggingHttpServletRequest wrappedRequest =
@@ -88,10 +87,9 @@ public class RequestResponseLoggingFilter implements Filter {
       try {
         chain.doFilter(wrappedRequest, wrappedResponse);
         StringBuilder reponseStringBuilder = new StringBuilder();
-        reponseStringBuilder.append(wrappedResponse)
-            .append(wrappedResponse.getContent());
-        auditLogger
-            .audit(reponseStringBuilder.toString().replaceAll("\n", " ").replaceAll("\r", ""));
+        reponseStringBuilder.append(wrappedResponse).append(wrappedResponse.getContent());
+        auditLogger.audit(
+            reponseStringBuilder.toString().replaceAll("\n", " ").replaceAll("\r", ""));
       } catch (Exception e) {
         LOGGER.error(e.getMessage(), e);
         throw new ApiException("Unable to handle request:" + uniqueId, e);

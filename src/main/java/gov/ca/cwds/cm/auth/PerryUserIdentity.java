@@ -3,13 +3,10 @@ package gov.ca.cwds.cm.auth;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import gov.ca.cwds.security.shiro.realms.PerryAccount;
 
-/**
- * @author CWDS CALS API Team
- */
+/** @author CWDS CALS API Team */
 public class PerryUserIdentity extends PerryAccount {
 
-  @JsonProperty
-  private String staffId;
+  @JsonProperty private String staffId;
 
   public String getStaffId() {
     return staffId;

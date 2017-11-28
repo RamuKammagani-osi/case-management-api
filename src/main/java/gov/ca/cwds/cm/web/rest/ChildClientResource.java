@@ -33,34 +33,29 @@ import javax.ws.rs.core.Response;
 @Consumes(MediaType.APPLICATION_JSON)
 public class ChildClientResource {
 
-  @Inject
-  private ClientFacade clientFacade;
-  @Inject
-  private ClientAddressService clientAddressService;
-
+  @Inject private ClientFacade clientFacade;
+  @Inject private ClientAddressService clientAddressService;
 
   @GET
   @Path("/{id}")
   @ApiResponses(
-          value = {
-                  @ApiResponse(code = 401, message = "Not Authorized"),
-                  @ApiResponse(code = 404, message = "Not found"),
-                  @ApiResponse(code = 406, message = "Accept Header not supported")
-          }
+    value = {
+      @ApiResponse(code = 401, message = "Not Authorized"),
+      @ApiResponse(code = 404, message = "Not found"),
+      @ApiResponse(code = 406, message = "Accept Header not supported")
+    }
   )
-  @ApiOperation(
-    value = "Find childClient by client ID",
-    response = ChildClientDTO.class
-  )
+  @ApiOperation(value = "Find childClient by client ID", response = ChildClientDTO.class)
   @UnitOfWork
   @Timed
   public Response get(
       @PathParam("id")
           @ApiParam(required = true, value = "The unique client ID", example = "DSC1233117")
-         final String id) {
+          final String id) {
     ChildClientParameterObject childClientParameterObject = new ChildClientParameterObject();
     childClientParameterObject.setChildClientId(id);
-    return ResponseUtil.responseOrNotFound(clientFacade.find(childClientParameterObject, ClientType.CHILD_CLIENT));
+    return ResponseUtil.responseOrNotFound(
+        clientFacade.find(childClientParameterObject, ClientType.CHILD_CLIENT));
   }
 
   @GET
@@ -79,8 +74,8 @@ public class ChildClientResource {
   @Timed
   public Response getAddressesByClientId(
       @PathParam("id")
-      @ApiParam(required = true, value = "The unique client ID", example = "GmNMeSx0Hy")
-      final String id) {
+          @ApiParam(required = true, value = "The unique client ID", example = "GmNMeSx0Hy")
+          final String id) {
     final Collection<ClientAddressDTO> addresses = clientAddressService.findByClientId(id);
     return ResponseUtil.responseOrNotFound(addresses);
   }

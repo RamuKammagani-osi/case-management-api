@@ -17,10 +17,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-/**
- * @author CWDS TPT-3 Team
- */
-
+/** @author CWDS TPT-3 Team */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Builder
@@ -54,9 +51,9 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
 
   @NotNull
   @ApiModelProperty(
-      required = true,
-      value = "Caseplan children detail existing indicator.",
-      example = "true"
+    required = true,
+    value = "Caseplan children detail existing indicator.",
+    example = "true"
   )
   private Boolean caseplanChildrenDetail;
 
@@ -82,8 +79,8 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
   @gov.ca.cwds.rest.validation.Date
   @ApiModelProperty(
-      value = "The anticipated date the child client will become emancipated.",
-      example = "2018-10-20"
+    value = "The anticipated date the child client will become emancipated.",
+    example = "2018-10-20"
   )
   private LocalDate emancipationDate;
 
@@ -108,16 +105,16 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
 
   @RemoveTrailingSpaces
   @ApiModelProperty(
-      value = "County within the state of California to which a specific CASE is assigned.",
-      example = "Alameda"
+    value = "County within the state of California to which a specific CASE is assigned.",
+    example = "Alameda"
   )
   private String county;
 
   @NotNull
   @ApiModelProperty(
-      required = true,
-      value = "ICPC outgoing placement status indicator.",
-      example = "true"
+    required = true,
+    value = "ICPC outgoing placement status indicator.",
+    example = "true"
   )
   private Boolean icpcOutgoingPlacementStatus;
 
@@ -150,16 +147,16 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
   @gov.ca.cwds.rest.validation.Date
   @ApiModelProperty(
-      value = "Next Transitional Independent Living Plan due date",
-      example = "2018-10-24"
+    value = "Next Transitional Independent Living Plan due date",
+    example = "2018-10-24"
   )
   private LocalDate nextTilpDueDate;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
   @gov.ca.cwds.rest.validation.Date
   @ApiModelProperty(
-      value = "Next Transitional Independent Living Plan due date",
-      example = "2018-10-23"
+    value = "Next Transitional Independent Living Plan due date",
+    example = "2018-10-23"
   )
   private LocalDate projectedEndDate;
 
@@ -185,9 +182,9 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(
-      required = true,
-      value = "Service component being referenced  for a child's case",
-      example = "Emergency Response"
+    required = true,
+    value = "Service component being referenced  for a child's case",
+    example = "Emergency Response"
   )
   private String activeServiceComponent;
 
@@ -200,5 +197,4 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @NotNull
   @ApiModelProperty(required = true, value = "Tickle indicator", example = "true")
   private Boolean tickle;
-
 }

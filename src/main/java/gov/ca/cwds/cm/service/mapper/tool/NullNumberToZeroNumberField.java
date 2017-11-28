@@ -11,10 +11,7 @@ import org.mapstruct.Qualifier;
  *
  * @author CWDS TPT-3 Team
  */
-
 @Qualifier
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.CLASS)
-public @interface NullNumberToZeroNumberField {
-
-}
+public @interface NullNumberToZeroNumberField {}

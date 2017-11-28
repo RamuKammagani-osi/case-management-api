@@ -26,7 +26,8 @@ public class ChildClientService implements CrudsService {
 
   @Override
   public ChildClientDTO find(Serializable serializable) {
-    ChildClient childClient = childClientDao.find(((ChildClientParameterObject) serializable).getChildClientId());
+    ChildClient childClient =
+        childClientDao.find(((ChildClientParameterObject) serializable).getChildClientId());
     return childClientMapper.toChildClientDTO(childClient);
   }
 

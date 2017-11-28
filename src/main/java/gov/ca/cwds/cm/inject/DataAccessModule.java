@@ -78,8 +78,7 @@ public class DataAccessModule extends AbstractModule {
               State.class,
               SubstituteCareProvider.class,
               SystemCode.class,
-              VisitType.class
-          )
+              VisitType.class)
           .build();
 
   private final HibernateBundle<CmApiConfiguration> cmsHibernateBundle =
@@ -101,7 +100,7 @@ public class DataAccessModule extends AbstractModule {
 
   @Override
   protected void configure() {
-    //do nothing
+    // do nothing
   }
 
   @Provides

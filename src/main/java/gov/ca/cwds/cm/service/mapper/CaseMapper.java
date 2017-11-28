@@ -7,9 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 /** @author CWDS TPT-3 Team */
-@Mapper(
-  uses = TrailingSpacesRemovalPostMappingProcessor.class
-)
+@Mapper(uses = TrailingSpacesRemovalPostMappingProcessor.class)
 public interface CaseMapper {
 
   @Mapping(target = "messages", ignore = true)

@@ -15,5 +15,4 @@ public class CmApiConfiguration extends BaseApiConfiguration {
   public void setUpgardeDbOnStart(boolean upgardeDbOnStart) {
     this.upgardeDbOnStart = upgardeDbOnStart;
   }
-
 }

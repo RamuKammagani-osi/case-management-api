@@ -5,18 +5,15 @@ import com.google.inject.Injector;
 import com.google.inject.Provider;
 import io.dropwizard.hibernate.UnitOfWorkAwareProxyFactory;
 
-/**
- * @author CWDS TPT-3 Team
- */
-
+/** @author CWDS TPT-3 Team */
 public abstract class AbstractInjectProvider<T> implements Provider<T> {
 
   private final UnitOfWorkAwareProxyFactory unitOfWorkAwareProxyFactory;
   private Injector injector;
 
   @Inject
-  public AbstractInjectProvider(Injector injector,
-      UnitOfWorkAwareProxyFactory unitOfWorkAwareProxyFactory) {
+  public AbstractInjectProvider(
+      Injector injector, UnitOfWorkAwareProxyFactory unitOfWorkAwareProxyFactory) {
     this.injector = injector;
     this.unitOfWorkAwareProxyFactory = unitOfWorkAwareProxyFactory;
   }
@@ -30,4 +27,3 @@ public abstract class AbstractInjectProvider<T> implements Provider<T> {
     return service;
   }
 }
-

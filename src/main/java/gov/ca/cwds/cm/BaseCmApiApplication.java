@@ -15,18 +15,17 @@ import org.glassfish.jersey.linking.DeclarativeLinkingFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * @author CWDS TPT-3 Team
- */
-public abstract class BaseCmApiApplication<T extends CmApiConfiguration> extends
-    BaseApiApplication<T> {
+/** @author CWDS TPT-3 Team */
+public abstract class BaseCmApiApplication<T extends CmApiConfiguration>
+    extends BaseApiApplication<T> {
 
   private static final Logger LOG = LoggerFactory.getLogger(BaseCmApiApplication.class);
 
   @Override
   public void runInternal(T configuration, Environment environment) {
 
-    environment.getObjectMapper()
+    environment
+        .getObjectMapper()
         .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
 
     environment
@@ -42,14 +41,17 @@ public abstract class BaseCmApiApplication<T extends CmApiConfiguration> extends
     // Providing access to the guice injector from external classes such as custom validators
     InjectorHolder.INSTANCE.setInjector(injector);
 
-    environment.servlets()
-        .addFilter("RequestExecutionContextManagingFilter",
+    environment
+        .servlets()
+        .addFilter(
+            "RequestExecutionContextManagingFilter",
             injector.getInstance(RequestExecutionContextFilter.class))
         .addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), true, "/*");
 
-    environment.servlets()
-        .addFilter("AuditAndLoggingFilter",
-            injector.getInstance(RequestResponseLoggingFilter.class))
+    environment
+        .servlets()
+        .addFilter(
+            "AuditAndLoggingFilter", injector.getInstance(RequestResponseLoggingFilter.class))
         .addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), true, "/*");
   }
 
@@ -64,6 +66,4 @@ public abstract class BaseCmApiApplication<T extends CmApiConfiguration> extends
       LOG.error("Fail - {}: {}", key, result.getMessage());
     }
   }
-
-
 }
