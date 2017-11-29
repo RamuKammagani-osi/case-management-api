@@ -8,7 +8,7 @@ package gov.ca.cwds.cm.service.mapper.tool;
  */
 public class LegacyZeroNumberToNullNumberMapper {
 
-  private static final Short SHORT_ZERO = (short) 0;
+  private static final Short SHORT_ZERO = 0;
   private static final Long LONG_ZERO = 0L;
 
   /**
