@@ -30,7 +30,9 @@ public final class Constants {
 
     public static final String CM_TAG = "cm";
 
-    public static final String CHILD_CLIENT = "child-clients";
+    public static final String CHILD_CLIENTS = "child-clients";
+
+    public static final String CLIENTS = "clients";
 
     public static final String ADDRESSES = "addresses";
 
@@ -38,7 +40,7 @@ public final class Constants {
 
     public static final String CASE = "case";
 
-    public static final String CASE_WORKERS = "caseworkers";
+    public static final String STAFF = "staff";
 
     public static final String STAFF = "staff";
 

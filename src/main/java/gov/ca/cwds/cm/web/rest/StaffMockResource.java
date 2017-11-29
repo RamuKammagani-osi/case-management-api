@@ -1,7 +1,5 @@
 package gov.ca.cwds.cm.web.rest;
 
-import static gov.ca.cwds.cm.Constants.API.CASE_WORKERS;
-
 import com.codahale.metrics.annotation.Timed;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
@@ -26,14 +24,17 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+
+import static gov.ca.cwds.cm.Constants.API.STAFF;
+
 /**
  * @author CWDS TPT-3 Team
  */
-@Api(tags = CASE_WORKERS, value = CASE_WORKERS)
-@Path(value = CASE_WORKERS)
+@Api(tags = STAFF, value = STAFF)
+@Path(value = STAFF)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class CaseWorkerMockResource {
+public class StaffMockResource {
 
   @GET
   @Path("/{id}/clients")

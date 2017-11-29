@@ -3,6 +3,7 @@ package gov.ca.cwds.cm.service.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import gov.ca.cwds.cm.RequestResponse;
 import gov.ca.cwds.rest.validation.Date;
 import io.dropwizard.validation.OneOf;
 import io.swagger.annotations.ApiModelProperty;
@@ -12,7 +13,6 @@ import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -22,12 +22,11 @@ import static gov.ca.cwds.rest.api.domain.DomainObject.DATE_FORMAT;
 /** @author CWDS TPT-3 Team */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @SuppressWarnings({"squid:S3437"})
-public class ClientDTO extends BaseDTO {
+public class ClientDTO extends BaseDTO implements RequestResponse {
 
   private static final long serialVersionUID = -4098613951159302301L;
 

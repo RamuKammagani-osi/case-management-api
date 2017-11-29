@@ -3,8 +3,9 @@ package gov.ca.cwds.cm.web.rest.system;
 import static gov.ca.cwds.cm.Constants.API.SYSTEM_INFORMATION_PATH;
 
 import com.codahale.metrics.health.HealthCheck;
+import com.codahale.metrics.health.HealthCheck.Result;
 import com.google.inject.Inject;
-import com.google.inject.name.Named;
+import gov.ca.cwds.cm.CmApiConfiguration;
 import gov.ca.cwds.cm.Constants;
 import gov.ca.cwds.cm.service.dto.system.HealthCheckResultDTO;
 import gov.ca.cwds.cm.service.dto.system.SystemInformationDTO;
@@ -14,8 +15,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map;
 import java.util.Properties;
-import java.util.SortedMap;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -30,26 +31,21 @@ import javax.ws.rs.core.MediaType;
 public class SystemInformationResource {
 
   private static final String VERSION_PROPERTIES_FILE = "version.properties";
-  private static final String BUILD_VERSION = "build.version";
   private static final String BUILD_NUMBER = "build.number";
 
-  private String applicationName;
-  private Environment environment;
-  private String version;
-  private String buildNumber;
+  private final String applicationName;
+  private final String applicationVersion;
+  private final Environment environment;
+  private final String buildNumber;
 
-  /**
-   * Constructor
-   *
-   * @param applicationName The name of the application
-   */
   @Inject
-  public SystemInformationResource(@Named("app.name") String applicationName,
-      Environment environment) {
-    this.applicationName = applicationName;
+  public SystemInformationResource(
+      final CmApiConfiguration configuration,
+      final Environment environment) {
+    this.applicationName = configuration.getApplicationName();
+    this.applicationVersion = configuration.getVersion();
     this.environment = environment;
-    Properties versionProperties = getVersionProperties();
-    this.version = versionProperties.getProperty(BUILD_VERSION);
+    final Properties versionProperties = getVersionProperties();
     this.buildNumber = versionProperties.getProperty(BUILD_NUMBER);
   }
 
@@ -72,17 +68,16 @@ public class SystemInformationResource {
   @GET
   @ApiOperation(value = "Returns System Information", response = SystemInformationDTO.class)
   public SystemInformationDTO get() {
-    SystemInformationDTO systemInformationDTO = new SystemInformationDTO();
-    systemInformationDTO.setApplication(applicationName);
-    systemInformationDTO.setVersion(version);
-    systemInformationDTO.setBuildNumber(buildNumber);
+    final SystemInformationDTO systemInformation = new SystemInformationDTO();
+    systemInformation.setApplication(applicationName);
+    systemInformation.setVersion(applicationVersion);
+    systemInformation.setBuildNumber(buildNumber);
 
-    SortedMap<String, HealthCheck.Result> healthChecks = environment.healthChecks()
-        .runHealthChecks();
-    systemInformationDTO.setCwscms(getHealthCheckResultDTO(healthChecks.get(Constants.UnitOfWork.CMS)));
-    systemInformationDTO.setDeadlocks(getHealthCheckResultDTO(healthChecks.get("deadlocks")));
+    final Map<String, Result> healthChecks = environment.healthChecks().runHealthChecks();
+    systemInformation.setCwscms(getHealthCheckResultDTO(healthChecks.get(Constants.UnitOfWork.CMS)));
+    systemInformation.setDeadlocks(getHealthCheckResultDTO(healthChecks.get("deadlocks")));
 
-    return systemInformationDTO;
+    return systemInformation;
   }
 
   public HealthCheckResultDTO getHealthCheckResultDTO(HealthCheck.Result result) {

@@ -7,6 +7,7 @@ import org.mapstruct.Mapping;
 
 /** @author CWDS TPT-3 Team */
 @Mapper(uses = {ClientMapper.class})
+@FunctionalInterface
 public interface ChildClientMapper {
 
   @Mapping(target = "messages", ignore = true)

@@ -2,7 +2,6 @@ package gov.ca.cwds.cm.inject;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
-import com.google.inject.name.Named;
 import gov.ca.cwds.cm.CmApiConfiguration;
 import gov.ca.cwds.inject.AuditingModule;
 import gov.ca.cwds.rest.WebSecurityConfiguration;
@@ -32,7 +31,6 @@ public class ApplicationModule<T extends CmApiConfiguration> extends AbstractMod
   @Override
   protected void configure() {
     install(new ServicesModule());
-    install(new ResourcesModule());
     install(new AuditingModule());
     install(new MappingModule());
     install(new FiltersModule());
@@ -46,18 +44,5 @@ public class ApplicationModule<T extends CmApiConfiguration> extends AbstractMod
   public WebSecurityConfiguration provideWebSecurityConfiguration(T configuration) {
     return configuration.getWebSecurityConfiguration();
   }
-
-  @Provides
-  @Named("app.name")
-  public String appName(T configuration) {
-    return configuration.getApplicationName();
-  }
-
-  @Provides
-  @Named("app.version")
-  public String appVersion(T configuration) {
-    return configuration.getVersion();
-  }
-
 
 }

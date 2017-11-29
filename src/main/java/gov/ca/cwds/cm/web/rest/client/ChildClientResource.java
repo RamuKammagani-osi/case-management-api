@@ -1,16 +1,17 @@
-package gov.ca.cwds.cm.web.rest;
+package gov.ca.cwds.cm.web.rest.client;
 
-import static gov.ca.cwds.cm.Constants.API.CHILD_CLIENT;
+import static gov.ca.cwds.cm.Constants.API.CHILD_CLIENTS;
 
 import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
 import gov.ca.cwds.cm.Constants.API;
-import gov.ca.cwds.cm.inject.ChildClientServiceBackedResource;
+import gov.ca.cwds.cm.service.dictionaries.ClientType;
 import gov.ca.cwds.cm.service.ClientAddressService;
 import gov.ca.cwds.cm.service.dto.ChildClientDTO;
+import gov.ca.cwds.cm.service.facade.ClientFacade;
 import gov.ca.cwds.cm.service.dto.ClientAddressDTO;
-import gov.ca.cwds.cm.web.rest.parameter.ChildClientParameterObject;
-import gov.ca.cwds.rest.resources.ResourceDelegate;
+import gov.ca.cwds.cm.web.rest.ResponseUtil;
+import gov.ca.cwds.cm.web.rest.parameter.ClientParameterObject;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,31 +28,29 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /** @author CWDS TPT-3 Team */
-@Api(tags = CHILD_CLIENT, value = CHILD_CLIENT)
-@Path(value = CHILD_CLIENT)
+@Api(tags = CHILD_CLIENTS, value = CHILD_CLIENTS)
+@Path(value = CHILD_CLIENTS)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ChildClientResource {
 
-  private final ResourceDelegate childClientResourceDelegate;
-  private final ClientAddressService clientAddressService;
+  private ClientFacade clientFacade;
+  private ClientAddressService clientAddressService;
 
   @Inject
-  public ChildClientResource(
-      @ChildClientServiceBackedResource ResourceDelegate childClientResourceDelegate,
-      ClientAddressService clientAddressService) {
-    this.childClientResourceDelegate = childClientResourceDelegate;
+  public ChildClientResource(ClientFacade clientFacade, ClientAddressService clientAddressService) {
     this.clientAddressService = clientAddressService;
+    this.clientFacade = clientFacade;
   }
 
   @GET
   @Path("/{id}")
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 401, message = "Not Authorized"),
-      @ApiResponse(code = 404, message = "Not found"),
-      @ApiResponse(code = 406, message = "Accept Header not supported")
-    }
+          value = {
+                  @ApiResponse(code = 401, message = "Not Authorized"),
+                  @ApiResponse(code = 404, message = "Not found"),
+                  @ApiResponse(code = 406, message = "Accept Header not supported")
+          }
   )
   @ApiOperation(
     value = "Find childClient by client ID",
@@ -61,12 +60,11 @@ public class ChildClientResource {
   @Timed
   public Response get(
       @PathParam("id")
-      @ApiParam(required = true, value = "The unique client ID", example = "DSC1233117")
-      final String id) {
-    ChildClientParameterObject childClientParameterObject = new ChildClientParameterObject();
-    childClientParameterObject.setChildClientId(id);
-    Response childClientDTO = childClientResourceDelegate.get(childClientParameterObject);
-    return Response.ok().entity(childClientDTO.getEntity()).build();
+          @ApiParam(required = true, value = "The unique client ID", example = "DSC1233117")
+         final String id) {
+    ClientParameterObject clientParameterObject = new ClientParameterObject();
+    clientParameterObject.setClientId(id);
+    return Response.ok().entity(clientFacade.find(clientParameterObject, ClientType.CHILD_CLIENT)).build();
   }
 
   @GET

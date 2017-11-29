@@ -4,6 +4,7 @@ import gov.ca.cwds.cm.BaseApiIntegrationTest;
 import gov.ca.cwds.cm.Constants;
 import gov.ca.cwds.cm.Constants.API;
 import gov.ca.cwds.cm.service.dto.ChildClientDTO;
+import org.assertj.core.api.Assertions;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -37,7 +38,7 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
 
   @Test
   public void testGetChildClientById() throws Exception {
-    WebTarget target = clientTestRule.target(Constants.API.CHILD_CLIENT + "/" + CLIENT_ID);
+    WebTarget target = clientTestRule.target(Constants.API.CHILD_CLIENTS + "/" + CLIENT_ID);
     Response response = target.request(MediaType.APPLICATION_JSON).get();
     ChildClientDTO childClientDTO = response.readEntity(ChildClientDTO.class);
 
@@ -48,7 +49,7 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
   @Test
   public void getAddressesByClientId_success_whenAddressesExist() throws Exception {
     // given
-    final String path = API.CHILD_CLIENT + "/GmNMeSx0Hy/" + API.ADDRESSES;
+    final String path = API.CHILD_CLIENTS + "/GmNMeSx0Hy/" + API.ADDRESSES;
 
     // when
     final Response actualResult = clientTestRule.target(path)
@@ -65,7 +66,7 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
   @Test
   public void getAddressesByClientId_code404_whenNoAddress() throws Exception {
     // given
-    final String path = API.CHILD_CLIENT + "/NotExistingId/" + API.ADDRESSES;
+    final String path = API.CHILD_CLIENTS + "/NotExistingId/" + API.ADDRESSES;
 
     // when
     final Response actualResult = clientTestRule.target(path)

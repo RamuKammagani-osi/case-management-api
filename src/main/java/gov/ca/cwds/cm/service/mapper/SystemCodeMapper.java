@@ -11,6 +11,7 @@ import org.mapstruct.Mapping;
  */
 
 @Mapper(uses = { LegacyBooleanToStringMapper.class })
+@FunctionalInterface
 public interface SystemCodeMapper {
 
   @Mapping(target = "messages", ignore = true)

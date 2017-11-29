@@ -7,6 +7,7 @@ import org.mapstruct.Mapping;
 
 /** @author CWDS TPT-3 Team */
 @Mapper
+@FunctionalInterface
 public interface ClientMapper {
 
   @Mapping(target = "commentDescription", source = "commntDsc")

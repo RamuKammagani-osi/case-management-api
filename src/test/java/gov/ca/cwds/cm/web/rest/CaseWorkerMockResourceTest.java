@@ -32,7 +32,7 @@ public class CaseWorkerMockResourceTest extends BaseApiIntegrationTest {
   @Test
   public void testGetCaseById() throws Exception {
     WebTarget target =
-        clientTestRule.target(Constants.API.CASE_WORKERS + "/" + CASEWORKER_ID + "/clients");
+        clientTestRule.target(Constants.API.STAFF + "/" + CASEWORKER_ID + "/clients");
     Response response = target.request(MediaType.APPLICATION_JSON).get();
     assertResponseByFixturePath(response, "fixtures/list_of_related_clients_by_staff_id.json");
   }
@@ -40,7 +40,7 @@ public class CaseWorkerMockResourceTest extends BaseApiIntegrationTest {
   @Test
   public void testGetBaseByWrongId() {
     WebTarget target =
-        clientTestRule.target(Constants.API.CASE_WORKERS + "/" + WRONG_CASEWORKER_ID + "/clients");
+        clientTestRule.target(Constants.API.STAFF + "/" + WRONG_CASEWORKER_ID + "/clients");
     Invocation.Builder invocation = target.request(MediaType.APPLICATION_JSON);
     try {
       invocation.get(List.class);

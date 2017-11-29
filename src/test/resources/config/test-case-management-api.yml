@@ -1,4 +1,4 @@
-applicationName: CASE MANAGEMENT API
+applicationName: "CWDS CASE MANAGEMENT API"
 version: ${APP_VERSION:-local}
 
 server:
@@ -19,8 +19,8 @@ swagger:
   templateName: swagger.mustache
   assetsPath: /static
   resourcePackage: gov.ca.cwds.cm.web.rest
-  title: CWDS CASE MANAGEMENT API
-  description: RESTful CASE MANAGEMENT API.
+  title: "CWDS CASE MANAGEMENT API"
+  description: "RESTful CASE MANAGEMENT API."
   logo: images/CWDS-API-Logo-Horizontal.png
   loginUrl: ${LOGIN_URL:-http://localhost:8090/authn/login}
   showSwagger: ${SHOW_SWAGGER:-true}

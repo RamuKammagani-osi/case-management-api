@@ -8,6 +8,9 @@ package gov.ca.cwds.cm.service.mapper.tool;
  */
 public class LegacyZeroNumberToNullNumberMapper {
 
+  private static final Short SHORT_ZERO = 0;
+  private static final Long LONG_ZERO = 0L;
+
   /**
    * Mapper method to nullify zero values of Short instance. Returns null when zero value on input
    *
@@ -41,7 +44,7 @@ public class LegacyZeroNumberToNullNumberMapper {
    */
   @NullNumberToZeroNumberField
   public Short nullToZero(final Short input) {
-    return input == null ? 0 : input;
+    return input == null ? SHORT_ZERO : input;
   }
 
   /**
@@ -51,7 +54,7 @@ public class LegacyZeroNumberToNullNumberMapper {
    */
   @NullNumberToZeroNumberField
   public Long nullToZero(final Long input) {
-    return input == null ? 0L : input;
+    return input == null ? LONG_ZERO : input;
   }
 
 }

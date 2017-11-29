@@ -10,6 +10,7 @@ import org.mapstruct.Mapping;
 @Mapper(
   uses = TrailingSpacesRemovalPostMappingProcessor.class
 )
+@FunctionalInterface
 public interface CaseMapper {
 
   @Mapping(target = "messages", ignore = true)
