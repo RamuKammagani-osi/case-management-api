@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.cm.RequestResponse;
 import gov.ca.cwds.cm.service.mapper.tool.RemoveTrailingSpaces;
-import io.dropwizard.validation.OneOf;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,7 +26,7 @@ import java.util.List;
 @AllArgsConstructor
 @SuppressWarnings({"squid:S3437"})
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class LandingDTO extends BaseDTO implements RequestResponse {
+public class CaseloadSummaryDTO extends BaseDTO implements RequestResponse {
 
   private static final long serialVersionUID = 3787457561716324977L;
 
@@ -62,21 +61,16 @@ public class LandingDTO extends BaseDTO implements RequestResponse {
   private String countySpecificCode;
 
   @NotNull
-  @OneOf(
-    value = {"Y", "N"},
-    ignoreCase = true,
-    ignoreWhitespace = true
-  )
   @ApiModelProperty(
     value =
-        "This Y/N indicates whether this CASE_LOAD is the designated In Box for routing and transferring of incoming "
+        "This indicates whether this CASE_LOAD is the designated In Box for routing and transferring of incoming "
             + "ASSIGNMENTs for this particular ASSIGNMENT_UNIT. There can only be one Assignment Desk (In Box) Case Load"
             + " per ASSIGNMENT_UNIT and it must also be created at the same time the unit is being created.",
-    example = "N"
+    example = "true"
   )
-  private String assignmentDeskCaseloadIndicator;
+  private Boolean assignmentDeskCaseloadIndicator;
 
   @ApiModelProperty(value = "List of related cases/referrals/reminders.")
-  private List<LandingItemDTO> items;
+  private List<CaseloadSummaryItemDTO> items;
 
 }

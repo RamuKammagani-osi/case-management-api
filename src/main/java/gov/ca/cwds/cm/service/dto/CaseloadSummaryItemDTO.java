@@ -31,7 +31,7 @@ import static gov.ca.cwds.cm.Constants.LANDING_TIME_FORMAT;
 @AllArgsConstructor
 @SuppressWarnings({"squid:S3437"})
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class LandingItemDTO extends BaseDTO implements RequestResponse {
+public class CaseloadSummaryItemDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(value = "Local or not indicator.", example = "true")
   private Boolean local;
 

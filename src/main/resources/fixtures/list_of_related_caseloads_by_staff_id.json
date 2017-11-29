@@ -4,7 +4,7 @@
     "unit":"Emergency Response",
     "caseload":"ER3",
     "county_specific_code":"10",
-    "assignment_desk_caseload_indicator":"N",
+    "assignment_desk_caseload_indicator": false,
     "items":[
       {
         "local": false,
@@ -43,7 +43,7 @@
     "unit":"Emergency Response",
     "caseload":"In-box caseload",
     "county_specific_code":"10",
-    "assignment_desk_caseload_indicator":"Y",
+    "assignment_desk_caseload_indicator": true,
     "items":[
       {
         "local": false,

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import gov.ca.cwds.ObjectMapperUtils;
-import gov.ca.cwds.cm.service.dto.LandingDTO;
+import gov.ca.cwds.cm.service.dto.CaseloadSummaryDTO;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.testing.FixtureHelpers;
 import io.swagger.annotations.Api;
@@ -38,7 +38,7 @@ import static gov.ca.cwds.cm.Constants.API.PathParams.STAFF_ID;
 @Path(value = STAFF + "/{" + STAFF_ID + "}/")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class LandingMockResource {
+public class CaseloadSummaryMockResource {
 
   @GET
   @Path(CASELOADS)
@@ -49,7 +49,7 @@ public class LandingMockResource {
       @ApiResponse(code = 406, message = "Accept Header not supported")
     }
   )
-  @ApiOperation(value = "Find caseloads with cases/referrals by staff person ID", response = LandingDTO[].class)
+  @ApiOperation(value = "Find caseloads with cases/referrals by staff person ID", response = CaseloadSummaryDTO[].class)
   @UnitOfWork
   @Timed
   public Response getCaseLoads(
@@ -63,11 +63,11 @@ public class LandingMockResource {
     return Response.ok(getMockedData()).build();
   }
 
-  private List<LandingDTO> getMockedData() throws IOException {
+  private List<CaseloadSummaryDTO> getMockedData() throws IOException {
     ObjectMapper objectMapper = ObjectMapperUtils.createObjectMapper();
     objectMapper.registerModule(new Jdk8Module()).registerModule(new JavaTimeModule());
     String json = FixtureHelpers.fixture("fixtures/list_of_related_caseloads_by_staff_id.json");
-    LandingDTO[] array = objectMapper.readValue(json, LandingDTO[].class);
+    CaseloadSummaryDTO[] array = objectMapper.readValue(json, CaseloadSummaryDTO[].class);
     return Arrays.asList(array);
   }
 }
