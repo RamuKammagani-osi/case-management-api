@@ -5,6 +5,7 @@ import com.google.inject.Injector;
 import com.google.inject.Provides;
 import gov.ca.cwds.cm.service.ChildClientService;
 import gov.ca.cwds.cm.web.rest.ChildClientResource;
+import gov.ca.cwds.cm.web.rest.LandingMockResource;
 import gov.ca.cwds.cm.web.rest.system.SystemInformationResource;
 import gov.ca.cwds.rest.resources.ResourceDelegate;
 import gov.ca.cwds.rest.resources.ServiceBackedResourceDelegate;
@@ -28,6 +29,7 @@ public class ResourcesModule extends AbstractModule {
   protected void configure() {
     bind(SystemInformationResource.class);
     bind(ChildClientResource.class);
+    bind(LandingMockResource.class);
   }
 
   @Provides

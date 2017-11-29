@@ -15,6 +15,10 @@ public final class Constants {
 
   public static final String RETURNED_CLASS_NAME_PARAM = "returnedClassName";
 
+  public static final String DATE_FORMAT = "MM/dd/yyyy";
+
+  public static final String TIME_FORMAT = "HH:mm:ss";
+
   private Constants() {
   }
 
@@ -36,6 +40,10 @@ public final class Constants {
 
     public static final String CASE_WORKERS = "caseworkers";
 
+    public static final String STAFF = "staff";
+
+    public static final String CASELOADS = "caseloads";
+
     private API() {
     }
 
@@ -43,10 +51,12 @@ public final class Constants {
 
       public static final String CM_NAME_PARAMETER = "caseName";
       public static final String CM_ID_PARAMETER = "caseId";
+      public static final String STAFF_ID = "staffId";
 
 
       private PathParams() {
       }
+
     }
   }
 
