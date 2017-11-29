@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.cm.RequestResponse;
 import gov.ca.cwds.cm.service.mapper.tool.RemoveTrailingSpaces;
+import io.dropwizard.validation.OneOf;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -50,7 +51,32 @@ public class LandingDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(value = "The user specified name or number that an ASSIGNMENT UNIT uses to identify a CASE LOAD", example = "ER3")
   private String caseload;
 
-  @ApiModelProperty(value = "List of cases/referrals.")
+  @Size(max = 2)
+  @ApiModelProperty(
+    value =
+        "A code, with values between '01' and '58' or '99' that indicates which county has primary assignment "
+            + "responsibility for the CASE or REFERRAL that this row belongs to. The value for each county is "
+            + "identical to the Logical ID value for the county in the Government_Entity_Type code table.",
+    example = "10"
+  )
+  private String countySpecificCode;
+
+  @NotNull
+  @OneOf(
+    value = {"Y", "N"},
+    ignoreCase = true,
+    ignoreWhitespace = true
+  )
+  @ApiModelProperty(
+    value =
+        "This Y/N indicates whether this CASE_LOAD is the designated In Box for routing and transferring of incoming "
+            + "ASSIGNMENTs for this particular ASSIGNMENT_UNIT. There can only be one Assignment Desk (In Box) Case Load"
+            + " per ASSIGNMENT_UNIT and it must also be created at the same time the unit is being created.",
+    example = "N"
+  )
+  private String assignmentDeskCaseloadIndicator;
+
+  @ApiModelProperty(value = "List of related cases/referrals/reminders.")
   private List<LandingItemDTO> items;
 
 }

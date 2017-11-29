@@ -15,9 +15,9 @@ public final class Constants {
 
   public static final String RETURNED_CLASS_NAME_PARAM = "returnedClassName";
 
-  public static final String DATE_FORMAT = "MM/dd/yyyy";
+  public static final String LANDING_DATE_FORMAT = "MM/dd/yyyy";
 
-  public static final String TIME_FORMAT = "HH:mm:ss";
+  public static final String LANDING_TIME_FORMAT = "hh:mm a";
 
   private Constants() {
   }

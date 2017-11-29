@@ -3,8 +3,11 @@
     "id":"U8SxGBF00c",
     "unit":"Emergency Response",
     "caseload":"ER3",
+    "county_specific_code":"10",
+    "assignment_desk_caseload_indicator":"N",
     "items":[
       {
+        "local": false,
         "id":"BKk7CHj01A",
         "id_external":"1234123412341234567",
         "name":"Pedro1 L.",
@@ -19,6 +22,31 @@
         "item_type":"case"
       },
       {
+        "local": false,
+        "id":"BKk7CHj20A",
+        "id_external":"",
+        "name":"Pedro L.",
+        "start_date":"",
+        "end_date":"",
+        "service_component":"",
+        "closure":"",
+        "date":"",
+        "time":"",
+        "date_due":"12/20/2018",
+        "message":"Reminder Message...",
+        "item_type":"reminder"
+      }
+    ]
+  },
+  {
+    "id":"U8SxGBF00a",
+    "unit":"Emergency Response",
+    "caseload":"In-box caseload",
+    "county_specific_code":"10",
+    "assignment_desk_caseload_indicator":"Y",
+    "items":[
+      {
+        "local": false,
         "id":"BKk7CHj00A",
         "id_external":"1234128612341234567",
         "name":"Pedro2 L.",
@@ -33,6 +61,7 @@
         "item_type":"case"
       },
       {
+        "local": false,
         "id":"BKk7CHj10A",
         "id_external":"1234146412341234567",
         "name":"Pedro L.",
@@ -45,20 +74,6 @@
         "date_due":"",
         "message":"",
         "item_type":"referral"
-      },
-      {
-        "id":"BKk7CHj20A",
-        "id_external":"",
-        "name":"Pedro L.",
-        "start_date":"",
-        "end_date":"",
-        "service_component":"",
-        "closure":"",
-        "date":"",
-        "time":"",
-        "date_due":"12/20/2018",
-        "message":"Reminder Message...",
-        "item_type":"reminder"
       }
     ]
   }
