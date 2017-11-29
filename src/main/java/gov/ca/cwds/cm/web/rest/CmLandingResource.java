@@ -6,6 +6,7 @@ import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import gov.ca.cwds.ObjectMapperUtils;
 import gov.ca.cwds.cm.service.dto.CaseloadSummaryDTO;
+import gov.ca.cwds.cm.service.dto.ClientDTO;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.testing.FixtureHelpers;
 import io.swagger.annotations.Api;
@@ -26,6 +27,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import static gov.ca.cwds.cm.Constants.API.CLIENTS;
 import static gov.ca.cwds.cm.Constants.API.STAFF;
 import static gov.ca.cwds.cm.Constants.API.CASELOADS;
 import static gov.ca.cwds.cm.Constants.API.PathParams.STAFF_ID;
@@ -38,7 +40,7 @@ import static gov.ca.cwds.cm.Constants.API.PathParams.STAFF_ID;
 @Path(value = STAFF + "/{" + STAFF_ID + "}/")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class CaseloadSummaryMockResource {
+public class CmLandingResource {
 
   @GET
   @Path(CASELOADS)
@@ -60,10 +62,47 @@ public class CaseloadSummaryMockResource {
     if (!"s99".equals(staffId)) {
       return Response.ok().status(Response.Status.NOT_FOUND).build();
     }
-    return Response.ok(getMockedData()).build();
+    return Response.ok(getMockedCaseloadsData()).build();
   }
 
-  private List<CaseloadSummaryDTO> getMockedData() throws IOException {
+  @GET
+  @Path(CLIENTS)
+  @ApiResponses(
+    value = {
+      @ApiResponse(code = 401, message = "Not Authorized"),
+      @ApiResponse(code = 404, message = "Not found"),
+      @ApiResponse(code = 406, message = "Accept Header not supported")
+    }
+  )
+  @ApiOperation(value = "Find clients by caseworker ID from cases", response = ClientDTO[].class)
+  @UnitOfWork
+  @Timed
+  public Response getClients(
+      @PathParam(STAFF_ID)
+          @ApiParam(
+            required = true,
+            value = "The unique caseworker(staff person) ID",
+            example = "q48"
+          )
+          String staffId)
+      throws IOException {
+
+    if (!"q48".equals(staffId)) {
+      return Response.ok().status(Response.Status.NOT_FOUND).build();
+    }
+
+    return Response.ok().entity(getMockedClientsData()).build();
+  }
+
+  private List<ClientDTO> getMockedClientsData() throws IOException {
+    ObjectMapper objectMapper = ObjectMapperUtils.createObjectMapper();
+    objectMapper.registerModule(new Jdk8Module()).registerModule(new JavaTimeModule());
+    String json = FixtureHelpers.fixture("fixtures/list_of_related_clients_by_staff_id.json");
+    ClientDTO[] array = objectMapper.readValue(json, ClientDTO[].class);
+    return Arrays.asList(array);
+  }
+
+  private List<CaseloadSummaryDTO> getMockedCaseloadsData() throws IOException {
     ObjectMapper objectMapper = ObjectMapperUtils.createObjectMapper();
     objectMapper.registerModule(new Jdk8Module()).registerModule(new JavaTimeModule());
     String json = FixtureHelpers.fixture("fixtures/list_of_related_caseloads_by_staff_id.json");
