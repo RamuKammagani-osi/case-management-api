@@ -42,7 +42,7 @@ public class LandingMockResourceTest extends BaseApiIntegrationTest {
     @Test
     public void testGetCaseloadsByWrongStaffId() {
         WebTarget target =
-                clientTestRule.target(Constants.API.CASE_WORKERS + "/" + WRONG_STAFF_ID + "/"+CASELOADS);
+                clientTestRule.target(Constants.API.STAFF + "/" + WRONG_STAFF_ID + "/"+CASELOADS);
         Invocation.Builder invocation = target.request(MediaType.APPLICATION_JSON);
         try {
             invocation.get(List.class);

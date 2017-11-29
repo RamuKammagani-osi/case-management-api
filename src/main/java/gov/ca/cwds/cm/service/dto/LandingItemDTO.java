@@ -15,8 +15,6 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 import static gov.ca.cwds.cm.Constants.LANDING_DATE_FORMAT;
 import static gov.ca.cwds.cm.Constants.LANDING_TIME_FORMAT;
@@ -68,7 +66,7 @@ public class LandingItemDTO extends BaseDTO implements RequestResponse {
         "The date on which an uninterrupted period of  services on behalf of a CHILD CLIENT begins.",
     example = "12/20/2018"
   )
-  private LocalDate startDate;
+  private String startDate;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = LANDING_DATE_FORMAT)
   @ApiModelProperty(
@@ -76,7 +74,7 @@ public class LandingItemDTO extends BaseDTO implements RequestResponse {
         "The date on which an uninterrupted period of services on behalf of a child CLIENT ends.",
     example = "12/20/2018"
   )
-  private LocalDate endDate;
+  private String endDate;
 
   @RemoveTrailingSpaces
   @ApiModelProperty(
@@ -97,18 +95,18 @@ public class LandingItemDTO extends BaseDTO implements RequestResponse {
     value = "The referral creation date extracted from the ID.",
     example = "12/20/2018"
   )
-  private LocalDate date;
+  private String date;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = LANDING_TIME_FORMAT)
   @ApiModelProperty(
     value = "The referral creation time extracted from the ID.",
     example = "07:11 AM"
   )
-  private LocalTime time;
+  private String time;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = LANDING_DATE_FORMAT)
   @ApiModelProperty(value = "The reminder due date.", example = "12/20/2018")
-  private LocalDate dateDue;
+  private String dateDue;
 
   @RemoveTrailingSpaces
   @ApiModelProperty(value = "The reminder message.", example = "adoption")

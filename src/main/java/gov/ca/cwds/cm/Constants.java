@@ -42,8 +42,6 @@ public final class Constants {
 
     public static final String STAFF = "staff";
 
-    public static final String STAFF = "staff";
-
     public static final String CASELOADS = "caseloads";
 
     private API() {
