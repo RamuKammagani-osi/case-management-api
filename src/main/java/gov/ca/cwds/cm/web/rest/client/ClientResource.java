@@ -7,6 +7,7 @@ import com.google.inject.Inject;
 import gov.ca.cwds.cm.service.dictionaries.ClientType;
 import gov.ca.cwds.cm.service.dto.ClientDTO;
 import gov.ca.cwds.cm.service.facade.ClientFacade;
+import gov.ca.cwds.cm.web.rest.ResponseUtil;
 import gov.ca.cwds.cm.web.rest.parameter.ClientParameterObject;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.swagger.annotations.Api;
@@ -39,24 +40,22 @@ public class ClientResource {
   @GET
   @Path("/{id}")
   @ApiResponses(
-      value = {
-          @ApiResponse(code = 401, message = "Not Authorized"),
-          @ApiResponse(code = 404, message = "Not found"),
-          @ApiResponse(code = 406, message = "Accept Header not supported")
-      }
+    value = {
+      @ApiResponse(code = 401, message = "Not Authorized"),
+      @ApiResponse(code = 404, message = "Not found"),
+      @ApiResponse(code = 406, message = "Accept Header not supported")
+    }
   )
-  @ApiOperation(
-      value = "Find client by client ID",
-      response = ClientDTO.class
-  )
+  @ApiOperation(value = "Find client by client ID", response = ClientDTO.class)
   @UnitOfWork
   @Timed
   public Response get(
       @PathParam("id")
-      @ApiParam(required = true, value = "The unique client ID", example = "DSC1233117")
-      final String id) {
+          @ApiParam(required = true, value = "The unique client ID", example = "DSC1233117")
+          final String id) {
     ClientParameterObject clientParameterObject = new ClientParameterObject();
     clientParameterObject.setClientId(id);
-    return Response.ok().entity(clientFacade.find(clientParameterObject, ClientType.BASE_CLIENT)).build();
+    return ResponseUtil.responseOrNotFound(
+        clientFacade.find(clientParameterObject, ClientType.BASE_CLIENT));
   }
 }
