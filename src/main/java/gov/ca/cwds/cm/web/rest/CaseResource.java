@@ -79,8 +79,11 @@ public class CaseResource {
   @Timed
   @ApiOperation(value = "MOCK: Find Case by search criteria", response = CaseSearchResultDTO.class)
   public Response searchMOCK(final CaseCriteriaDTO criteria) throws IOException {
+    final CaseSearchResultDTO result = "q58".equals(criteria.getStaffId())
+        ? getMockedData()
+        : new CaseSearchResultDTO();
     return Response.ok()
-        .entity("q58".equals(criteria.getStaffId()) ? getMockedData() : new CaseSearchResultDTO())
+        .entity(result)
         .build();
   }
 
