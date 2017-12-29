@@ -26,6 +26,7 @@ DB_RS_JDBC_URL=jdbc:db2://db2data:${DB_RS_DB2_PORT}/${DB_RS_DB_NAME}
 #case-management-api
 LOGIN_URL=http://localhost:${PERRY_PORT}/perry/authn/login
 LOGOUT_URL=http://localhost:${PERRY_PORT}/perry/authn/logout
+SWAGGER_TOKEN_URL=http://localhost:${PERRY_PORT}/perry/authn/token
 SHIRO_CONFIG_PATH=/opt/case-management-api/config/shiro.ini
 #SHIRO_CONFIG_PATH=/opt/case-management-api/config/shiro_nosec.ini
 KEY_STORE_FILE=/opt/case-management-api/config/testKeyStore.jks

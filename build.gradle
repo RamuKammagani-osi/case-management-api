@@ -31,7 +31,7 @@ project.ext {
     projectMajorVersion = '0.5.4'
     //projectVersion = projectMajorVersion + '-SNAPSHOT'
     dropwizardVersion = '1.1.0'
-    coreApiVersion = '0.5.4_141-RC'
+    coreApiVersion = '0.5.4_147-RC_perry-v2'
     mapstructVersion = '1.2.0.Final'
     lombokVersion = '1.16.18'
     mainClass = 'gov.ca.cwds.cm.CmApiApplication'
