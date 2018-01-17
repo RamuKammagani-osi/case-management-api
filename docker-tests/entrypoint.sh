@@ -15,6 +15,9 @@ fi
 if [[ "$TEST_TYPE" == "smoke" ]]; then
   echo "Executing the Smoke Test..."
   TEST_CLASS=gov.ca.cwds.cm.SmokeTestSuite
+elif [[ "$TEST_TYPE" == "integration" ]]; then
+  echo "Executing the Integration Test..."
+  TEST_CLASS=gov.ca.cwds.cm.IntegrationTestSuite
 else
   echo "Unknown TEST_TYPE: '$TEST_TYPE'"
   exit 1

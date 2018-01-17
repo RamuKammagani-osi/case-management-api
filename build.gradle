@@ -212,6 +212,7 @@ jar {
 task integrationTest(type: Test, dependsOn: testClasses) {
     // URL where integration tests will be pointed to (may be changed in gradle.properties)
     systemProperty 'api.url', project.property('api.url')
+    outputs.upToDateWhen { false }
 }
 
 task smokeTest(type: Test) {
