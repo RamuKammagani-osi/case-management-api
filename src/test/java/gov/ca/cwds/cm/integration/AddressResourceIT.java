@@ -1,11 +1,11 @@
-package gov.ca.cwds.cm.web.rest;
+package gov.ca.cwds.cm.integration;
 
 import static gov.ca.cwds.cm.web.rest.utils.AssertFixtureUtils.assertResponseByFixturePath;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-import gov.ca.cwds.cm.BaseResourceTest;
+import gov.ca.cwds.cm.BaseIntegrationTest;
 import gov.ca.cwds.cm.Constants.API;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -15,11 +15,10 @@ import org.junit.Test;
 /**
  * @author CWDS TPT-3 Team
  */
-public class AddressResourceTest extends BaseResourceTest {
+public class AddressResourceIT extends BaseIntegrationTest {
 
   @BeforeClass
   public static void beforeClass() throws Exception {
-    setUpCms();
     runScripts("liquibase/address/dml_address_test_data.xml");
   }
 
@@ -38,7 +37,7 @@ public class AddressResourceTest extends BaseResourceTest {
   }
 
   @Test
-  public void getAddress_code404_whenAddressDoesNotExist() throws Exception {
+  public void getAddress_code404_whenAddressDoesNotExist() {
     // when
     final Response actualResult = clientTestRule.target(API.ADDRESSES + "/NotExistingId")
         .request(MediaType.APPLICATION_JSON_TYPE)
@@ -47,4 +46,5 @@ public class AddressResourceTest extends BaseResourceTest {
     // then
     assertThat(actualResult.getStatus(), is(equalTo(404)));
   }
+
 }

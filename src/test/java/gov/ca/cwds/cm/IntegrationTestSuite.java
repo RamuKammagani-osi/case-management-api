@@ -1,6 +1,6 @@
 package gov.ca.cwds.cm;
 
-import gov.ca.cwds.cm.web.rest.system.SystemInformationResourceTest;
+import gov.ca.cwds.cm.integration.AddressResourceIT;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -9,7 +9,7 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    SystemInformationResourceTest.class
+    AddressResourceIT.class
 })
 public class IntegrationTestSuite {
 

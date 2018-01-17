@@ -5,7 +5,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
-import gov.ca.cwds.cm.BaseApiIntegrationTest;
+import gov.ca.cwds.cm.BaseResourceTest;
 import gov.ca.cwds.cm.Constants;
 import gov.ca.cwds.cm.service.dto.system.HealthCheckResultDTO;
 import gov.ca.cwds.cm.service.dto.system.SystemInformationDTO;
@@ -16,7 +16,7 @@ import org.junit.Test;
 /**
  * Created by CWDS TPT-3 Team
  */
-public class SystemInformationResourceTest extends BaseApiIntegrationTest {
+public class SystemInformationResourceTest extends BaseResourceTest {
 
   @Test
   public void testSystemInformationGet() throws IOException {

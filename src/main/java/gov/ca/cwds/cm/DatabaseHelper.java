@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Map;
+import liquibase.util.StringUtils;
 
 /**
  * @author CWDS TPT-3 Team
@@ -19,14 +20,16 @@ import java.util.Map;
 public class DatabaseHelper {
 
   private Database database;
-  private String url;
-  private String user;
-  private String password;
+  private final String url;
+  private final String user;
+  private final String password;
+  private final String schema;
 
-  public DatabaseHelper(String url, String user, String password) {
+  public DatabaseHelper(String url, String user, String password, String schema) {
     this.url = url;
     this.user = user;
     this.password = password;
+    this.schema = schema;
   }
 
   public void runScript(String script) throws LiquibaseException {
@@ -67,6 +70,9 @@ public class DatabaseHelper {
       Connection connection = DriverManager.getConnection(url, user, password);
       database = DatabaseFactory.getInstance()
           .findCorrectDatabaseImplementation(new JdbcConnection(connection));
+      if (StringUtils.isNotEmpty(schema)) {
+        database.setDefaultSchemaName(schema);
+      }
     }
 
     return database;

@@ -1,5 +1,7 @@
 package gov.ca.cwds.cm;
 
+import static gov.ca.cwds.cm.ConfigurationProvider.CONFIG_FILE_PATH;
+
 import gov.ca.cwds.cm.web.rest.RestClientTestRule;
 import gov.ca.cwds.cm.web.rest.utils.TestModeUtils;
 import io.dropwizard.db.DataSourceFactory;
@@ -9,26 +11,21 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.ws.rs.client.Client;
 import org.glassfish.jersey.client.JerseyClient;
-import org.junit.After;
 import org.junit.ClassRule;
 import org.junit.Rule;
 
-/** @author CWDS TPT-3 Team */
-public abstract class BaseApiIntegrationTest {
+/**
+ * @author CWDS TPT-3 Team
+ */
+public abstract class BaseResourceTest {
 
   public static final int UNPROCESSABLE_ENTITY_STATUS_CODE = 422;
-
-  private static final DateTimeFormatter DATE_TIME_FORMATTER =
-      DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-  private static final String configFile = "config/case-management-api.yml";
-
   public static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
   @ClassRule
-  public static final DropwizardAppRule<CmApiConfiguration> appRule =
+  public static final DropwizardAppRule<CmApiConfiguration> DROPWIZARD_APP_RULE =
       new DropwizardAppRule<CmApiConfiguration>(
-          CmApiApplication.class, ResourceHelpers.resourceFilePath(configFile)) {
+          CmApiApplication.class, ResourceHelpers.resourceFilePath(CONFIG_FILE_PATH)) {
 
         @Override
         public Client client() {
@@ -40,47 +37,36 @@ public abstract class BaseApiIntegrationTest {
         }
       };
 
-  @Rule public RestClientTestRule clientTestRule = new RestClientTestRule(appRule);
+  @Rule
+  public RestClientTestRule clientTestRule = new RestClientTestRule(DROPWIZARD_APP_RULE);
 
-  @After
-  public void tearDown() throws Exception {}
+  public static void setUpCms() throws Exception {
+    getCmsDatabaseHelper().runScript("liquibase/cwscms_database_master.xml");
+  }
 
-  public String transformDTOtoJSON(Object o) throws Exception {
-    return clientTestRule.getMapper().writeValueAsString(o);
+  public static void setUpCwsRs1() throws Exception {
+    getRsDatabaseHelper().runScript("liquibase/cwsrs1-database-master.xml");
+  }
+
+  public static void setUpDb() throws Exception {
+    getCmsDatabaseHelper().runScript("liquibase/migration_master.xml");
   }
 
   protected static DatabaseHelper getCmsDatabaseHelper() {
-    return createDatabaseHelper(appRule.getConfiguration().getCmsDataSourceFactory());
+    return createDatabaseHelper(DROPWIZARD_APP_RULE.getConfiguration().getCmsDataSourceFactory());
   }
 
   protected static DatabaseHelper getRsDatabaseHelper() {
-    return createDatabaseHelper(appRule.getConfiguration().getCwsRsDataSourceFactory());
+    return createDatabaseHelper(DROPWIZARD_APP_RULE.getConfiguration().getCwsRsDataSourceFactory());
   }
 
   private static DatabaseHelper createDatabaseHelper(DataSourceFactory dataSourceFactory) {
     return new DatabaseHelper(
         dataSourceFactory.getUrl(),
         dataSourceFactory.getUser(),
-        dataSourceFactory.getPassword()
+        dataSourceFactory.getPassword(),
+        dataSourceFactory.getProperties().get("hibernate.default_schema")
     );
-  }
-
-  public static void setUpCms() throws Exception {
-    if (!TestModeUtils.isIntegrationTestsMode()) {
-      getCmsDatabaseHelper().runScript("liquibase/cwscms_database_master.xml");
-    }
-  }
-
-  public static void setUpCwsRs1() throws Exception {
-    if (!TestModeUtils.isIntegrationTestsMode()) {
-      getRsDatabaseHelper().runScript("liquibase/cwsrs1-database-master.xml");
-    }
-  }
-
-  public static void setUpDb() throws Exception {
-    if (!TestModeUtils.isIntegrationTestsMode()) {
-      getCmsDatabaseHelper().runScript("liquibase/migration_master.xml");
-    }
   }
 
   public static void runScripts(final String... scriptPaths) throws Exception {
@@ -90,6 +76,10 @@ public abstract class BaseApiIntegrationTest {
         databaseHelper.runScript(path);
       }
     }
+  }
+
+  public String transformDTOtoJSON(Object o) throws Exception {
+    return clientTestRule.getMapper().writeValueAsString(o);
   }
 
   public static LocalDate localDate(String dateStr) {
