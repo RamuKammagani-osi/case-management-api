@@ -9,6 +9,7 @@ import gov.ca.cwds.cm.BaseIntegrationTest;
 import gov.ca.cwds.cm.Constants.API;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -17,9 +18,16 @@ import org.junit.Test;
  */
 public class AddressResourceIT extends BaseIntegrationTest {
 
+  private static final String LIQUIBASE_SCRIPT = "liquibase/address/dml_address_test_data.xml";
+
   @BeforeClass
   public static void beforeClass() throws Exception {
-    runScripts("liquibase/address/dml_address_test_data.xml");
+    runScripts(LIQUIBASE_SCRIPT);
+  }
+
+  @AfterClass
+  public static void afterClass() throws Exception {
+    rollbackScripts(LIQUIBASE_SCRIPT);
   }
 
   @Test

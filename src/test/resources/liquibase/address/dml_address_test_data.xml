@@ -31,5 +31,11 @@
       <column name="UNT_DSGC" value="0"/>
       <column name="UNIT_NO" value="        "/>
     </insert>
+
+    <rollback>
+      <delete tableName="ADDRS_T">
+        <where>IDENTIFIER = 'Ab7mue101c'</where>
+      </delete>
+    </rollback>
   </changeSet>
 </databaseChangeLog>

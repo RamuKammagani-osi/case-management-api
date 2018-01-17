@@ -40,6 +40,16 @@ public class DatabaseHelper {
       throw new LiquibaseException(e);
     }
   }
+
+  public void rollback(String script) throws LiquibaseException {
+    try {
+      Liquibase liquibase = new Liquibase(script, new ClassLoaderResourceAccessor(), getDatabase());
+      liquibase.rollback(Integer.MAX_VALUE, null);
+    } catch (Exception e) {
+      throw new LiquibaseException(e);
+    }
+  }
+
   public void runScript(String script, Map<String, Object> parameters, String schema)
       throws LiquibaseException {
     try {

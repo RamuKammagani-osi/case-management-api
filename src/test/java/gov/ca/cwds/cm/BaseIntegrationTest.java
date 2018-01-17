@@ -32,4 +32,11 @@ public abstract class BaseIntegrationTest {
     }
   }
 
+  public static void rollbackScripts(final String... scriptPaths) throws Exception {
+    final DatabaseHelper databaseHelper = getCmsDatabaseHelper();
+    for (String path : scriptPaths) {
+      databaseHelper.rollback(path);
+    }
+  }
+
 }

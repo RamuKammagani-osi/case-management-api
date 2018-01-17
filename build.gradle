@@ -196,6 +196,7 @@ runShadow {
 
 test {
     systemProperty 'java.net.preferIPv4Stack', 'true'
+//    systemProperty 'api.url', 'http://localhost:8080/'
     exclude '**/*IT.*', '**/IntegrationTestSuite.class'
     jacoco {
         excludes = ["**org/drools/**/*"]
