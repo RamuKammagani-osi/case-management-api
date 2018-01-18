@@ -1,4 +1,4 @@
-package gov.ca.cwds.cm.web.rest;
+package gov.ca.cwds.cm.web.rest.client;
 
 import static gov.ca.cwds.cm.web.rest.utils.AssertFixtureUtils.assertResponseByFixturePath;
 import static org.junit.Assert.assertEquals;

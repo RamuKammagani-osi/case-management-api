@@ -91,7 +91,7 @@ node ('tpt3-slave'){
 	}
 	stage('Deploy Application'){
 //	   checkout([$class: 'GitSCM', branches: [[name: '*/case-managemennt-api-dev']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '433ac100-b3c2-4519-b4d6-207c029a103b', url: 'git@github.com:ca-cwds/de-ansible.git']]])
-	   checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/tpt3']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '433ac100-b3c2-4519-b4d6-207c029a103b', url: 'git@github.com:ca-cwds/de-ansible.git']]]
+	   checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '433ac100-b3c2-4519-b4d6-207c029a103b', url: 'git@github.com:ca-cwds/de-ansible.git']]]
 	   sh 'ansible-playbook -e NEW_RELIC_AGENT=$USE_NEWRELIC  -e APP_VERSION=$APP_VERSION -i $inventory deploy-case-management-api.yml --vault-password-file ~/.ssh/vault.txt -vv'
 	   cleanWs()
 	   sleep (20)

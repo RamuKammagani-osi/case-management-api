@@ -18,10 +18,12 @@ import gov.ca.cwds.data.legacy.cms.entity.Client;
 import gov.ca.cwds.data.legacy.cms.entity.ClientAddress;
 import gov.ca.cwds.data.legacy.cms.entity.ClientScpEthnicity;
 import gov.ca.cwds.data.legacy.cms.entity.CountyLicenseCase;
+import gov.ca.cwds.data.legacy.cms.entity.DeliveredService;
 import gov.ca.cwds.data.legacy.cms.entity.FCEligibility;
 import gov.ca.cwds.data.legacy.cms.entity.HealthInterventionPlan;
 import gov.ca.cwds.data.legacy.cms.entity.LicensingVisit;
 import gov.ca.cwds.data.legacy.cms.entity.LongText;
+import gov.ca.cwds.data.legacy.cms.entity.MedicalEligibilityApplication;
 import gov.ca.cwds.data.legacy.cms.entity.OtherAdultsInPlacementHome;
 import gov.ca.cwds.data.legacy.cms.entity.OtherChildrenInPlacementHome;
 import gov.ca.cwds.data.legacy.cms.entity.OtherPeopleScpRelationship;
@@ -39,6 +41,7 @@ import gov.ca.cwds.data.legacy.cms.entity.StaffPersonCaseLoad;
 import gov.ca.cwds.data.legacy.cms.entity.SubstituteCareProvider;
 import gov.ca.cwds.data.legacy.cms.entity.enums.AssignmentRecipient;
 import gov.ca.cwds.data.legacy.cms.entity.enums.AssignmentType;
+import gov.ca.cwds.data.legacy.cms.entity.enums.IndividualType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.ActiveServiceComponentType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.ApprovalStatusType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.CaseClosureReasonType;
@@ -55,6 +58,7 @@ import gov.ca.cwds.data.legacy.cms.entity.syscodes.MaritalStatus;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.NameType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.Religion;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.SecondaryAssignmentRoleType;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.ServiceContactType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.State;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.SystemCode;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.VisitType;
@@ -131,7 +135,11 @@ public class DataAccessModule extends AbstractModule {
               HealthPlanTerminationType.class,
               FCEligibility.class,
               FcEligibilityDentalReason.class,
-              FcEligibilityTermReason.class
+              FcEligibilityTermReason.class,
+              MedicalEligibilityApplication.class,
+              ServiceContactType.class,
+              DeliveredService.class,
+              IndividualType.class
           )
           .build();
 

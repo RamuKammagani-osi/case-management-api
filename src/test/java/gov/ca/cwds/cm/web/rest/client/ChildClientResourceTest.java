@@ -1,4 +1,4 @@
-package gov.ca.cwds.cm.web.rest;
+package gov.ca.cwds.cm.web.rest.client;
 
 import static gov.ca.cwds.cm.web.rest.utils.AssertFixtureUtils.assertResponseByFixturePath;
 import static gov.ca.cwds.cm.web.rest.utils.AssertResponseHelper.assertEqualsResponse;
@@ -68,6 +68,20 @@ public class ChildClientResourceTest extends BaseResourceTest {
   @Test
   public void testUpdateChildClient() throws Exception {
     ChildClientDTO childClientDTO = getChildClientDTO("BKk7CHj00A");
+    enrichForUpdate(childClientDTO);
+
+    WebTarget target = clientTestRule.target(API.CHILD_CLIENTS + "/BKk7CHj00A");
+    target
+        .queryParam(PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/0Ki-all-authorized.json")
+        .request(MediaType.APPLICATION_JSON_TYPE)
+        .put(Entity.entity(childClientDTO, MediaType.APPLICATION_JSON_TYPE), ChildClientDTO.class);
+
+    String fixture = fixture("fixtures/child-client-after-update-response.json");
+    ChildClientDTO clientAfterUpdate = getChildClientDTO("BKk7CHj00A");
+    assertEqualsResponse(fixture, transformDTOtoJSON(clientAfterUpdate));
+  }
+
+  private void enrichForUpdate(ChildClientDTO childClientDTO) {
     childClientDTO.setAdoptableCode("ADOPTABLE");
     childClientDTO.setAdoptedAge((short) 22);
     childClientDTO.setAfdcFcEligibilityIndicatorVar(true);
@@ -88,16 +102,6 @@ public class ChildClientResourceTest extends BaseResourceTest {
     childClientDTO.setGenderCode("FEMALE");
     childClientDTO.setIncapacitatedParentCode("YES");
     childClientDTO.setMaterialStatusType((short) 1309);
-
-    WebTarget target = clientTestRule.target(API.CHILD_CLIENTS + "/BKk7CHj00A");
-    target
-        .queryParam(PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/0Ki-all-authorized.json")
-        .request(MediaType.APPLICATION_JSON_TYPE)
-        .put(Entity.entity(childClientDTO, MediaType.APPLICATION_JSON_TYPE), ChildClientDTO.class);
-
-    String fixture = fixture("fixtures/child-client-after-update-response.json");
-    ChildClientDTO clientAfterUpdate = getChildClientDTO("BKk7CHj00A");
-    assertEqualsResponse(fixture, transformDTOtoJSON(clientAfterUpdate));
   }
 
   @Test
@@ -126,6 +130,21 @@ public class ChildClientResourceTest extends BaseResourceTest {
 
     // then
     assertThat(actualResult.getStatus(), is(equalTo(404)));
+  }
+
+  @Test
+  public void getRelationshipsByClientId_success_whenRelationshipsExist() throws Exception {
+    // given
+    final String path = API.CHILD_CLIENTS + "/" + ChildClientResource.MOCK_CLIENT_ID +"/" + API.RELATIONSHIPS;
+
+    // when
+    final Response actualResult =
+        clientTestRule.target(path).request(MediaType.APPLICATION_JSON_TYPE).get(Response.class);
+
+    // then
+    assertResponseByFixturePath(
+        actualResult,
+        "fixtures/child-client/getRelationshipsByClientId_success_whenRelationshipsExist.json");
   }
 
   private ChildClientDTO getChildClientDTO(String clientId) {

@@ -1,0 +1,33 @@
+[
+  {
+    "relationship_id": "AcB3Wu00Rx",
+    "client_id": "FplTfDs0Rx",
+    "related_client_id": "MHH2zjk0Rx",
+    "relationship_type_code": 285,
+    "absent_parent_indicator": true,
+    "relationship_start_date": "2000-10-20",
+    "relationship_end_date": "2018-10-20",
+    "same_home_status": "NO",
+    "related_client": {
+      "identifier": "MHH2zjk0Rx",
+      "common_first_name": "Alexander",
+      "common_last_name": "Broomhall"
+    }
+  },
+  {
+    "relationship_id": "AattSTp01T",
+    "client_id": "FplTfDs0Rx",
+    "related_client_id": "FEsDPrl01T",
+    "relationship_type_code": 291,
+    "absent_parent_indicator": false,
+    "relationship_start_date": "2000-10-20",
+    "relationship_end_date": "2018-10-20",
+    "same_home_status": "YES",
+    "related_client": {
+      "identifier": "FEsDPrl01T",
+      "common_first_name": "Melissa",
+      "common_last_name": "Wyrill",
+      "email_addr": "mv@some.com"
+    }
+  }
+]
