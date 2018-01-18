@@ -3,7 +3,6 @@ package gov.ca.cwds.cm;
 import static gov.ca.cwds.cm.ConfigurationProvider.CONFIG_FILE_PATH;
 
 import gov.ca.cwds.cm.web.rest.RestClientTestRule;
-import gov.ca.cwds.cm.web.rest.utils.TestModeUtils;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.testing.ResourceHelpers;
 import io.dropwizard.testing.junit.DropwizardAppRule;
@@ -70,11 +69,9 @@ public abstract class BaseResourceTest {
   }
 
   public static void runScripts(final String... scriptPaths) throws Exception {
-    if (!TestModeUtils.isIntegrationTestsMode()) {
-      final DatabaseHelper databaseHelper = getCmsDatabaseHelper();
-      for (String path : scriptPaths) {
-        databaseHelper.runScript(path);
-      }
+    final DatabaseHelper databaseHelper = getCmsDatabaseHelper();
+    for (String path : scriptPaths) {
+      databaseHelper.runScript(path);
     }
   }
 

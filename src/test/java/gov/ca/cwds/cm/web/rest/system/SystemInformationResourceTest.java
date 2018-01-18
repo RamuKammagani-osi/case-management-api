@@ -9,7 +9,6 @@ import gov.ca.cwds.cm.BaseResourceTest;
 import gov.ca.cwds.cm.Constants;
 import gov.ca.cwds.cm.service.dto.system.HealthCheckResultDTO;
 import gov.ca.cwds.cm.service.dto.system.SystemInformationDTO;
-import java.io.IOException;
 import javax.ws.rs.core.MediaType;
 import org.junit.Test;
 
@@ -19,7 +18,7 @@ import org.junit.Test;
 public class SystemInformationResourceTest extends BaseResourceTest {
 
   @Test
-  public void testSystemInformationGet() throws IOException {
+  public void testSystemInformationGet() {
     final SystemInformationDTO systemInformation = clientTestRule
         .target(Constants.API.SYSTEM_INFORMATION_PATH)
         .request(MediaType.APPLICATION_JSON)

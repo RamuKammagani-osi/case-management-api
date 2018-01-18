@@ -4,9 +4,10 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import gov.ca.cwds.cm.CmApiConfiguration;
-import gov.ca.cwds.cm.web.rest.utils.TestModeUtils;
+import gov.ca.cwds.cm.web.rest.utils.TestUtils;
 import gov.ca.cwds.security.jwt.JwtConfiguration;
 import gov.ca.cwds.security.jwt.JwtService;
+import gov.ca.cwds.util.Require;
 import io.dropwizard.jackson.Jackson;
 import io.dropwizard.testing.junit.DropwizardAppRule;
 import java.io.File;
@@ -42,7 +43,8 @@ public class RestClientTestRule implements TestRule {
   public RestClientTestRule() {
     token = initToken();
     mapper = Jackson.newObjectMapper();
-    apiUrl = System.getProperty(TestModeUtils.API_URL);
+    apiUrl = TestUtils.getApiUrl();
+    Require.requireNotNullAndNotEmpty(apiUrl);
   }
 
   public RestClientTestRule(DropwizardAppRule<CmApiConfiguration> dropWizardApplication) {
