@@ -1,11 +1,10 @@
 package gov.ca.cwds.cm.web.rest;
 
-import static gov.ca.cwds.cm.web.rest.utils.AssertFixtureUtils.assertResponseByFixturePath;
+import static gov.ca.cwds.cm.test.util.AssertFixtureUtils.assertResponseByFixturePath;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 
-import gov.ca.cwds.cm.BaseResourceTest;
 import gov.ca.cwds.cm.Constants;
 import gov.ca.cwds.cm.Constants.API;
 import gov.ca.cwds.cm.service.dto.facade.CaseByStaff;
@@ -21,16 +20,14 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /** @author CWDS TPT-3 Team */
-public class StaffPersonResourceTest extends BaseResourceTest {
+public class StaffPersonResourceTest extends AbstractIntegrationTest {
 
   public static final String WRONG_STAFF_PERSON_ID = "-1";
 
   @BeforeClass
   public static void beforeClass() throws Exception {
-    setUpCms();
-    setUpDb();
-    runScripts("liquibase/case/get-cases-by-staff-id_test-data.xml");
-    runScripts("liquibase/referral/get_referrals_by_staff_id.xml");
+    DATABASE_HELPER.runScripts("liquibase/case/get-cases-by-staff-id_test-data.xml");
+    DATABASE_HELPER.runScripts("liquibase/referral/get_referrals_by_staff_id.xml");
   }
 
   @Test

@@ -1,5 +1,6 @@
-package gov.ca.cwds.cm;
+package gov.ca.cwds.cm.test.util;
 
+import gov.ca.cwds.cm.CmApiConfiguration;
 import io.dropwizard.configuration.ConfigurationException;
 import io.dropwizard.configuration.ConfigurationFactory;
 import io.dropwizard.configuration.EnvironmentVariableSubstitutor;

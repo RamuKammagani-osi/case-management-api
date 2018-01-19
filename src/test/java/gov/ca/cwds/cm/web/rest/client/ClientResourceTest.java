@@ -1,30 +1,27 @@
 package gov.ca.cwds.cm.web.rest.client;
 
-import static gov.ca.cwds.cm.web.rest.utils.AssertResponseHelper.assertEqualsResponse;
+import static gov.ca.cwds.cm.test.util.AssertResponseHelper.assertEqualsResponse;
 import static gov.ca.cwds.security.test.TestSecurityFilter.PATH_TO_PRINCIPAL_FIXTURE;
 import static io.dropwizard.testing.FixtureHelpers.fixture;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import gov.ca.cwds.cm.BaseResourceTest;
 import gov.ca.cwds.cm.Constants;
 import gov.ca.cwds.cm.service.dto.ClientDTO;
+import gov.ca.cwds.cm.web.rest.AbstractIntegrationTest;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 /** @author CWDS TPT-3 Team */
-public class ClientResourceTest extends BaseResourceTest {
+public class ClientResourceTest extends AbstractIntegrationTest {
 
-  public static final String CLIENT_ID = "22223312D0";
+  private static final String CLIENT_ID = "22223312D0";
 
   @BeforeClass
   public static void beforeClass() throws Exception {
-    setUpCwsRs1();
-    setUpCms();
-    setUpDb();
-    runScripts("liquibase/client/client_test_get_for_client_endpoint.xml");
+    DATABASE_HELPER.runScripts("liquibase/client/client_test_get_for_client_endpoint.xml");
   }
 
   @Test

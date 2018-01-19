@@ -1,5 +1,10 @@
-package gov.ca.cwds.cm;
+package gov.ca.cwds.cm.test.util;
 
+import io.dropwizard.db.DataSourceFactory;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Map;
 import liquibase.Liquibase;
 import liquibase.database.Database;
 import liquibase.database.DatabaseFactory;
@@ -7,11 +12,6 @@ import liquibase.database.jvm.JdbcConnection;
 import liquibase.exception.DatabaseException;
 import liquibase.exception.LiquibaseException;
 import liquibase.resource.ClassLoaderResourceAccessor;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Map;
 import liquibase.util.StringUtils;
 
 /**
@@ -32,6 +32,15 @@ public class DatabaseHelper {
     this.schema = schema;
   }
 
+  public DatabaseHelper(DataSourceFactory dataSourceFactory) {
+    this(
+        dataSourceFactory.getUrl(),
+        dataSourceFactory.getUser(),
+        dataSourceFactory.getPassword(),
+        dataSourceFactory.getProperties().get("hibernate.default_schema")
+    );
+  }
+
   public void runScript(String script) throws LiquibaseException {
     try {
       Liquibase liquibase = new Liquibase(script, new ClassLoaderResourceAccessor(), getDatabase());
@@ -41,10 +50,14 @@ public class DatabaseHelper {
     }
   }
 
-  public void rollback(String script) throws LiquibaseException {
+  public void runScripts(final String... scripts) throws LiquibaseException {
+    final ClassLoaderResourceAccessor classLoaderResourceAccessor = new ClassLoaderResourceAccessor();
     try {
-      Liquibase liquibase = new Liquibase(script, new ClassLoaderResourceAccessor(), getDatabase());
-      liquibase.rollback(Integer.MAX_VALUE, null);
+      final Database database = getDatabase();
+      for (String script : scripts) {
+        final Liquibase liquibase = new Liquibase(script, classLoaderResourceAccessor, database);
+        liquibase.update((String) null);
+      }
     } catch (Exception e) {
       throw new LiquibaseException(e);
     }
@@ -75,6 +88,28 @@ public class DatabaseHelper {
     }
   }
 
+  public void rollbackScript(final String script) throws LiquibaseException {
+    try {
+      final Liquibase liquibase = new Liquibase(script, new ClassLoaderResourceAccessor(), getDatabase());
+      liquibase.rollback(Integer.MAX_VALUE, null);
+    } catch (Exception e) {
+      throw new LiquibaseException(e);
+    }
+  }
+
+  public void rollbackScripts(final String... scripts) throws LiquibaseException {
+    final ClassLoaderResourceAccessor classLoaderResourceAccessor = new ClassLoaderResourceAccessor();
+    try {
+      final Database database = getDatabase();
+      for (String script : scripts) {
+        final Liquibase liquibase = new Liquibase(script, classLoaderResourceAccessor, database);
+        liquibase.rollback(Integer.MAX_VALUE, null);
+      }
+    } catch (Exception e) {
+      throw new LiquibaseException(e);
+    }
+  }
+
   private Database getDatabase() throws SQLException, DatabaseException {
     if (database == null) {
       Connection connection = DriverManager.getConnection(url, user, password);
@@ -87,4 +122,5 @@ public class DatabaseHelper {
 
     return database;
   }
+
 }

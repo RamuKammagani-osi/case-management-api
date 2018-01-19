@@ -1,16 +1,16 @@
 package gov.ca.cwds.cm.web.rest.client;
 
-import static gov.ca.cwds.cm.web.rest.utils.AssertFixtureUtils.assertResponseByFixturePath;
+import static gov.ca.cwds.cm.test.util.AssertFixtureUtils.assertResponseByFixturePath;
 import static org.junit.Assert.assertEquals;
 
-import gov.ca.cwds.cm.BaseResourceTest;
 import gov.ca.cwds.cm.Constants.API;
+import gov.ca.cwds.cm.web.rest.AbstractIntegrationTest;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.junit.Test;
 
 /** @author CWDS TPT-3 Team */
-public class SafetyAlertsResourceTest extends BaseResourceTest {
+public class SafetyAlertsResourceTest extends AbstractIntegrationTest {
 
   public static final String CLIENT_ID = "BKk7CHj01Y";
   public static final String WRONG_CLIENT_ID = "0000000000";

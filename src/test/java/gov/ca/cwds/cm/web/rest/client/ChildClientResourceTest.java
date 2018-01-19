@@ -1,16 +1,16 @@
 package gov.ca.cwds.cm.web.rest.client;
 
-import static gov.ca.cwds.cm.web.rest.utils.AssertFixtureUtils.assertResponseByFixturePath;
-import static gov.ca.cwds.cm.web.rest.utils.AssertResponseHelper.assertEqualsResponse;
+import static gov.ca.cwds.cm.test.util.AssertFixtureUtils.assertResponseByFixturePath;
+import static gov.ca.cwds.cm.test.util.AssertResponseHelper.assertEqualsResponse;
 import static gov.ca.cwds.security.test.TestSecurityFilter.PATH_TO_PRINCIPAL_FIXTURE;
 import static io.dropwizard.testing.FixtureHelpers.fixture;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-import gov.ca.cwds.cm.BaseResourceTest;
 import gov.ca.cwds.cm.Constants.API;
 import gov.ca.cwds.cm.service.dto.ChildClientDTO;
+import gov.ca.cwds.cm.web.rest.AbstractIntegrationTest;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
@@ -19,16 +19,13 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /** @author CWDS TPT-3 Team */
-public class ChildClientResourceTest extends BaseResourceTest {
+public class ChildClientResourceTest extends AbstractIntegrationTest {
 
-  public static final String CLIENT_ID = "BKk7CHj00Z";
+  private static final String CLIENT_ID = "BKk7CHj00Z";
 
   @BeforeClass
   public static void beforeClass() throws Exception {
-    setUpCwsRs1();
-    setUpCms();
-    setUpDb();
-    runScripts(
+    DATABASE_HELPER.runScripts(
         "liquibase/address/dml_address_test_data.xml",
         "liquibase/client/address/dml_client_address_test_data.xml",
         "liquibase/client/child_client_test_update.xml");

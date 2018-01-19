@@ -5,17 +5,17 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
-import gov.ca.cwds.cm.BaseResourceTest;
 import gov.ca.cwds.cm.Constants;
 import gov.ca.cwds.cm.service.dto.system.HealthCheckResultDTO;
 import gov.ca.cwds.cm.service.dto.system.SystemInformationDTO;
+import gov.ca.cwds.cm.web.rest.AbstractIntegrationTest;
 import javax.ws.rs.core.MediaType;
 import org.junit.Test;
 
 /**
  * Created by CWDS TPT-3 Team
  */
-public class SystemInformationResourceTest extends BaseResourceTest {
+public class SystemInformationResourceTest extends AbstractIntegrationTest {
 
   @Test
   public void testSystemInformationGet() {
