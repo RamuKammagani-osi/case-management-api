@@ -42,7 +42,12 @@ public interface CaseByStaffMapper {
 
       final String fkstfperst = caseAssignment.getCaseLoad().getCaseLoadWeighting().getFkstfperst();
       if (staffId.equals(fkstfperst)) {
+        target.setAssignmentIdentifier(caseAssignment.getIdentifier());
         target.setAssignmentType(caseAssignment.getAssignmentType());
+        target.setAssignmentStartDate(caseAssignment.getStartDate());
+        target.setAssignmentStartTime(caseAssignment.getStartTime());
+        target.setAssignmentEndDate(caseAssignment.getEndDate());
+        target.setAssignmentEndTime(caseAssignment.getEndTime());
         break;
       }
     }

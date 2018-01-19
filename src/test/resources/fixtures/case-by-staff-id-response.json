@@ -5,7 +5,12 @@
   "client_first_name" : "Sarah",
   "client_last_name" : "Taberner",
   "active_service_component" : "Emergency Response",
-  "assignment_type" : "SECONDARY"
+  "assignment_identifier" : "2smXaGz0Ki",
+  "assignment_type" : "SECONDARY",
+  "assignment_start_date" : "2001-08-07",
+  "assignment_start_time" : "10:10:00",
+  "assignment_end_date" : "2020-08-07",
+  "assignment_end_time" : "12:54:00"
 }, {
   "identifier" : "0bVJLIz000",
   "case_name" : "Worth, Natalie",
@@ -13,5 +18,8 @@
   "client_first_name" : "Natalie",
   "client_last_name" : "Muslim",
   "active_service_component" : "Emergency Response",
-  "assignment_type" : "PRIMARY"
+  "assignment_identifier" : "Qvma7rp0Ki",
+  "assignment_type" : "PRIMARY",
+  "assignment_start_date" : "2001-08-07",
+  "assignment_start_time" : "08:31:00"
 } ]

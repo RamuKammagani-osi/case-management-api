@@ -99,6 +99,7 @@ public class ChildClientResourceTest extends AbstractIntegrationTest {
     childClientDTO.setGenderCode("FEMALE");
     childClientDTO.setIncapacitatedParentCode("YES");
     childClientDTO.setMaterialStatusType((short) 1309);
+    childClientDTO.setDriverLicensNumber("987654321");
   }
 
   @Test

@@ -44,7 +44,7 @@
 
       INSERT INTO ${database.defaultSchemaName}.ASGNM_T
       (IDENTIFIER, END_DT, END_TM, ESTBLSH_ID, ESTBLSH_CD, ASSG_RLC, START_DT, START_TM, ASGNMNT_CD, WGHTNG_NO, LST_UPD_ID, LST_UPD_TS, FKOST_PTYT, FKCASE_LDT, RESPL_DSC, CNTY_SPFCD)
-      VALUES('0smXaGz000', NULL, NULL, '06ufkiD000', 'C', 132, '2001-08-07', '10:10:00', 'S', 0.000, '000', '2001-08-07 13:07:06.050', NULL, '0NSLlwb00E', '                                                                                                                                                                ', '28');
+      VALUES('0smXaGz000', '2020-08-07', '12:54:00', '06ufkiD000', 'C', 132, '2001-08-07', '10:10:00', 'S', 0.000, '000', '2001-08-07 13:07:06.050', NULL, '0NSLlwb00E', '                                                                                                                                                                ', '28');
 
       INSERT INTO ${database.defaultSchemaName}.ASGNM_T
       (IDENTIFIER, END_DT, END_TM, ESTBLSH_ID, ESTBLSH_CD, ASSG_RLC, START_DT, START_TM, ASGNMNT_CD, WGHTNG_NO, LST_UPD_ID, LST_UPD_TS, FKOST_PTYT, FKCASE_LDT, RESPL_DSC, CNTY_SPFCD)

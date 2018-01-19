@@ -31,7 +31,7 @@ project.ext {
     projectDockerAppName = 'case-management-api'
     projectMajorVersion = '0.5.5'
     dropwizardVersion = '1.1.0'
-    coreApiVersion = '0.5.4_215'
+    coreApiVersion = '0.5.5_224'
     mapstructVersion = '1.2.0.Final'
     lombokVersion = '1.16.18'
     mainClass = 'gov.ca.cwds.cm.CmApiApplication'
