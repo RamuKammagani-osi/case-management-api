@@ -19,9 +19,9 @@ server:
       - type: console
 
 shiro:
-  iniConfigs: ["file:${SHIRO_CONFIG_PATH:-config/shiro_nosec.ini}"]
+  iniConfigs: ["file:${SHIRO_CONFIG_PATH:-config/shiro.ini}"]
 security:
-  authorizationEnabled: ${AUTHORIZATION:-false}
+  authorizationEnabled: ${AUTHORIZATION:-true}
 
 swagger:
   templateName: swagger.mustache
