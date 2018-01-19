@@ -3,6 +3,7 @@ package gov.ca.cwds.cm.test;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
+import gov.ca.cwds.ObjectMapperUtils;
 import gov.ca.cwds.cm.CmApiConfiguration;
 import gov.ca.cwds.cm.test.util.TestUtils;
 import gov.ca.cwds.security.jwt.JwtConfiguration;
@@ -43,6 +44,7 @@ public class RestClientTestRule implements TestRule {
   public RestClientTestRule() {
     token = initToken();
     mapper = Jackson.newObjectMapper();
+    ObjectMapperUtils.configureObjectMapper(mapper);
     apiUrl = TestUtils.getApiUrl();
     Require.requireNotNullAndNotEmpty(apiUrl);
   }

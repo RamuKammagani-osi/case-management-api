@@ -1,6 +1,7 @@
 package gov.ca.cwds.cm;
 
 import gov.ca.cwds.cm.integration.AddressResourceIT;
+import gov.ca.cwds.cm.integration.CaseResourceIT;
 import gov.ca.cwds.cm.test.RestClientTestRule;
 import gov.ca.cwds.cm.test.util.ConfigurationProvider;
 import gov.ca.cwds.cm.test.util.IntegrationTestContextHolder;
@@ -13,7 +14,8 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    AddressResourceIT.class
+    AddressResourceIT.class,
+    CaseResourceIT.class,
 })
 public class IntegrationTestSuite {
 

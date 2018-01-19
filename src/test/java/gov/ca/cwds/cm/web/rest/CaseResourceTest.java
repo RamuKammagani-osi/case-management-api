@@ -1,5 +1,6 @@
 package gov.ca.cwds.cm.web.rest;
 
+import static gov.ca.cwds.cm.test.util.AssertFixtureUtils.assertResponseByFixturePath;
 import static gov.ca.cwds.cm.test.util.AssertResponseHelper.assertEqualsResponse;
 import static io.dropwizard.testing.FixtureHelpers.fixture;
 import static org.junit.Assert.assertEquals;
@@ -16,20 +17,35 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import liquibase.exception.LiquibaseException;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class CaseResourceTest extends AbstractIntegrationTest {
 
-  private static final String CASE_ID = "ArgnUzi09L";
   private static final int UNPROCESSABLE_ENTITY_STATUS_CODE = 422;
+  private static final String CASE_ID = "ArgnUzi09M";
+  private static final String LIQUIBASE_SCRIPT = "liquibase/case/case_test.xml";
+
+  @BeforeClass
+  public static void onBeforeClass() throws LiquibaseException {
+    DATABASE_HELPER.runScripts(LIQUIBASE_SCRIPT);
+  }
+
+  @AfterClass
+  public static void onAfterClass() throws LiquibaseException {
+    DATABASE_HELPER.rollbackScripts(LIQUIBASE_SCRIPT);
+  }
 
   @Test
   public void testGetCaseById() throws Exception {
     WebTarget target = clientTestRule.target(Constants.API.CASES + "/" + CASE_ID);
     Response response = target.request(MediaType.APPLICATION_JSON).get();
-    CaseDTO caseDTO = response.readEntity(CaseDTO.class);
-    String fixture = fixture("fixtures/case-by-id-response.json");
-    assertEqualsResponse(fixture, transformDTOtoJSON(caseDTO));
+    assertResponseByFixturePath(
+        response,
+        "fixtures/case-by-id-response.json"
+    );
   }
 
   @Test

@@ -53,6 +53,5 @@
 
     <include file="client/client_test_get.xml" relativeToChangelogFile="true"/>
     <include file="client/child_client_test_get.xml" relativeToChangelogFile="true"/>
-    <include file="case/case_test.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
