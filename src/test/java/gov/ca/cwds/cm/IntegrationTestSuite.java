@@ -17,7 +17,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
     AddressResourceIT.class,
     CaseResourceIT.class,
-//    StaffPersonResourceIT.class,
+    StaffPersonResourceIT.class,
 })
 public class IntegrationTestSuite {
 
