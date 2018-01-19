@@ -16,6 +16,7 @@ import javax.ws.rs.core.Response.Status;
 import org.assertj.core.api.AssertionsForClassTypes;
 import org.hamcrest.MatcherAssert;
 import org.json.JSONException;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -23,16 +24,25 @@ import org.junit.Test;
 public class StaffPersonResourceTest extends AbstractIntegrationTest {
 
   public static final String WRONG_STAFF_PERSON_ID = "-1";
+  private static final String[] LIQUIBASE_SCRIPTS = {
+      "liquibase/staff-person/staff-person-changelog.xml",
+      "liquibase/case/get-cases-by-staff-id_test-data.xml",
+      "liquibase/referral/get_referrals_by_staff_id.xml"
+  };
 
   @BeforeClass
   public static void beforeClass() throws Exception {
-    DATABASE_HELPER.runScripts("liquibase/case/get-cases-by-staff-id_test-data.xml");
-    DATABASE_HELPER.runScripts("liquibase/referral/get_referrals_by_staff_id.xml");
+    DATABASE_HELPER.runScripts(LIQUIBASE_SCRIPTS);
+  }
+
+  @AfterClass
+  public static void afterClass() throws Exception {
+    DATABASE_HELPER.rollbackScripts(LIQUIBASE_SCRIPTS);
   }
 
   @Test
   public void getClientsByStaffId() throws Exception {
-    WebTarget target = clientTestRule.target(Constants.API.STAFF + "/con/clients");
+    WebTarget target = clientTestRule.target(Constants.API.STAFF + "/000/clients");
     Response response = target.request(MediaType.APPLICATION_JSON).get();
     assertResponseByFixturePath(response, "fixtures/list_of_related_clients_by_staff_id.json");
   }
@@ -48,14 +58,14 @@ public class StaffPersonResourceTest extends AbstractIntegrationTest {
 
   @Test
   public void getActiveReferralByStaffId() throws Exception {
-    WebTarget target = clientTestRule.target(API.STAFF + "/con/" + API.REFERRALS);
+    WebTarget target = clientTestRule.target(API.STAFF + "/000/" + API.REFERRALS);
     Response response = target.request(MediaType.APPLICATION_JSON).get();
     assertResponseByFixturePath(response, "fixtures/referral_by_staff_id.json");
   }
 
   @Test
   public void getActiveReferralsByStaffId() throws IOException, JSONException {
-    WebTarget target = clientTestRule.target(API.STAFF + "/04Z/" + API.REFERRALS);
+    WebTarget target = clientTestRule.target(API.STAFF + "/zzz/" + API.REFERRALS);
     Response response = target.request(MediaType.APPLICATION_JSON).get();
     assertResponseByFixturePath(response, "fixtures/referrals_by_staff_id.json");
   }
@@ -71,7 +81,7 @@ public class StaffPersonResourceTest extends AbstractIntegrationTest {
   @Test
   public void getActiveCasesByStaffId_success() throws IOException, JSONException {
     // given
-    final String inputUri = API.STAFF + "/0Ki/" + API.CASES;
+    final String inputUri = API.STAFF + "/000/" + API.CASES;
 
     // when
     final Response actualResult =

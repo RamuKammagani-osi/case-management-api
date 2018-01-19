@@ -4,83 +4,141 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-  <changeSet id="Get Active Cases by StaffPersonId" author="CWDS TPT-3 Team">
+  <changeSet id="Get Active Cases by StaffPersonId" author="CWDS TPT-3 Team" >
     <sql>
-      INSERT INTO CASE_T
+      INSERT INTO ${database.defaultSchemaName}.CASE_T
       (IDENTIFIER, START_DT, SRV_CMPC, APRVL_NO, APV_STC, CLS_RSNC, CSPL_DET_B, CL_STM_TXT, CNTRY_C, NOTES_DOC, END_DT, GVR_ENTC, ICPCSTAT_B, ICPC_RQT_B, LMT_ACSSCD, CASE_NM, PRJ_END_DT, SPRJ_CST_B, STATE_C, TICKLE_T_B, LST_UPD_ID, LST_UPD_TS, FKCHLD_CLT, SRV_CMPDT, FKSTFPERST, CNTY_SPFCD, ALERT_TXT, FKREFERL_T, RSP_AGY_CD, NXT_TILPDT, EMANCPN_DT, L_GVR_ENTC, LMT_ACS_DT, LMT_ACSDSC)
-      VALUES('NbVJLIz0Ki', '2001-08-07', 1692, 'GqbfXQD0Ki', 122, 320, 'Y', NULL, 563, NULL, NULL, 1095, 'N', 'N', 'N', 'Worth, Natalie                     ', NULL, 'Y', 1828, 'N', '0Ki', '2001-08-07 13:07:06.050', 'Hoor9eP0Ki', '2001-08-07', '0Ki', '28', NULL, 'G5Xtyuj0Ki', 'C', NULL, NULL, NULL, NULL, NULL);
+      VALUES('0bVJLIz000', '2001-08-07', 1692, 'GqbfXQD000', 122, 320, 'Y', NULL, 563, NULL, NULL, 1095, 'N', 'N', 'N', 'Worth, Natalie                     ', NULL, 'Y', 1828, 'N', '000', '2001-08-07 13:07:06.050', '0oor9eP000', '2001-08-07', '000', '28', NULL, 'G5Xtyuj000', 'C', NULL, NULL, NULL, NULL, NULL);
 
-      INSERT INTO CASE_T
+      INSERT INTO ${database.defaultSchemaName}.CASE_T
       (IDENTIFIER, START_DT, SRV_CMPC, APRVL_NO, APV_STC, CLS_RSNC, CSPL_DET_B, CL_STM_TXT, CNTRY_C, NOTES_DOC, END_DT, GVR_ENTC, ICPCSTAT_B, ICPC_RQT_B, LMT_ACSSCD, CASE_NM, PRJ_END_DT, SPRJ_CST_B, STATE_C, TICKLE_T_B, LST_UPD_ID, LST_UPD_TS, FKCHLD_CLT, SRV_CMPDT, FKSTFPERST, CNTY_SPFCD, ALERT_TXT, FKREFERL_T, RSP_AGY_CD, NXT_TILPDT, EMANCPN_DT, L_GVR_ENTC, LMT_ACS_DT, LMT_ACSDSC)
-      VALUES('M6ufkiD0Ki', '2001-08-07', 1692, 'FojvGuD0Ki', 122, 320, 'Y', NULL, 563, NULL, NULL, 1095, 'N', 'N', 'N', 'Worth, Sarah                       ', NULL, 'Y', 1828, 'N', '0Ki', '2001-08-07 13:08:28.742', 'O7MuwVx0Ki', '2001-08-07', '0Ki', '28', NULL, 'G5Xtyuj0Ki', 'C', NULL, NULL, NULL, NULL, NULL);
+      VALUES('06ufkiD000', '2001-08-07', 1692, 'FojvGuD000', 122, 320, 'Y', NULL, 563, NULL, NULL, 1095, 'N', 'N', 'N', 'Worth, Sarah                       ', NULL, 'Y', 1828, 'N', '000', '2001-08-07 13:08:28.742', '07MuwVx000', '2001-08-07', '000', '28', NULL, 'G5Xtyuj000', 'C', NULL, NULL, NULL, NULL, NULL);
 
-      INSERT INTO CASE_T
+      INSERT INTO ${database.defaultSchemaName}.CASE_T
       (IDENTIFIER, START_DT, SRV_CMPC, APRVL_NO, APV_STC, CLS_RSNC, CSPL_DET_B, CL_STM_TXT, CNTRY_C, NOTES_DOC, END_DT, GVR_ENTC, ICPCSTAT_B, ICPC_RQT_B, LMT_ACSSCD, CASE_NM, PRJ_END_DT, SPRJ_CST_B, STATE_C, TICKLE_T_B, LST_UPD_ID, LST_UPD_TS, FKCHLD_CLT, SRV_CMPDT, FKSTFPERST, CNTY_SPFCD, ALERT_TXT, FKREFERL_T, RSP_AGY_CD, NXT_TILPDT, EMANCPN_DT, L_GVR_ENTC, LMT_ACS_DT, LMT_ACSDSC)
-      VALUES('ISHfaXG0Ki', '2002-09-16', 1692, 'NBDmEhM0Ki', 122, 302, 'Y', NULL, 563, NULL, '2004-05-17', 1095, 'N', 'N', 'N', 'STC6798 Case1                      ', NULL, 'N', 1828, 'N', '0Ki', '2004-05-17 16:03:00.662', 'Gdlhhri0Ki', '2002-09-16', '0Ki', '99', NULL, NULL, 'C', NULL, NULL, NULL, NULL, NULL);
+      VALUES('0SHfaXG000', '2002-09-16', 1692, 'NBDmEhM000', 122, 302, 'Y', NULL, 563, NULL, '2004-05-17', 1095, 'N', 'N', 'N', 'STC6798 Case1                      ', NULL, 'N', 1828, 'N', '000', '2004-05-17 16:03:00.662', 'Gdlhhri000', '2002-09-16', '000', '99', NULL, NULL, 'C', NULL, NULL, NULL, NULL, NULL);
     </sql>
 
     <sql>
-      INSERT INTO CHLD_CLT
+      INSERT INTO ${database.defaultSchemaName}.CHLD_CLT
       (FC_ELIGT_B, EDONFL_IND, HLONFL_IND, CURNT_CSID, DTH_CIRC, VOL_PLCDOC, FC2_APLT_B, ICWA_ELGCD, MEDELIGT_B, MNRMOM_IND, PRG_TRMT_B, PTRN_INT_B, SAWS_CS_NO, SAW1APLT_B, SSI_SSPIND, LST_UPD_ID, LST_UPD_TS, FKCLIENT_T, ACQ_ED_DSC, ACQ_HTHDSC, HEPDOC_OLD, PRTLIM_IND, INDIAN_IND, PREADPT_CD, ADPT_AGE, ADOPTBL_CD, DRMSHEPDOC, BHIST_IND, SFSURB_IND, AWOL_AB_CD, TRBA_NOT_B, DISABLD_CD, FSTAMP_IND, FSTAMP_DT, SIJ_INT_DT, SSI_SCR_DT, CLG_IND, PSVOC_IND, TCADPT_IND, TCADPT_DT, ICADSL_IND, ICADSR_IND)
-      VALUES('N', 'N', 'N', NULL, 0, NULL, 'Y', 'Y', 'Y', 'N', 'N', 'Y', 0, 'N', 'N', '0Ki', '2001-08-07 13:07:06.050', 'Hoor9eP0Ki', 'School Records Reqested                                                                                                                                                                                                                                       ', 'Medical Records Requested                                                                                                                                                                                                                                     ', NULL, 'N', 'N', 'U', 0, 'NA', NULL, 'N', 'N', 'N', 'N', NULL, 'N', NULL, NULL, NULL, NULL, NULL, 'N', NULL, 'N', 'N');
+      VALUES('N', 'N', 'N', NULL, 0, NULL, 'Y', 'Y', 'Y', 'N', 'N', 'Y', 0, 'N', 'N', '000', '2001-08-07 13:07:06.050', '0oor9eP000', 'School Records Reqested                                                                                                                                                                                                                                       ', 'Medical Records Requested                                                                                                                                                                                                                                     ', NULL, 'N', 'N', 'U', 0, 'NA', NULL, 'N', 'N', 'N', 'N', NULL, 'N', NULL, NULL, NULL, NULL, NULL, 'N', NULL, 'N', 'N');
 
-      INSERT INTO CLIENT_T
+      INSERT INTO ${database.defaultSchemaName}.CLIENT_T
       (IDENTIFIER, ADPTN_STCD, ALN_REG_NO, BIRTH_DT, BR_FAC_NM, B_STATE_C, B_CNTRY_C, CHLD_CLT_B, COM_FST_NM, COM_LST_NM, COM_MID_NM, CONF_EFIND, CONF_ACTDT, CREATN_DT, DEATH_DT, DTH_RN_TXT, DRV_LIC_NO, D_STATE_C, GENDER_CD, I_CNTRY_C, IMGT_STC, INCAPC_CD, LITRATE_CD, MAR_HIST_B, MRTL_STC, MILT_STACD, NMPRFX_DSC, NAME_TPC, OUTWRT_IND, P_ETHNCTYC, P_LANG_TPC, RLGN_TPC, S_LANG_TC, SENSTV_IND, SNTV_HLIND, SS_NO, SSN_CHG_CD, SUFX_TLDSC, UNEMPLY_CD, LST_UPD_ID, LST_UPD_TS, COMMNT_DSC, EST_DOB_CD, BP_VER_IND, HISP_CD, CURRCA_IND, CURREG_IND, COTH_DESC, PREVCA_IND, PREREG_IND, POTH_DESC, HCARE_IND, LIMIT_IND, BIRTH_CITY, HEALTH_TXT, MTERM_DT, FTERM_DT, ZIPPY_IND, DEATH_PLC, TR_MBVRT_B, TRBA_CLT_B, SOC158_IND, DTH_DT_IND, EMAIL_ADDR, ADJDEL_IND, ETH_UD_CD, HISP_UD_CD, SOCPLC_CD, CL_INDX_NO)
-      VALUES('Hoor9eP0Ki', 'N', '            ', '1990-04-04', '                                   ', 0, 0, 'Y', 'Natalie             ', 'Muslim                   ', '                    ', 'N', NULL, '2001-08-07', NULL, NULL, '                    ', 0, 'F', 0, 0, 'U ', 'U', 'N', 0, 'U', '      ', 1313, 'N', 821, 1253, 0, 0, 'N', 'N', '         ', 'N', '    ', 'U ', '0Ki', '2001-08-07 09:45:59.293', '                                                                                                                        ', 'N', 'N', 'U', 'N', 'N', '                         ', 'N', 'N', '                         ', 'N', 'N', '                                   ', NULL, NULL, NULL, 'N', NULL, 'Y', 'N', 'N', 'N', NULL, NULL, NULL, NULL, 'N', NULL);
+      VALUES('0oor9eP000', 'N', '            ', '1990-04-04', '                                   ', 0, 0, 'Y', 'Natalie             ', 'Muslim                   ', '                    ', 'N', NULL, '2001-08-07', NULL, NULL, '                    ', 0, 'F', 0, 0, 'U ', 'U', 'N', 0, 'U', '      ', 1313, 'N', 821, 1253, 0, 0, 'N', 'N', '         ', 'N', '    ', 'U ', '000', '2001-08-07 09:45:59.293', '                                                                                                                        ', 'N', 'N', 'U', 'N', 'N', '                         ', 'N', 'N', '                         ', 'N', 'N', '                                   ', NULL, NULL, NULL, 'N', NULL, 'Y', 'N', 'N', 'N', NULL, NULL, NULL, NULL, 'N', NULL);
 
-      INSERT INTO CHLD_CLT
+      INSERT INTO ${database.defaultSchemaName}.CHLD_CLT
       (FC_ELIGT_B, EDONFL_IND, HLONFL_IND, CURNT_CSID, DTH_CIRC, VOL_PLCDOC, FC2_APLT_B, ICWA_ELGCD, MEDELIGT_B, MNRMOM_IND, PRG_TRMT_B, PTRN_INT_B, SAWS_CS_NO, SAW1APLT_B, SSI_SSPIND, LST_UPD_ID, LST_UPD_TS, FKCLIENT_T, ACQ_ED_DSC, ACQ_HTHDSC, HEPDOC_OLD, PRTLIM_IND, INDIAN_IND, PREADPT_CD, ADPT_AGE, ADOPTBL_CD, DRMSHEPDOC, BHIST_IND, SFSURB_IND, AWOL_AB_CD, TRBA_NOT_B, DISABLD_CD, FSTAMP_IND, FSTAMP_DT, SIJ_INT_DT, SSI_SCR_DT, CLG_IND, PSVOC_IND, TCADPT_IND, TCADPT_DT, ICADSL_IND, ICADSR_IND)
-      VALUES('N', 'N', 'N', NULL, 0, NULL, 'Y', 'P', 'Y', 'N', 'N', 'N', 0, 'N', 'N', '0Ki', '2001-08-07 13:08:28.742', 'O7MuwVx0Ki', 'School records requested                                                                                                                                                                                                                                      ', 'Medical Records Requested                                                                                                                                                                                                                                     ', NULL, 'N', 'N', 'U', 0, 'NA', NULL, 'N', 'N', 'N', 'N', NULL, 'N', NULL, NULL, NULL, NULL, NULL, 'N', NULL, 'N', 'N');
+      VALUES('N', 'N', 'N', NULL, 0, NULL, 'Y', 'P', 'Y', 'N', 'N', 'N', 0, 'N', 'N', '000', '2001-08-07 13:08:28.742', '07MuwVx000', 'School records requested                                                                                                                                                                                                                                      ', 'Medical Records Requested                                                                                                                                                                                                                                     ', NULL, 'N', 'N', 'U', 0, 'NA', NULL, 'N', 'N', 'N', 'N', NULL, 'N', NULL, NULL, NULL, NULL, NULL, 'N', NULL, 'N', 'N');
 
-      INSERT INTO CLIENT_T
+      INSERT INTO ${database.defaultSchemaName}.CLIENT_T
       (IDENTIFIER, ADPTN_STCD, ALN_REG_NO, BIRTH_DT, BR_FAC_NM, B_STATE_C, B_CNTRY_C, CHLD_CLT_B, COM_FST_NM, COM_LST_NM, COM_MID_NM, CONF_EFIND, CONF_ACTDT, CREATN_DT, DEATH_DT, DTH_RN_TXT, DRV_LIC_NO, D_STATE_C, GENDER_CD, I_CNTRY_C, IMGT_STC, INCAPC_CD, LITRATE_CD, MAR_HIST_B, MRTL_STC, MILT_STACD, NMPRFX_DSC, NAME_TPC, OUTWRT_IND, P_ETHNCTYC, P_LANG_TPC, RLGN_TPC, S_LANG_TC, SENSTV_IND, SNTV_HLIND, SS_NO, SSN_CHG_CD, SUFX_TLDSC, UNEMPLY_CD, LST_UPD_ID, LST_UPD_TS, COMMNT_DSC, EST_DOB_CD, BP_VER_IND, HISP_CD, CURRCA_IND, CURREG_IND, COTH_DESC, PREVCA_IND, PREREG_IND, POTH_DESC, HCARE_IND, LIMIT_IND, BIRTH_CITY, HEALTH_TXT, MTERM_DT, FTERM_DT, ZIPPY_IND, DEATH_PLC, TR_MBVRT_B, TRBA_CLT_B, SOC158_IND, DTH_DT_IND, EMAIL_ADDR, ADJDEL_IND, ETH_UD_CD, HISP_UD_CD, SOCPLC_CD, CL_INDX_NO)
-      VALUES('O7MuwVx0Ki', 'N', '            ', '1989-05-05', '                                   ', 0, 0, 'Y', 'Sarah               ', 'Taberner                 ', '                    ', 'N', NULL, '2001-08-07', NULL, NULL, '                    ', 0, 'F', 0, 0, 'NA', 'U', 'N', 0, 'U', '      ', 1313, 'N', 821, 1253, 0, 0, 'N', 'N', '914001760', 'N', '    ', 'U ', '0Ki', '2001-08-07 09:45:59.293', '                                                                                                                        ', 'N', 'N', 'U', 'N', 'N', '                         ', 'N', 'N', '                         ', 'N', 'N', '                                   ', NULL, NULL, NULL, 'N', NULL, 'Y', 'N', 'N', 'N', NULL, NULL, NULL, NULL, 'N', NULL);
+      VALUES('07MuwVx000', 'N', '            ', '1989-05-05', '                                   ', 0, 0, 'Y', 'Sarah               ', 'Taberner                 ', '                    ', 'N', NULL, '2001-08-07', NULL, NULL, '                    ', 0, 'F', 0, 0, 'NA', 'U', 'N', 0, 'U', '      ', 1313, 'N', 821, 1253, 0, 0, 'N', 'N', '914001760', 'N', '    ', 'U ', '000', '2001-08-07 09:45:59.293', '                                                                                                                        ', 'N', 'N', 'U', 'N', 'N', '                         ', 'N', 'N', '                         ', 'N', 'N', '                                   ', NULL, NULL, NULL, 'N', NULL, 'Y', 'N', 'N', 'N', NULL, NULL, NULL, NULL, 'N', NULL);
     </sql>
 
     <sql>
-      INSERT INTO ASGNM_T
+      INSERT INTO ${database.defaultSchemaName}.ASGNM_T
       (IDENTIFIER, END_DT, END_TM, ESTBLSH_ID, ESTBLSH_CD, ASSG_RLC, START_DT, START_TM, ASGNMNT_CD, WGHTNG_NO, LST_UPD_ID, LST_UPD_TS, FKOST_PTYT, FKCASE_LDT, RESPL_DSC, CNTY_SPFCD)
-      VALUES('Qvma7rp0Ki', NULL, NULL, 'NbVJLIz0Ki', 'C', 0, '2001-08-07', '08:31:00', 'P', 0.000, '0Ki', '2001-08-07 13:07:06.050', NULL, 'TNSLlwb00E', '                                                                                                                                                                ', '28');
+      VALUES('0vma7rp000', NULL, NULL, '0bVJLIz000', 'C', 0, '2001-08-07', '08:31:00', 'P', 0.000, '000', '2001-08-07 13:07:06.050', NULL, '0NSLlwb00E', '                                                                                                                                                                ', '28');
 
-      INSERT INTO ASGNM_T
+      INSERT INTO ${database.defaultSchemaName}.ASGNM_T
       (IDENTIFIER, END_DT, END_TM, ESTBLSH_ID, ESTBLSH_CD, ASSG_RLC, START_DT, START_TM, ASGNMNT_CD, WGHTNG_NO, LST_UPD_ID, LST_UPD_TS, FKOST_PTYT, FKCASE_LDT, RESPL_DSC, CNTY_SPFCD)
-      VALUES('2smXaGz0Ki', NULL, NULL, 'M6ufkiD0Ki', 'C', 132, '2001-08-07', '10:10:00', 'S', 0.000, '0Ki', '2001-08-07 13:07:06.050', NULL, 'TNSLlwb00E', '                                                                                                                                                                ', '28');
+      VALUES('0smXaGz000', NULL, NULL, '06ufkiD000', 'C', 132, '2001-08-07', '10:10:00', 'S', 0.000, '000', '2001-08-07 13:07:06.050', NULL, '0NSLlwb00E', '                                                                                                                                                                ', '28');
 
-      INSERT INTO ASGNM_T
+      INSERT INTO ${database.defaultSchemaName}.ASGNM_T
       (IDENTIFIER, END_DT, END_TM, ESTBLSH_ID, ESTBLSH_CD, ASSG_RLC, START_DT, START_TM, ASGNMNT_CD, WGHTNG_NO, LST_UPD_ID, LST_UPD_TS, FKOST_PTYT, FKCASE_LDT, RESPL_DSC, CNTY_SPFCD)
-      VALUES('RFhuPwb0Ki', NULL, NULL, 'M6ufkiD0Ki', 'C', 0, '2001-08-07', '08:31:00', 'P', 0.000, '0Ki', '2001-08-07 13:08:28.742', NULL, '2BNuWjo0Ki', '                                                                                                                                                                ', '28');
+      VALUES('0FhuPwb000', NULL, NULL, '06ufkiD000', 'C', 0, '2001-08-07', '08:31:00', 'P', 0.000, '000', '2001-08-07 13:08:28.742', NULL, '0BNuWjo000', '                                                                                                                                                                ', '28');
 
-      INSERT INTO ASGNM_T
+      INSERT INTO ${database.defaultSchemaName}.ASGNM_T
       (IDENTIFIER, END_DT, END_TM, ESTBLSH_ID, ESTBLSH_CD, ASSG_RLC, START_DT, START_TM, ASGNMNT_CD, WGHTNG_NO, LST_UPD_ID, LST_UPD_TS, FKOST_PTYT, FKCASE_LDT, RESPL_DSC, CNTY_SPFCD)
-      VALUES('Svb5d7G0Ki', NULL, '16:02:00', 'ISHfaXG0Ki', 'C', 0, '2002-09-16', '08:19:00', 'P', 0.000, '0Ki', '2004-05-17 16:03:00.662', NULL, 'FCzoa5V00E', '                                                                                                                                                                ', '28');
+      VALUES('0vb5d7G000', NULL, '16:02:00', '0SHfaXG000', 'C', 0, '2002-09-16', '08:19:00', 'P', 0.000, '000', '2004-05-17 16:03:00.662', NULL, '0Czoa5V00E', '                                                                                                                                                                ', '28');
     </sql>
 
     <sql>
-      INSERT INTO CASE_LDT
+      INSERT INTO ${database.defaultSchemaName}.CASE_LDT
       (IDENTIFIER, ASGDSK_IND, CLD_CEILNO, END_DT, IDENTFR_NM, ON_HLD_IND, START_DT, LST_UPD_ID, LST_UPD_TS, FKASG_UNIT, CASELD_B, CNTY_SPFCD, ARCASS_IND)
-      VALUES('TNSLlwb00E', 'N', 0.000, NULL, 'Ramesh''s Caseload             ', 'N', '2001-01-11', '0Ki', '2001-06-12 12:00:43.553', '3GrtJNl00E', 'N', '28', 'N');
+      VALUES('0NSLlwb00E', 'N', 0.000, NULL, 'Ramesh''s Caseload             ', 'N', '2001-01-11', '000', '2001-06-12 12:00:43.553', '3GrtJNl00E', 'N', '28', 'N');
 
-      INSERT INTO CASE_LDT
+      INSERT INTO ${database.defaultSchemaName}.CASE_LDT
       (IDENTIFIER, ASGDSK_IND, CLD_CEILNO, END_DT, IDENTFR_NM, ON_HLD_IND, START_DT, LST_UPD_ID, LST_UPD_TS, FKASG_UNIT, CASELD_B, CNTY_SPFCD, ARCASS_IND)
-      VALUES('2BNuWjo0Ki', 'Y', 0.000, NULL, 'Lucky''s caseload              ', 'N', '2004-07-13', '0Ki', '2004-09-20 13:32:36.340', '1ZsaZBI0Ki', 'N', '28', 'N');
+      VALUES('0BNuWjo000', 'Y', 0.000, NULL, 'Lucky''s caseload              ', 'N', '2004-07-13', '000', '2004-09-20 13:32:36.340', '1ZsaZBI000', 'N', '28', 'N');
 
-      INSERT INTO CASE_LDT
+      INSERT INTO ${database.defaultSchemaName}.CASE_LDT
       (IDENTIFIER, ASGDSK_IND, CLD_CEILNO, END_DT, IDENTFR_NM, ON_HLD_IND, START_DT, LST_UPD_ID, LST_UPD_TS, FKASG_UNIT, CASELD_B, CNTY_SPFCD, ARCASS_IND)
-      VALUES('FCzoa5V00E', 'Y', 0.000, NULL, 'In-box caseload               ', 'N', '2001-01-11', '0Ki', '2002-09-17 11:36:58.395', 'DOTqhPx00E', 'N', '99', 'N');
+      VALUES('0Czoa5V00E', 'Y', 0.000, NULL, 'In-box caseload               ', 'N', '2001-01-11', '000', '2002-09-17 11:36:58.395', 'DOTqhPx00E', 'N', '99', 'N');
     </sql>
 
     <sql>
-      INSERT INTO CSLDWGHT
+      INSERT INTO ${database.defaultSchemaName}.CSLDWGHT
       (FIRST_NM, LAST_NM, MID_INI_NM, NMPRFX_DSC, SUFX_TLDSC, LST_UPD_ID, LST_UPD_TS, FKCASE_LDT, FKSTFPERST, CNTY_SPFCD)
-      VALUES('H                   ', 'RAMES                    ', ' ', '      ', '    ', '00E', '2001-01-11 10:24:05.557', 'TNSLlwb00E', '0Ki', '28');
+      VALUES('H                   ', 'RAMES                    ', ' ', '      ', '    ', '00E', '2001-01-11 10:24:05.557', '0NSLlwb00E', '000', '28');
 
-      INSERT INTO CSLDWGHT
+      INSERT INTO ${database.defaultSchemaName}.CSLDWGHT
       (FIRST_NM, LAST_NM, MID_INI_NM, NMPRFX_DSC, SUFX_TLDSC, LST_UPD_ID, LST_UPD_TS, FKCASE_LDT, FKSTFPERST, CNTY_SPFCD)
-      VALUES('Y, Sup              ', 'Luck                     ', ' ', '      ', '    ', '0Ki', '2004-07-13 11:21:15.804', '2BNuWjo0Ki', '0Sr', '28');
+      VALUES('Y, Sup              ', 'Luck                     ', ' ', '      ', '    ', '000', '2004-07-13 11:21:15.804', '0BNuWjo000', '0Sr', '28');
 
-      INSERT INTO CSLDWGHT
+      INSERT INTO ${database.defaultSchemaName}.CSLDWGHT
       (FIRST_NM, LAST_NM, MID_INI_NM, NMPRFX_DSC, SUFX_TLDSC, LST_UPD_ID, LST_UPD_TS, FKCASE_LDT, FKSTFPERST, CNTY_SPFCD)
-      VALUES('H                   ', 'RAMES                    ', ' ', '      ', '    ', '00E', '2001-01-11 10:24:05.557', 'FCzoa5V00E', '0Ki', '99');
+      VALUES('H                   ', 'RAMES                    ', ' ', '      ', '    ', '00E', '2001-01-11 10:24:05.557', '0Czoa5V00E', '000', '99');
     </sql>
+
+    <rollback>
+      <delete tableName="CSLDWGHT">
+        <where>FKCASE_LDT = '0NSLlwb00E'</where>
+      </delete>
+      <delete tableName="CSLDWGHT">
+        <where>FKCASE_LDT = '0BNuWjo000'</where>
+      </delete>
+      <delete tableName="CSLDWGHT">
+        <where>FKCASE_LDT = '0Czoa5V00E'</where>
+      </delete>
+
+      <delete tableName="CASE_LDT">
+        <where>IDENTIFIER = '0NSLlwb00E'</where>
+      </delete>
+      <delete tableName="CASE_LDT">
+        <where>IDENTIFIER = '0BNuWjo000'</where>
+      </delete>
+      <delete tableName="CASE_LDT">
+        <where>IDENTIFIER = '0Czoa5V00E'</where>
+      </delete>
+
+      <delete tableName="ASGNM_T">
+        <where>IDENTIFIER = '0vma7rp000'</where>
+      </delete>
+      <delete tableName="ASGNM_T">
+        <where>IDENTIFIER = '0smXaGz000'</where>
+      </delete>
+      <delete tableName="ASGNM_T">
+        <where>IDENTIFIER = '0FhuPwb000'</where>
+      </delete>
+      <delete tableName="ASGNM_T">
+        <where>IDENTIFIER = '0vb5d7G000'</where>
+      </delete>
+
+      <delete tableName="CHLD_CLT">
+        <where>FKCLIENT_T = '0oor9eP000'</where>
+      </delete>
+      <delete tableName="CLIENT_T">
+        <where>IDENTIFIER = '0oor9eP000'</where>
+      </delete>
+      <delete tableName="CHLD_CLT">
+        <where>FKCLIENT_T = '07MuwVx000'</where>
+      </delete>
+      <delete tableName="CLIENT_T">
+        <where>IDENTIFIER = '07MuwVx000'</where>
+      </delete>
+
+      <delete tableName="CASE_T">
+        <where>IDENTIFIER = '0bVJLIz000'</where>
+      </delete>
+      <delete tableName="CASE_T">
+        <where>IDENTIFIER = '06ufkiD000'</where>
+      </delete>
+      <delete tableName="CASE_T">
+        <where>IDENTIFIER = '0SHfaXG000'</where>
+      </delete>
+    </rollback>
   </changeSet>
 </databaseChangeLog>

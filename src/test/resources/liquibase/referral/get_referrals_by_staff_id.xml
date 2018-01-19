@@ -6,108 +6,150 @@
   <!-- This change set only for testing -->
   <changeSet author="mzemlyanoi" id="data_for_referrals">
     <sql>
-      INSERT INTO REFERL_T (IDENTIFIER, ADD_INF_CD, ANRPTR_IND, PETAPL_IND, APRVL_NO,
+      INSERT INTO ${database.defaultSchemaName}.REFERL_T (IDENTIFIER, ADD_INF_CD, ANRPTR_IND, PETAPL_IND, APRVL_NO,
       APV_STC, CR_PERP_CD, REFCLSR_DT, CMM_MTHC, CHILOC_TXT, ALGDSC_DOC, ER_REF_DOC, INVSTG_DOC,
       XRPT_LWIND, FMY_AW_IND, GVR_ENTC, LGL_DEF_CD, LGLRGT_IND, LMT_ACSSCD, XRPT_RCVDT, REFERRL_NM,
       ADQT_CS_CD, REF_RCV_DT, REF_RCV_TM, RFR_RSPC, RFRD_RSC, RSP_DTR_DT, RSP_DTR_TM, RSP_RTNTXT,
       SCN_NT_TXT, SP_INCL_CD, SFC_INF_CD, UNFD_SR_CD, LST_UPD_ID, LST_UPD_TS, FKREFERL_T, FKADDRS_T,
       FKSTFPERS0, FKSTFPERST, CNTY_SPFCD, SPRJRF_IND, ZIPPY_IND, HOMLES_IND, FAMREF_IND, FIRST_EODT,
-      RSP_AGY_CD, L_GVR_ENTC, LMT_ACS_DT, LMT_ACSDSC, ORIGCLS_DT) VALUES ('Byg87Zicon', ' ', 'Y',
+      RSP_AGY_CD, L_GVR_ENTC, LMT_ACS_DT, LMT_ACSDSC, ORIGCLS_DT) VALUES ('0yg87Zicon', ' ', 'Y',
       'N', 'GDfDtOkcon', 122, ' ', '1998-08-28', 409, null, '8xbdxqccon', '8JSFr6ocon',
       'QZelKzacon', 'N', 'N', 1103, ' ', 'N', 'N', null, 'Paul Judd ', ' ', '1998-08-13',
-      '11:42:00', 1520, 0, '1998-08-28', '13:10:00', null, null, ' ', ' ', ' ', 'con',
-      '1998-08-28 13:26:29.508889', null, null, 'con', 'con', '36', 'N', 'N', 'N', 'N', null, 'C',
+      '11:42:00', 1520, 0, '1998-08-28', '13:10:00', null, null, ' ', ' ', ' ', '000',
+      '1998-08-28 13:26:29.508889', null, null, '000', '000', '36', 'N', 'N', 'N', 'N', null, 'C',
       null, null, null, null);
 
-      INSERT INTO REFERL_T (IDENTIFIER, ADD_INF_CD, ANRPTR_IND, PETAPL_IND, APRVL_NO,
+      INSERT INTO ${database.defaultSchemaName}.REFERL_T (IDENTIFIER, ADD_INF_CD, ANRPTR_IND, PETAPL_IND, APRVL_NO,
       APV_STC, CR_PERP_CD, REFCLSR_DT, CMM_MTHC, CHILOC_TXT, ALGDSC_DOC, ER_REF_DOC, INVSTG_DOC,
       XRPT_LWIND, FMY_AW_IND, GVR_ENTC, LGL_DEF_CD, LGLRGT_IND, LMT_ACSSCD, XRPT_RCVDT, REFERRL_NM,
       ADQT_CS_CD, REF_RCV_DT, REF_RCV_TM, RFR_RSPC, RFRD_RSC, RSP_DTR_DT, RSP_DTR_TM, RSP_RTNTXT,
       SCN_NT_TXT, SP_INCL_CD, SFC_INF_CD, UNFD_SR_CD, LST_UPD_ID, LST_UPD_TS, FKREFERL_T, FKADDRS_T,
       FKSTFPERS0, FKSTFPERST, CNTY_SPFCD, SPRJRF_IND, ZIPPY_IND, HOMLES_IND, FAMREF_IND, FIRST_EODT,
-      RSP_AGY_CD, L_GVR_ENTC, LMT_ACS_DT, LMT_ACSDSC, ORIGCLS_DT) VALUES ('BnMjARO04Z', 'N', 'N',
-      'N', '5oCEblS04Z', 119, 'Y', null, 408, null, null, null, null, 'N', 'N', 1092, 'Y', 'N', 'N',
+      RSP_AGY_CD, L_GVR_ENTC, LMT_ACS_DT, LMT_ACSDSC, ORIGCLS_DT) VALUES ('0nMjAROzzz', 'N', 'N',
+      'N', '5oCEblSzzz', 119, 'Y', null, 408, null, null, null, null, 'N', 'N', 1092, 'Y', 'N', 'N',
       null, 'WinClient013                       ', 'N', '1997-03-23', '04:14:00', 1520, 0,
-      '1998-05-11', '13:19:00', null, null, 'Y', 'Y', 'N', '04Z', '1998-05-11 13:21:55.659987',
-      null, '31pj4C204Z', '04Z', '04Z', '25', 'N', 'N', 'N', 'N', null, 'C', null, null, null,
+      '1998-05-11', '13:19:00', null, null, 'Y', 'Y', 'N', 'zzz', '1998-05-11 13:21:55.659987',
+      null, '31pj4C2zzz', 'zzz', 'zzz', '25', 'N', 'N', 'N', 'N', null, 'C', null, null, null,
       null);
 
-      INSERT INTO REFERL_T (IDENTIFIER, ADD_INF_CD, ANRPTR_IND, PETAPL_IND, APRVL_NO,
+      INSERT INTO ${database.defaultSchemaName}.REFERL_T (IDENTIFIER, ADD_INF_CD, ANRPTR_IND, PETAPL_IND, APRVL_NO,
       APV_STC, CR_PERP_CD, REFCLSR_DT, CMM_MTHC, CHILOC_TXT, ALGDSC_DOC, ER_REF_DOC, INVSTG_DOC,
       XRPT_LWIND, FMY_AW_IND, GVR_ENTC, LGL_DEF_CD, LGLRGT_IND, LMT_ACSSCD, XRPT_RCVDT, REFERRL_NM,
       ADQT_CS_CD, REF_RCV_DT, REF_RCV_TM, RFR_RSPC, RFRD_RSC, RSP_DTR_DT, RSP_DTR_TM, RSP_RTNTXT,
       SCN_NT_TXT, SP_INCL_CD, SFC_INF_CD, UNFD_SR_CD, LST_UPD_ID, LST_UPD_TS, FKREFERL_T, FKADDRS_T,
       FKSTFPERS0, FKSTFPERST, CNTY_SPFCD, SPRJRF_IND, ZIPPY_IND, HOMLES_IND, FAMREF_IND, FIRST_EODT,
-      RSP_AGY_CD, L_GVR_ENTC, LMT_ACS_DT, LMT_ACSDSC, ORIGCLS_DT) VALUES ('Ey71K2k04Z', ' ', 'N',
+      RSP_AGY_CD, L_GVR_ENTC, LMT_ACS_DT, LMT_ACSDSC, ORIGCLS_DT) VALUES ('0y71K2kzzz', ' ', 'N',
       'N', null, 118, ' ', null, 408, null, null, null, null, 'N', 'N', 1092, ' ', 'N', 'N', null,
       'WinClient003                       ', ' ', '1998-05-01', '04:14:00', 0, 0, null, null, null,
-      null, ' ', ' ', ' ', '04Z', '1998-05-18 11:36:20.509938', null, 'FaUqGZe04Z', '04Z', '04Z',
+      null, ' ', ' ', ' ', 'zzz', '1998-05-18 11:36:20.509938', null, 'FaUqGZezzz', 'zzz', 'zzz',
       '25', 'N', 'N', 'N', 'N', null, 'C', null, null, null, null);
 
-      INSERT INTO REFERL_T (IDENTIFIER, ADD_INF_CD, ANRPTR_IND, PETAPL_IND, APRVL_NO,
+      INSERT INTO ${database.defaultSchemaName}.REFERL_T (IDENTIFIER, ADD_INF_CD, ANRPTR_IND, PETAPL_IND, APRVL_NO,
       APV_STC, CR_PERP_CD, REFCLSR_DT, CMM_MTHC, CHILOC_TXT, ALGDSC_DOC, ER_REF_DOC, INVSTG_DOC,
       XRPT_LWIND, FMY_AW_IND, GVR_ENTC, LGL_DEF_CD, LGLRGT_IND, LMT_ACSSCD, XRPT_RCVDT, REFERRL_NM,
       ADQT_CS_CD, REF_RCV_DT, REF_RCV_TM, RFR_RSPC, RFRD_RSC, RSP_DTR_DT, RSP_DTR_TM, RSP_RTNTXT,
       SCN_NT_TXT, SP_INCL_CD, SFC_INF_CD, UNFD_SR_CD, LST_UPD_ID, LST_UPD_TS, FKREFERL_T, FKADDRS_T,
       FKSTFPERS0, FKSTFPERST, CNTY_SPFCD, SPRJRF_IND, ZIPPY_IND, HOMLES_IND, FAMREF_IND, FIRST_EODT,
-      RSP_AGY_CD, L_GVR_ENTC, LMT_ACS_DT, LMT_ACSDSC, ORIGCLS_DT) VALUES ('Ey71K2k04T', ' ', 'N',
+      RSP_AGY_CD, L_GVR_ENTC, LMT_ACS_DT, LMT_ACSDSC, ORIGCLS_DT) VALUES ('0y71K2k04T', ' ', 'N',
       'N', null, 118, ' ', null, 408, null, null, null, null, 'N', 'N', 1092, ' ', 'N', 'N', null,
       'WinClient003                       ', ' ', '1998-05-01', '04:14:00', 0, 0, null, null, null,
-      null, ' ', ' ', ' ', '04Z', '1998-05-18 11:36:20.509938', null, 'FaUqGZe04Z', '04Z', '04Z',
+      null, ' ', ' ', ' ', 'zzz', '1998-05-18 11:36:20.509938', null, 'FaUqGZezzz', 'zzz', 'zzz',
       '25', 'N', 'N', 'N', 'N', null, 'C', null, null, null, '1998-08-28');
     </sql>
 
     <sql>
-      INSERT INTO ASGNM_T (IDENTIFIER, END_DT, END_TM, ESTBLSH_ID, ESTBLSH_CD, ASSG_RLC,
+      INSERT INTO ${database.defaultSchemaName}.ASGNM_T (IDENTIFIER, END_DT, END_TM, ESTBLSH_ID, ESTBLSH_CD, ASSG_RLC,
       START_DT, START_TM, ASGNMNT_CD, WGHTNG_NO, LST_UPD_ID, LST_UPD_TS, FKOST_PTYT, FKCASE_LDT,
-      RESPL_DSC, CNTY_SPFCD) VALUES ('DURR1T0con', null, null, 'Byg87Zicon', 'R', 0,
-      '1998-08-13', '11:42:00', 'P', 0.000, 'con', '1998-08-28 13:26:29.508889', null, '6GMkJ2f00E',
+      RESPL_DSC, CNTY_SPFCD) VALUES ('0URR1T0con', null, null, '0yg87Zicon', 'R', 0,
+      '1998-08-13', '11:42:00', 'P', 0.000, '000', '1998-08-28 13:26:29.508889', null, '0GMkJ2f00E',
       ' ', '36');
 
-      INSERT INTO ASGNM_T (IDENTIFIER, END_DT, END_TM, ESTBLSH_ID, ESTBLSH_CD, ASSG_RLC,
+      INSERT INTO ${database.defaultSchemaName}.ASGNM_T (IDENTIFIER, END_DT, END_TM, ESTBLSH_ID, ESTBLSH_CD, ASSG_RLC,
       START_DT, START_TM, ASGNMNT_CD, WGHTNG_NO, LST_UPD_ID, LST_UPD_TS, FKOST_PTYT, FKCASE_LDT,
-      RESPL_DSC, CNTY_SPFCD) VALUES ('DJ824Kg04Z', null, null, 'BnMjARO04Z', 'R', 0, '1997-03-23',
-      '04:14:00', 'P', 0.000, '04Z', '1998-05-05 11:05:56.708901', null, 'OytDLMo00E',
+      RESPL_DSC, CNTY_SPFCD) VALUES ('0J824Kgzzz', null, null, '0nMjAROzzz', 'R', 0, '1997-03-23',
+      '04:14:00', 'P', 0.000, 'zzz', '1998-05-05 11:05:56.708901', null, '0ytDLMo00E',
       '                                                                                                                                                                ',
       '25');
 
-      INSERT INTO ASGNM_T (IDENTIFIER, END_DT, END_TM, ESTBLSH_ID, ESTBLSH_CD, ASSG_RLC,
+      INSERT INTO ${database.defaultSchemaName}.ASGNM_T (IDENTIFIER, END_DT, END_TM, ESTBLSH_ID, ESTBLSH_CD, ASSG_RLC,
       START_DT, START_TM, ASGNMNT_CD, WGHTNG_NO, LST_UPD_ID, LST_UPD_TS, FKOST_PTYT, FKCASE_LDT,
-      RESPL_DSC, CNTY_SPFCD) VALUES ('GmczCiI04Z', null, null, 'Ey71K2k04Z', 'R', 0, '1998-05-01',
-      '04:14:00', 'P', 0.000, '04Z', '1998-05-18 11:36:20.509938', null, 'OytDLMo00E',
+      RESPL_DSC, CNTY_SPFCD) VALUES ('0mczCiIzzz', null, null, '0y71K2kzzz', 'R', 0, '1998-05-01',
+      '04:14:00', 'P', 0.000, 'zzz', '1998-05-18 11:36:20.509938', null, '0ytDLMo00E',
       '                                                                                                                                                                ',
       '25');
 
-      INSERT INTO ASGNM_T (IDENTIFIER, END_DT, END_TM, ESTBLSH_ID, ESTBLSH_CD, ASSG_RLC,
+      INSERT INTO ${database.defaultSchemaName}.ASGNM_T (IDENTIFIER, END_DT, END_TM, ESTBLSH_ID, ESTBLSH_CD, ASSG_RLC,
       START_DT, START_TM, ASGNMNT_CD, WGHTNG_NO, LST_UPD_ID, LST_UPD_TS, FKOST_PTYT, FKCASE_LDT,
-      RESPL_DSC, CNTY_SPFCD) VALUES ('GmczCiI04E', null, null, 'Ey71K2k04T', 'R', 0, '1998-05-01',
-      '04:14:00', 'P', 0.000, '04Z', '1998-05-18 11:36:20.509938', null, 'OytDLMo00E',
+      RESPL_DSC, CNTY_SPFCD) VALUES ('0mczCiI04E', null, null, '0y71K2k04T', 'R', 0, '1998-05-01',
+      '04:14:00', 'P', 0.000, 'zzz', '1998-05-18 11:36:20.509938', null, '0ytDLMo00E',
       '                                                                                                                                                                ',
       '25');
     </sql>
 
     <sql>
-      INSERT INTO CASE_LDT (IDENTIFIER, ASGDSK_IND, CLD_CEILNO, END_DT, IDENTFR_NM,
+      INSERT INTO ${database.defaultSchemaName}.CASE_LDT (IDENTIFIER, ASGDSK_IND, CLD_CEILNO, END_DT, IDENTFR_NM,
       ON_HLD_IND, START_DT, LST_UPD_ID, LST_UPD_TS, FKASG_UNIT, CASELD_B, CNTY_SPFCD, ARCASS_IND)
-      VALUES ('6GMkJ2f00E', 'Y', 0.000, null, 'Cimbalo''s caseload ', 'N', '1997-08-13', 'con',
+      VALUES ('0GMkJ2f00E', 'Y', 0.000, null, 'Cimbalo''s caseload ', 'N', '1997-08-13', '000',
       '1998-01-23 11:55:56.941047', '4kbRP9N00E', 'N', '36', 'N');
 
-      INSERT INTO CASE_LDT (IDENTIFIER, ASGDSK_IND, CLD_CEILNO, END_DT, IDENTFR_NM, ON_HLD_IND,
+      INSERT INTO ${database.defaultSchemaName}.CASE_LDT (IDENTIFIER, ASGDSK_IND, CLD_CEILNO, END_DT, IDENTFR_NM, ON_HLD_IND,
       START_DT, LST_UPD_ID, LST_UPD_TS, FKASG_UNIT, CASELD_B, CNTY_SPFCD, ARCASS_IND)
-      VALUES ('OytDLMo00E', 'Y', 0.000, null, 'In-box WTFyOT                 ', 'N', '1996-02-24',
-      '04Z', '1998-05-13 11:56:54.497670', 'NANFShG00E', 'N', '25', 'N');
+      VALUES ('0ytDLMo00E', 'Y', 0.000, null, 'In-box WTFyOT                 ', 'N', '1996-02-24',
+      'zzz', '1998-05-13 11:56:54.497670', 'NANFShG00E', 'N', '25', 'N');
     </sql>
 
     <sql>
-      INSERT INTO CSLDWGHT (FIRST_NM, LAST_NM, MID_INI_NM, NMPRFX_DSC, SUFX_TLDSC, LST_UPD_ID,
+      INSERT INTO ${database.defaultSchemaName}.CSLDWGHT (FIRST_NM, LAST_NM, MID_INI_NM, NMPRFX_DSC, SUFX_TLDSC, LST_UPD_ID,
       LST_UPD_TS, FKCASE_LDT, FKSTFPERST, CNTY_SPFCD) VALUES ('Cathy ', 'Cimbalo ', ' ', ' ', ' ',
-      '00E', '1997-08-13 10:11:47.906500', '6GMkJ2f00E', 'con', '36');
+      '00E', '1997-08-13 10:11:47.906500', '0GMkJ2f00E', '000', '36');
 
-      INSERT INTO CSLDWGHT (FIRST_NM, LAST_NM, MID_INI_NM, NMPRFX_DSC, SUFX_TLDSC,
+      INSERT INTO ${database.defaultSchemaName}.CSLDWGHT (FIRST_NM, LAST_NM, MID_INI_NM, NMPRFX_DSC, SUFX_TLDSC,
       LST_UPD_ID, LST_UPD_TS, FKCASE_LDT, FKSTFPERST, CNTY_SPFCD) VALUES
       ('Tester              ', 'WTFyO                    ', ' ', '      ', '    ', '00E',
-      '1998-02-24 14:26:39.382243', 'OytDLMo00E', '04Z', '25');
+      '1998-02-24 14:26:39.382243', '0ytDLMo00E', 'zzz', '25');
     </sql>
+
+    <rollback>
+      <delete tableName="REFERL_T">
+        <where>IDENTIFIER = '0yg87Zicon'</where>
+      </delete>
+      <delete tableName="REFERL_T">
+        <where>IDENTIFIER = '0nMjAROzzz'</where>
+      </delete>
+      <delete tableName="REFERL_T">
+        <where>IDENTIFIER = '0y71K2kzzz'</where>
+      </delete>
+      <delete tableName="REFERL_T">
+        <where>IDENTIFIER = '0y71K2k04T'</where>
+      </delete>
+
+      <delete tableName="ASGNM_T">
+        <where>IDENTIFIER = '0URR1T0con'</where>
+      </delete>
+      <delete tableName="ASGNM_T">
+        <where>IDENTIFIER = '0J824Kgzzz'</where>
+      </delete>
+      <delete tableName="ASGNM_T">
+        <where>IDENTIFIER = '0mczCiIzzz'</where>
+      </delete>
+      <delete tableName="ASGNM_T">
+        <where>IDENTIFIER = '0mczCiI04E'</where>
+      </delete>
+
+      <delete tableName="CASE_LDT">
+        <where>IDENTIFIER = '0GMkJ2f00E'</where>
+      </delete>
+      <delete tableName="CASE_LDT">
+        <where>IDENTIFIER = '0ytDLMo00E'</where>
+      </delete>
+
+      <delete tableName="CSLDWGHT">
+        <where>FKCASE_LDT = '0GMkJ2f00E' AND LST_UPD_TS = '1997-08-13 10:11:47.906500'</where>
+      </delete>
+      <delete tableName="CSLDWGHT">
+        <where>FKCASE_LDT = '0ytDLMo00E' AND LST_UPD_TS = '1998-02-24 14:26:39.382243'</where>
+      </delete>
+    </rollback>
 
   </changeSet>
 </databaseChangeLog>
