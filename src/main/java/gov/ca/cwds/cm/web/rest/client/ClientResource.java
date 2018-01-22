@@ -41,23 +41,23 @@ public class ClientResource {
 
   @GET
   @Path("/{" + ID + "}")
-  @ApiResponses(value = {
+  @ApiResponses(
+    value = {
       @ApiResponse(code = 401, message = "Not Authenticated"),
       @ApiResponse(code = 403, message = "Unauthorized"),
       @ApiResponse(code = 404, message = "Not found")
-  })
+    }
+  )
   @ApiOperation(value = "Find client by client ID", response = ClientDTO.class)
   @UnitOfWork(CMS)
   @Timed
   public Response get(
       @PathParam("id")
-      @ApiParam(required = true, value = "The unique client ID", example = "0YIPkZU0S0")
-      final String id) {
+          @ApiParam(required = true, value = "The unique client ID", example = "0YIPkZU0S0")
+          final String id) {
     final ClientParameterObject clientPO = toClientParameterObject(id);
-    final gov.ca.cwds.rest.api.Response response = clientFacade.find(
-        clientPO,
-        ClientType.BASE_CLIENT
-    );
+    final gov.ca.cwds.rest.api.Response response =
+        clientFacade.find(clientPO, ClientType.BASE_CLIENT);
     return ResponseUtil.responseOrNotFound(response);
   }
 

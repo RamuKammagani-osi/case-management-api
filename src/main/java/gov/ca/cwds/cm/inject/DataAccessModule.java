@@ -9,6 +9,7 @@ import com.google.inject.Provides;
 import gov.ca.cwds.cm.CmApiConfiguration;
 import gov.ca.cwds.data.legacy.cms.entity.Address;
 import gov.ca.cwds.data.legacy.cms.entity.BackgroundCheck;
+import gov.ca.cwds.data.legacy.cms.entity.CSECHistory;
 import gov.ca.cwds.data.legacy.cms.entity.Case;
 import gov.ca.cwds.data.legacy.cms.entity.CaseAssignment;
 import gov.ca.cwds.data.legacy.cms.entity.CaseLoad;
@@ -59,6 +60,7 @@ import gov.ca.cwds.data.legacy.cms.entity.syscodes.NameType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.Religion;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.SecondaryAssignmentRoleType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.ServiceContactType;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.SexualExploitationType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.State;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.SystemCode;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.VisitType;
@@ -139,7 +141,9 @@ public class DataAccessModule extends AbstractModule {
               MedicalEligibilityApplication.class,
               ServiceContactType.class,
               DeliveredService.class,
-              IndividualType.class
+              IndividualType.class,
+              CSECHistory.class,
+              SexualExploitationType.class
           )
           .build();
 
