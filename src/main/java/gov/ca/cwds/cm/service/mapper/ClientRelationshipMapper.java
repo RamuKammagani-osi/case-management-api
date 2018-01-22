@@ -19,4 +19,17 @@ public interface ClientRelationshipMapper {
   @Mapping(source = "rightSide", target = "relatedClient")
   ClientRelationshipDTO fromRightRelationshipToDto(ClientRelationship clientRelationship);
 
+  @Mapping(source = "identifier", target = "id")
+  @Mapping(source = "rightSide.identifier", target = "clientId")
+  @Mapping(source = "leftSide.identifier", target = "relatedClientId")
+  @Mapping(
+      expression = "java(Short.valueOf(clientRelationship.getType().getLongDescription()))",
+      target = "typeCode")
+  @Mapping(source = "absentParentIndicator", target = "absentParentIndicator")
+  @Mapping(source = "startDate", target = "startDate")
+  @Mapping(source = "endDate", target = "endDate")
+  @Mapping(source = "sameHomeStatus", target = "sameHomeStatus")
+  @Mapping(source = "leftSide", target = "relatedClient")
+  ClientRelationshipDTO fromLeftRelationshipToDto(ClientRelationship clientRelationship);
+
 }
