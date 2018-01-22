@@ -5,7 +5,7 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 
-import gov.ca.cwds.cm.BaseApiIntegrationTest;
+import gov.ca.cwds.cm.BaseResourceTest;
 import gov.ca.cwds.cm.Constants;
 import gov.ca.cwds.cm.Constants.API;
 import gov.ca.cwds.cm.service.dto.facade.CaseByStaff;
@@ -21,7 +21,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /** @author CWDS TPT-3 Team */
-public class StaffPersonResourceTest extends BaseApiIntegrationTest {
+public class StaffPersonResourceTest extends BaseResourceTest {
 
   public static final String WRONG_STAFF_PERSON_ID = "-1";
 

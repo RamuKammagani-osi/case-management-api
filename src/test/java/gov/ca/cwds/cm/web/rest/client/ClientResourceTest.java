@@ -6,7 +6,7 @@ import static io.dropwizard.testing.FixtureHelpers.fixture;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import gov.ca.cwds.cm.BaseApiIntegrationTest;
+import gov.ca.cwds.cm.BaseResourceTest;
 import gov.ca.cwds.cm.Constants;
 import gov.ca.cwds.cm.service.dto.ClientDTO;
 import javax.ws.rs.core.MediaType;
@@ -15,7 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /** @author CWDS TPT-3 Team */
-public class ClientResourceTest extends BaseApiIntegrationTest {
+public class ClientResourceTest extends BaseResourceTest {
 
   public static final String CLIENT_ID = "22223312D0";
 

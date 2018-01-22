@@ -1,16 +1,15 @@
 package gov.ca.cwds.cm;
 
+import java.util.HashMap;
+import java.util.Map;
 import liquibase.exception.LiquibaseException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /** @author CWDS TPT-3 Team */
-public class DatabaseHelperTest extends BaseApiIntegrationTest {
+public class DatabaseHelperTest extends BaseResourceTest {
 
   DatabaseHelper helper;
 

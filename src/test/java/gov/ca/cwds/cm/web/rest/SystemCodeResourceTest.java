@@ -5,7 +5,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-import gov.ca.cwds.cm.BaseApiIntegrationTest;
+import gov.ca.cwds.cm.BaseResourceTest;
 import gov.ca.cwds.cm.Constants.API;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -15,7 +15,7 @@ import org.junit.Test;
 /**
  * @author CWDS TPT-3 Team
  */
-public class SystemCodeResourceTest extends BaseApiIntegrationTest {
+public class SystemCodeResourceTest extends BaseResourceTest {
 
   @BeforeClass
   public static void beforeClass() throws Exception {

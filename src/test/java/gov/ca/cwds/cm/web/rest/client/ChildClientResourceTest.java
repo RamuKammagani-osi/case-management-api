@@ -8,7 +8,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-import gov.ca.cwds.cm.BaseApiIntegrationTest;
+import gov.ca.cwds.cm.BaseResourceTest;
 import gov.ca.cwds.cm.Constants.API;
 import gov.ca.cwds.cm.service.dto.ChildClientDTO;
 import javax.ws.rs.client.Entity;
@@ -19,7 +19,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /** @author CWDS TPT-3 Team */
-public class ChildClientResourceTest extends BaseApiIntegrationTest {
+public class ChildClientResourceTest extends BaseResourceTest {
 
   public static final String CLIENT_ID = "BKk7CHj00Z";
 
