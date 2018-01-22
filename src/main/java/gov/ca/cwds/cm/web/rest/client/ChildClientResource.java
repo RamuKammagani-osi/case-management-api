@@ -127,13 +127,13 @@ public class ChildClientResource {
 
     ClientRelationshipDTO rel0 = new ClientRelationshipDTO();
     relationships.add(rel0);
-    rel0.setRelationshipId("AcB3Wu00Rx");
+    rel0.setId("AcB3Wu00Rx");
     rel0.setClientId(MOCK_CLIENT_ID);
     rel0.setRelatedClientId("MHH2zjk0Rx");
-    rel0.setRelationshipTypeCode((short)285);
+    rel0.setTypeCode((short)285);
     rel0.setAbsentParentIndicator(Boolean.TRUE);
-    rel0.setRelationshipStartDate(LocalDate.of(2000, 10, 20));
-    rel0.setRelationshipEndDate(LocalDate.of(2018, 10, 20));
+    rel0.setStartDate(LocalDate.of(2000, 10, 20));
+    rel0.setEndDate(LocalDate.of(2018, 10, 20));
     rel0.setSameHomeStatus("NO");
 
     ClientDTO relatedClient0 = new ClientDTO();
@@ -143,13 +143,13 @@ public class ChildClientResource {
     relatedClient0.setCommonLastName("Broomhall");
 
     ClientRelationshipDTO rel1 = new ClientRelationshipDTO();
-    rel1.setRelationshipId("AattSTp01T");
+    rel1.setId("AattSTp01T");
     rel1.setClientId(MOCK_CLIENT_ID);
     rel1.setRelatedClientId("FEsDPrl01T");
-    rel1.setRelationshipTypeCode((short)291);
+    rel1.setTypeCode((short)291);
     rel1.setAbsentParentIndicator(Boolean.FALSE);
-    rel1.setRelationshipStartDate(LocalDate.of(2000, 10, 20));
-    rel1.setRelationshipEndDate(LocalDate.of(2018, 10, 20));
+    rel1.setStartDate(LocalDate.of(2000, 10, 20));
+    rel1.setEndDate(LocalDate.of(2018, 10, 20));
     rel1.setSameHomeStatus("YES");
     relationships.add(rel1);
 
