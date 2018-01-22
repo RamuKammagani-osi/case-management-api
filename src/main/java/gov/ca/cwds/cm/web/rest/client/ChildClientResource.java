@@ -109,20 +109,20 @@ public class ChildClientResource {
   @GET
   @Path("/{" + ID + "}/" + API.RELATIONSHIPS)
   @ApiResponses(
-      value = {
-          @ApiResponse(code = 401, message = "Not Authenticated"),
-          @ApiResponse(code = 403, message = "Unauthorized"),
-          @ApiResponse(code = 404, message = "Not found")
-      }
+    value = {
+      @ApiResponse(code = 401, message = "Not Authenticated"),
+      @ApiResponse(code = 403, message = "Unauthorized"),
+      @ApiResponse(code = 404, message = "Not found")
+    }
   )
   @ApiOperation(
-      value = "ClientRelationships of ChildClient by client Id",
-      response = ClientRelationshipDTO.class
+    value = "ClientRelationships of ChildClient by client Id",
+    response = ClientRelationshipDTO.class
   )
   public Response getRelationshipsByClientId(
       @PathParam("id")
-      @ApiParam(required = true, value = "The unique client ID", example = MOCK_CLIENT_ID)
-      final String id) {
+          @ApiParam(required = true, value = "The unique client ID", example = MOCK_CLIENT_ID)
+          final String id) {
     final Collection<ClientRelationshipDTO> relationships = new ArrayList<>();
 
     ClientRelationshipDTO rel0 = new ClientRelationshipDTO();
@@ -130,7 +130,7 @@ public class ChildClientResource {
     rel0.setRelationshipId("AcB3Wu00Rx");
     rel0.setClientId(MOCK_CLIENT_ID);
     rel0.setRelatedClientId("MHH2zjk0Rx");
-    rel0.setRelationshipTypeCode((short)285);
+    rel0.setRelationshipTypeCode((short) 285);
     rel0.setAbsentParentIndicator(Boolean.TRUE);
     rel0.setRelationshipStartDate(LocalDate.of(2000, 10, 20));
     rel0.setRelationshipEndDate(LocalDate.of(2018, 10, 20));
@@ -146,7 +146,7 @@ public class ChildClientResource {
     rel1.setRelationshipId("AattSTp01T");
     rel1.setClientId(MOCK_CLIENT_ID);
     rel1.setRelatedClientId("FEsDPrl01T");
-    rel1.setRelationshipTypeCode((short)291);
+    rel1.setRelationshipTypeCode((short) 291);
     rel1.setAbsentParentIndicator(Boolean.FALSE);
     rel1.setRelationshipStartDate(LocalDate.of(2000, 10, 20));
     rel1.setRelationshipEndDate(LocalDate.of(2018, 10, 20));

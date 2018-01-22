@@ -1,8 +1,9 @@
 package gov.ca.cwds.cm.web.rest;
 
+import com.google.inject.Inject;
 import gov.ca.cwds.cm.Constants.API;
+import gov.ca.cwds.cm.service.CSECHistoryService;
 import io.swagger.annotations.Api;
-import java.time.LocalDate;
 
 import static gov.ca.cwds.cm.Constants.API.CHILD_CLIENTS;
 import static gov.ca.cwds.cm.Constants.API.ID;
@@ -15,7 +16,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import java.util.Arrays;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -31,6 +31,13 @@ import javax.ws.rs.core.Response;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class CSECHistoryResource {
+
+  private CSECHistoryService csecHistoryService;
+
+  @Inject
+  public CSECHistoryResource(CSECHistoryService csecHistoryService) {
+    this.csecHistoryService = csecHistoryService;
+  }
 
   @GET
   @Path("/{" + ID + "}/" + API.CSEC_HISTORY)
@@ -48,32 +55,10 @@ public class CSECHistoryResource {
     response = CSECHistoryDTO.class
   )
   public Response getCSECByClientId(
-      @PathParam(ID)
-          @ApiParam(required = true, value = "Child Client ID", example = "BKk7CHj01Y")
+      @PathParam(ID) @ApiParam(required = true, value = "Child Client ID", example = "BKk7CHj01Y")
           final String clientId) {
 
-    if (!"BKk7CHj01Y".equals(clientId)) {
-      return Response.ok().status(Response.Status.NOT_FOUND).build();
-    }
-
-    return Response.ok().entity(getMockedData()).build();
-  }
-
-  private List<CSECHistoryDTO> getMockedData() {
-    String clientId = "BKk7CHj01Y";
-
-    CSECHistoryDTO dto = new CSECHistoryDTO();
-    dto.setStartDate(LocalDate.of(1988, 10, 12));
-    dto.setEndDate(LocalDate.of(1989, 10, 12));
-    dto.setChildClientId(clientId);
-    dto.setSexualExploitationType("6867");
-
-    CSECHistoryDTO dto2 = new CSECHistoryDTO();
-    dto2.setStartDate(LocalDate.of(1998, 10, 12));
-    dto2.setEndDate(LocalDate.of(1999, 10, 12));
-    dto2.setChildClientId(clientId);
-    dto2.setSexualExploitationType("6867");
-
-    return Arrays.asList(dto, dto2);
+    List<CSECHistoryDTO> csecHistories = csecHistoryService.findByClientId(clientId);
+    return ResponseUtil.responseOrNotFound(csecHistories);
   }
 }
