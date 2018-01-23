@@ -57,34 +57,5 @@
             <column name="TTEXT_DSC" value="Closure statement"/>
         </insert>
 
-
-        <!--<insert tableName="SYS_CD_C">-->
-            <!--<column name="SYS_ID" value="1692"/>-->
-            <!--<column name="CATEGORYID" value="0"/>-->
-            <!--<column name="INACTV_IND" value="N"/>-->
-            <!--<column name="OTHER_CD" value="01"/>-->
-            <!--<column name="SHORT_DSC" value="Emergency Response"/>-->
-            <!--<column name="LGC_ID" value="ER"/>-->
-            <!--<column name="LST_UPD_ID" value="q25"/>-->
-            <!--<column name="LST_UPD_TS" value="1996-02-13 12:57:24.769759"/>-->
-            <!--<column name="THIRD_ID" value="0000000000"/>-->
-            <!--<column name="FKS_META_T" value="SRV_CMPC"/>-->
-            <!--<column name="LONG_DSC" value=""/>-->
-        <!--</insert>-->
-
-        <!--<insert tableName="SYS_CD_C">-->
-            <!--<column name="SYS_ID" value="122"/>-->
-            <!--<column name="CATEGORYID" value="0"/>-->
-            <!--<column name="INACTV_IND" value="N"/>-->
-            <!--<column name="OTHER_CD" value="SP"/>-->
-            <!--<column name="SHORT_DSC" value="Approved"/>-->
-            <!--<column name="LGC_ID" value="0005"/>-->
-            <!--<column name="LST_UPD_ID" value="q25"/>-->
-            <!--<column name="LST_UPD_TS" value="1996-02-13 12:57:24.769759"/>-->
-            <!--<column name="THIRD_ID" value="0000000000"/>-->
-            <!--<column name="FKS_META_T" value="APV_STC"/>-->
-            <!--<column name="LONG_DSC" value=""/>-->
-        <!--</insert>-->
-
     </changeSet>
 </databaseChangeLog>
