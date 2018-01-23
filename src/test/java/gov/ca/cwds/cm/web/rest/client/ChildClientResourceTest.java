@@ -31,6 +31,7 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
     runScripts(
         "liquibase/address/dml_address_test_data.xml",
         "liquibase/client/address/dml_client_address_test_data.xml",
+        "liquibase/client/relationship/client_relationship_test_data.xml",
         "liquibase/client/child_client_test_update.xml");
   }
 
