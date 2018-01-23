@@ -29,6 +29,7 @@ public class SystemInformationResourceTest extends AbstractIntegrationTest {
 
     assertHealthCheck(systemInformation.getDeadlocks());
     assertHealthCheck(systemInformation.getCwscms());
+    assertHealthCheck(systemInformation.getCwsrs1());
   }
 
   private void assertHealthCheck(final HealthCheckResultDTO healthCheckResult) {
