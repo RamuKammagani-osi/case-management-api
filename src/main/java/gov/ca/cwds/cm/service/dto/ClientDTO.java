@@ -179,7 +179,7 @@ public class ClientDTO extends BaseDTO implements RequestResponse {
       value = "DRIVER_LICENSE_NUMBER - The driver license number of the CLIENT.",
       example = "987654321"
   )
-  private String driverLicensNumber;
+  private String driverLicenseNumber;
 
   @NotNull
   @ApiModelProperty(

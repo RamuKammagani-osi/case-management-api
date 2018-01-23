@@ -15,7 +15,7 @@
   "creation_date" : "1999-08-15",
   "death_date" : "1999-08-15",
   "death_reason" : "U8SxGBF00c",
-  "driver_licens_number" : "987654321",
+  "driver_license_number": "987654321",
   "driver_license_state_code_type" : 1823,
   "gender_code" : "FEMALE",
   "immigration_country_code_type" : 563,
