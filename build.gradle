@@ -203,7 +203,6 @@ test {
     jacoco {
         excludes = ["**org/drools/**/*"]
     }
-    outputs.upToDateWhen { false }
 }
 
 jar {
