@@ -19,11 +19,7 @@ public class CSECHistoryResourceTest extends AbstractIntegrationTest {
 
   @BeforeClass
   public static void beforeClass() throws Exception {
-    setUpCwsRs1();
-    setUpCms();
-    setUpDb();
-    runScripts(
-        "liquibase/csec/csechistory_get.xml");
+    DATABASE_HELPER_CMS.runScripts("liquibase/csec/csechistory_get.xml");
   }
 
   @Test

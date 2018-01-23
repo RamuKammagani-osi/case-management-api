@@ -35,7 +35,7 @@ project.ext {
     mapstructVersion = '1.2.0.Final'
     lombokVersion = '1.16.18'
     mainClass = 'gov.ca.cwds.cm.CmApiApplication'
-    calsModelVersion = '0.5.4_412-RC'
+    calsModelVersion = '0.5.5_416-RC'
 
     isRelease = System.getProperty("Release") == "true"
     buildNumber = System.getProperty('BuildNumber')
@@ -203,6 +203,7 @@ test {
     jacoco {
         excludes = ["**org/drools/**/*"]
     }
+    outputs.upToDateWhen { false }
 }
 
 jar {
