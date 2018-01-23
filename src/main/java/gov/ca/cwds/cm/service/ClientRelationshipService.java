@@ -5,7 +5,6 @@ import gov.ca.cwds.cm.service.dto.ClientRelationshipDTO;
 import gov.ca.cwds.cm.service.mapper.ClientRelationshipMapper;
 import gov.ca.cwds.data.legacy.cms.dao.ClientRelationshipDao;
 import gov.ca.cwds.data.legacy.cms.entity.ClientRelationship;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
