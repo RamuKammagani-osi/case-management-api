@@ -27,7 +27,7 @@ public class ClientRelationshipService extends CrudServiceAdapter {
     this.clientRelationshipMapper = clientRelationshipMapper;
   }
 
-  public Collection<ClientRelationshipDTO> findByClientId(final String clientId) {
+  public List<ClientRelationshipDTO> findByClientId(final String clientId) {
 
     List<ClientRelationship> rightRelationships = clientRelationshipDao
         .findCurrentRightRelationships(clientId);
