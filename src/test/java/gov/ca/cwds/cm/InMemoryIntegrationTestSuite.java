@@ -77,7 +77,6 @@ public class InMemoryIntegrationTestSuite {
         IntegrationTestContextHolder.cmApiConfiguration.getCmsDataSourceFactory()
     );
     cmsDatabaseHelper.runScript("liquibase/cwscms_database_master.xml");
-    cmsDatabaseHelper.runScript("liquibase/migration_master.xml");
   }
 
 }

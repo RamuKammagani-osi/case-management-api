@@ -25,19 +25,19 @@ public class StaffPersonResourceTest extends AbstractIntegrationTest {
 
   public static final String WRONG_STAFF_PERSON_ID = "-1";
   private static final String[] LIQUIBASE_SCRIPTS = {
-      "liquibase/staff-person/staff-person-changelog.xml",
+      "liquibase/staff-person/staff-person.xml",
       "liquibase/case/get-cases-by-staff-id_test-data.xml",
       "liquibase/referral/get_referrals_by_staff_id.xml"
   };
 
   @BeforeClass
   public static void beforeClass() throws Exception {
-    DATABASE_HELPER.runScripts(LIQUIBASE_SCRIPTS);
+    DATABASE_HELPER_CMS.runScripts(LIQUIBASE_SCRIPTS);
   }
 
   @AfterClass
   public static void afterClass() throws Exception {
-    DATABASE_HELPER.rollbackScripts(LIQUIBASE_SCRIPTS);
+    DATABASE_HELPER_CMS.rollbackScripts(LIQUIBASE_SCRIPTS);
   }
 
   @Test

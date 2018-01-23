@@ -6,7 +6,7 @@
 
   <changeSet id="address_test_data" author="CWDS TPT-3 Team">
     <insert tableName="ADDRS_T">
-      <column name="IDENTIFIER" value="Ab7mue101c"/>
+      <column name="IDENTIFIER" value="0b7mue1000"/>
       <column name="CITY_NM" value="Lakeport            "/>
       <column name="EMRG_TELNO" value="5243542354"/>
       <column name="EMRG_EXTNO" value="523454"/>
@@ -34,7 +34,7 @@
 
     <rollback>
       <delete tableName="ADDRS_T">
-        <where>IDENTIFIER = 'Ab7mue101c'</where>
+        <where>IDENTIFIER = '0b7mue1000'</where>
       </delete>
     </rollback>
   </changeSet>

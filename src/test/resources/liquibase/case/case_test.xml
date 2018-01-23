@@ -5,7 +5,7 @@
 
     <changeSet id="data_for_case" author="TPT3_team">
         <insert tableName="CASE_T">
-            <column name="IDENTIFIER" value="ArgnUzi09M" />
+            <column name="IDENTIFIER" value="0rgnUzi000" />
             <column name="ALERT_TXT" value="Qpqiiyg09M" />
             <column name="APRVL_NO" value="67Co6IX0LF"/>
             <column name="APV_STC" value="122"/>
@@ -17,7 +17,7 @@
             <column name="NOTES_DOC" value="MWRk9Z70Ki" />
             <column name="EMANCPN_DT" value="2018-03-17" />
             <column name="END_DT" value="2018-03-17" />
-            <column name="FKCHLD_CLT" value="BKk7CHj00Z" />
+            <column name="FKCHLD_CLT" value="0Kk7CHj000" />
             <column name="FKREFERL_T" value="IUvCQKr0Ki" />
             <column name="FKSTFPERST" value="0Ki" />
             <column name="GVR_ENTC" value="1124" />
@@ -59,7 +59,7 @@
 
         <rollback>
             <delete tableName="CASE_T">
-                <where>IDENTIFIER = 'ArgnUzi09M'</where>
+                <where>IDENTIFIER = '0rgnUzi000'</where>
             </delete>
             <delete tableName="LONG_TXT">
                 <where>IDENTIFIER = 'Qpqiiyg09M'</where>

@@ -21,18 +21,18 @@ public class AddressResourceTest extends AbstractIntegrationTest {
 
   @BeforeClass
   public static void beforeClass() throws Exception {
-    DATABASE_HELPER.runScripts(LIQUIBASE_SCRIPT);
+    DATABASE_HELPER_CMS.runScripts(LIQUIBASE_SCRIPT);
   }
 
   @AfterClass
   public static void afterClass() throws Exception {
-    DATABASE_HELPER.rollbackScripts(LIQUIBASE_SCRIPT);
+    DATABASE_HELPER_CMS.rollbackScripts(LIQUIBASE_SCRIPT);
   }
 
   @Test
   public void getAddress_success_whenAddressExists() throws Exception {
     // when
-    final Response actualResult = clientTestRule.target(API.ADDRESSES + "/Ab7mue101c")
+    final Response actualResult = clientTestRule.target(API.ADDRESSES + "/0b7mue1000")
         .request(MediaType.APPLICATION_JSON_TYPE)
         .get(Response.class);
 

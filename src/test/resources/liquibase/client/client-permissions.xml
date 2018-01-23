@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+  <changeSet author="TPT3" id="add staff persons permissions">
+    <sql>
+      INSERT INTO ${database.defaultSchemaName}.CLIENT_CNTY
+      (CLIENT_ID, GVR_ENTC, LST_UPD_OP, LST_UPD_TS, CNTY_RULE)
+      VALUES('0Kk7CHj000', 1088, 'I', '2017-11-07 18:23:36.495', 'ACTIVE_CLIENT_REFERRAL   ');
+
+    </sql>
+
+    <rollback>
+      <delete tableName="CLIENT_CNTY">
+        <where>CLIENT_ID = '0Kk7CHj000'</where>
+      </delete>
+    </rollback>
+
+  </changeSet>
+</databaseChangeLog>

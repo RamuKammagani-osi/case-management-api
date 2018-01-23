@@ -5,7 +5,7 @@
 
     <changeSet id="correct_data_for_client" author="TPT3_team">
         <insert tableName="CLIENT_T">
-            <column name="IDENTIFIER" value="BKk7CHj00Z" />
+            <column name="IDENTIFIER" value="0Kk7CHj000" />
             <column name="ADJDEL_IND" value="null"/>
             <column name="ALN_REG_NO" value="111483672"/>
             <column name="ADPTN_STCD" value="N" />
@@ -72,5 +72,11 @@
             <column name="LST_UPD_TS" value="2000-03-17 17:01:54.924155" />
             <column name="LST_UPD_ID" value="200"/>
         </insert>
+
+        <rollback>
+            <delete tableName="CLIENT_T">
+                <where>IDENTIFIER = '0Kk7CHj000'</where>
+            </delete>
+        </rollback>
     </changeSet>
 </databaseChangeLog>

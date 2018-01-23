@@ -17,11 +17,11 @@ import org.junit.Test;
 /** @author CWDS TPT-3 Team */
 public class ClientResourceTest extends AbstractIntegrationTest {
 
-  private static final String CLIENT_ID = "22223312D0";
+  private static final String CLIENT_ID = "0Kk7CHj000";
 
   @BeforeClass
   public static void beforeClass() throws Exception {
-    DATABASE_HELPER.runScripts("liquibase/client/client_test_get_for_client_endpoint.xml");
+    DATABASE_HELPER_CMS.runScripts("liquibase/client/client_test_get_for_client_endpoint.xml");
   }
 
   @Test
@@ -31,7 +31,7 @@ public class ClientResourceTest extends AbstractIntegrationTest {
 
     // when
     final Response response = clientTestRule.target(Constants.API.CLIENTS + "/" + CLIENT_ID)
-        .queryParam(PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/0Ki-all-authorized.json")
+        .queryParam(PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/000-all-authorized.json")
         .request(MediaType.APPLICATION_JSON)
         .get();
     final ClientDTO client = response.readEntity(ClientDTO.class);

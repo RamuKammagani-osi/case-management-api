@@ -25,17 +25,21 @@ import org.junit.Test;
 public class CaseResourceTest extends AbstractIntegrationTest {
 
   private static final int UNPROCESSABLE_ENTITY_STATUS_CODE = 422;
-  private static final String CASE_ID = "ArgnUzi09M";
-  private static final String LIQUIBASE_SCRIPT = "liquibase/case/case_test.xml";
+  private static final String CASE_ID = "0rgnUzi000";
+  private static final String[] LIQUIBASE_SCRIPTS = {
+      "liquibase/client/client_test_get.xml",
+      "liquibase/client/child_client_test_get.xml",
+      "liquibase/case/case_test.xml",
+  };
 
   @BeforeClass
   public static void onBeforeClass() throws LiquibaseException {
-    DATABASE_HELPER.runScripts(LIQUIBASE_SCRIPT);
+    DATABASE_HELPER_CMS.runScripts(LIQUIBASE_SCRIPTS);
   }
 
   @AfterClass
   public static void onAfterClass() throws LiquibaseException {
-    DATABASE_HELPER.rollbackScripts(LIQUIBASE_SCRIPT);
+    DATABASE_HELPER_CMS.rollbackScripts(LIQUIBASE_SCRIPTS);
   }
 
   @Test

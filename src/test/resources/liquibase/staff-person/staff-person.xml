@@ -3,7 +3,6 @@
   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-  <!-- This change set only for testing -->
   <changeSet author="TPT3" id="create staff persons">
     <sql>
       INSERT INTO ${database.defaultSchemaName}.STFPERST
