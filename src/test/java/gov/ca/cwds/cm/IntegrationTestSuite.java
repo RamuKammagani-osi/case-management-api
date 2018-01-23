@@ -14,6 +14,10 @@ import org.junit.runners.Suite;
 
 /**
  * @author CWDS TPT-3 Team
+ *
+ * The suite is run with "integrationTest" gradle task.
+ * It requires "api.url" system property to be set.
+ * The suite is used to test a remote environment.
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({

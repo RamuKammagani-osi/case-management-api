@@ -1,6 +1,8 @@
 package gov.ca.cwds.cm.test.util;
 
 import io.dropwizard.db.DataSourceFactory;
+import java.io.Closeable;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -13,11 +15,12 @@ import liquibase.exception.DatabaseException;
 import liquibase.exception.LiquibaseException;
 import liquibase.resource.ClassLoaderResourceAccessor;
 import liquibase.util.StringUtils;
+import org.hibernate.cfg.AvailableSettings;
 
 /**
  * @author CWDS TPT-3 Team
  */
-public class DatabaseHelper {
+public class DatabaseHelper implements Closeable {
 
   private Database database;
   private final String url;
@@ -37,7 +40,7 @@ public class DatabaseHelper {
         dataSourceFactory.getUrl(),
         dataSourceFactory.getUser(),
         dataSourceFactory.getPassword(),
-        dataSourceFactory.getProperties().get("hibernate.default_schema")
+        dataSourceFactory.getProperties().get(AvailableSettings.DEFAULT_SCHEMA)
     );
   }
 
@@ -123,4 +126,16 @@ public class DatabaseHelper {
     return database;
   }
 
+  @Override
+  public void close() throws IOException {
+    if (database == null) {
+      return;
+    }
+
+    try {
+      database.close();
+    } catch (DatabaseException e) {
+      throw new IOException(e);
+    }
+  }
 }

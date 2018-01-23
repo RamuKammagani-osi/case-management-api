@@ -16,6 +16,7 @@ import gov.ca.cwds.cm.web.rest.client.SafetyAlertsResourceTest;
 import gov.ca.cwds.cm.web.rest.system.SystemInformationResourceTest;
 import io.dropwizard.testing.ResourceHelpers;
 import io.dropwizard.testing.junit.DropwizardAppRule;
+import java.io.IOException;
 import javax.ws.rs.client.Client;
 import liquibase.exception.LiquibaseException;
 import org.glassfish.jersey.client.JerseyClient;
@@ -26,6 +27,11 @@ import org.junit.runners.Suite;
 
 /**
  * @author CWDS TPT-3 Team
+ *
+ * The suite is a part of unit tests. All the tests with "ResourceTest" postfix are excluded from
+ * default junit tests running and must be added to this suite.
+ * The suite sets up dropwizard app and inmemory db once for all the "ResourceTest" tests.
+ *
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
@@ -65,18 +71,32 @@ public class InMemoryIntegrationTestSuite {
     initCwsRs1Db();
   }
 
-  private static void initCwsRs1Db() throws LiquibaseException {
-    final DatabaseHelper cwsRs1DatabaseHelper = new DatabaseHelper(
-        IntegrationTestContextHolder.cmApiConfiguration.getCwsRsDataSourceFactory()
-    );
-    cwsRs1DatabaseHelper.runScript("liquibase/cwsrs1-database-master.xml");
+  private static void initCmsDb() throws LiquibaseException {
+    try (final DatabaseHelper cwsRs1DatabaseHelper = createCmsDbHelper()) {
+      cwsRs1DatabaseHelper.runScript("liquibase/cwscms_database_master.xml");
+    } catch (IOException e) {
+      throw new LiquibaseException(e);
+    }
   }
 
-  private static void initCmsDb() throws LiquibaseException {
-    final DatabaseHelper cmsDatabaseHelper = new DatabaseHelper(
+  private static void initCwsRs1Db() throws LiquibaseException {
+    try (final DatabaseHelper cwsRs1DatabaseHelper = createCwsRs1DbHelper()) {
+      cwsRs1DatabaseHelper.runScript("liquibase/cwsrs1-database-master.xml");
+    } catch (IOException e) {
+      throw new LiquibaseException(e);
+    }
+  }
+
+  private static DatabaseHelper createCwsRs1DbHelper() {
+    return new DatabaseHelper(
+        IntegrationTestContextHolder.cmApiConfiguration.getCwsRsDataSourceFactory()
+    );
+  }
+
+  private static DatabaseHelper createCmsDbHelper() {
+    return new DatabaseHelper(
         IntegrationTestContextHolder.cmApiConfiguration.getCmsDataSourceFactory()
     );
-    cmsDatabaseHelper.runScript("liquibase/cwscms_database_master.xml");
   }
 
 }
