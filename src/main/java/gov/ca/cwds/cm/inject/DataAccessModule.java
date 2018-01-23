@@ -16,6 +16,7 @@ import gov.ca.cwds.data.legacy.cms.entity.CaseLoadWeighting;
 import gov.ca.cwds.data.legacy.cms.entity.ChildClient;
 import gov.ca.cwds.data.legacy.cms.entity.Client;
 import gov.ca.cwds.data.legacy.cms.entity.ClientAddress;
+import gov.ca.cwds.data.legacy.cms.entity.ClientRelationship;
 import gov.ca.cwds.data.legacy.cms.entity.ClientScpEthnicity;
 import gov.ca.cwds.data.legacy.cms.entity.CountyLicenseCase;
 import gov.ca.cwds.data.legacy.cms.entity.DeliveredService;
@@ -45,6 +46,7 @@ import gov.ca.cwds.data.legacy.cms.entity.enums.IndividualType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.ActiveServiceComponentType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.ApprovalStatusType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.CaseClosureReasonType;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.ClientRelationshipType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.Country;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.County;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.DeathCircumstancesType;
@@ -139,7 +141,9 @@ public class DataAccessModule extends AbstractModule {
               MedicalEligibilityApplication.class,
               ServiceContactType.class,
               DeliveredService.class,
-              IndividualType.class
+              IndividualType.class,
+              ClientRelationship.class,
+              ClientRelationshipType.class
           )
           .build();
 
