@@ -149,7 +149,7 @@ public class DataAccessModule extends AbstractModule {
               CSECHistory.class,
               SexualExploitationType.class,
               ClientRelationship.class,
-              ClientRelationshipType.class
+              ClientRelationshipType.class,
               SexualExploitationType.class,
               SafetyAlert.class,
               SafetyAlertActivationReasonType.class

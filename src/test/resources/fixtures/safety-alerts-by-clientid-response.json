@@ -3,12 +3,14 @@
   "activation_date" : "2016-09-01",
   "activation_explanation_text_id" : "0Dz06wW000",
   "client_id" : "0Kk7CHj000",
+  "activation_reason_code" : 6403,
   "third_id" : "7vEL8AG0X5"
 }, {
   "activation_government_entity_code" : 1126,
   "activation_date" : "2013-01-28",
   "activation_explanation_text_id" : "0xvG9WT000",
   "client_id" : "0Kk7CHj000",
+  "activation_reason_code" : 6402,
   "deactivation_government_entity_code" : 1069,
   "deactivation_date" : "2022-01-28",
   "deactivation_explanation_text_id" : "0bqbhW1000",
