@@ -31,6 +31,7 @@ public class ChildClientResourceTest extends BaseResourceTest {
     runScripts(
         "liquibase/address/dml_address_test_data.xml",
         "liquibase/client/address/dml_client_address_test_data.xml",
+        "liquibase/client/relationship/client_relationship_test_data.xml",
         "liquibase/client/child_client_test_update.xml");
   }
 
@@ -134,9 +135,9 @@ public class ChildClientResourceTest extends BaseResourceTest {
   }
 
   @Test
-  public void getRelationshipsByClientId_success_whenRelationshipsExist() throws Exception {
+  public void testGetRelationshipsByClientId() throws Exception {
     // given
-    final String path = API.CHILD_CLIENTS + "/" + ChildClientResource.MOCK_CLIENT_ID +"/" + API.RELATIONSHIPS;
+    final String path = API.CHILD_CLIENTS + "/GmNMeSx0Hy/" + API.RELATIONSHIPS;
 
     // when
     final Response actualResult =
@@ -145,7 +146,7 @@ public class ChildClientResourceTest extends BaseResourceTest {
     // then
     assertResponseByFixturePath(
         actualResult,
-        "fixtures/child-client/getRelationshipsByClientId_success_whenRelationshipsExist.json");
+        "fixtures/child-client/getRelationshipsByClientId.json");
   }
 
   private ChildClientDTO getChildClientDTO(String clientId) {

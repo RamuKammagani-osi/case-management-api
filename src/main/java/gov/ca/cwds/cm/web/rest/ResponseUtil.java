@@ -42,6 +42,11 @@ public final class ResponseUtil {
         .build();
   }
 
+  public static Response responseOk(
+      final Collection<? extends gov.ca.cwds.rest.api.Response> collection) {
+    return Response.status(HTTP_CODE_OK).entity(collection).build();
+  }
+
   public static Response responseOrNotFound(final gov.ca.cwds.rest.api.Response[] response) {
     boolean isCollectionEmpty = response == null || response.length == 0;
     return Response.status(isCollectionEmpty ? HTTP_CODE_NOT_FOUND : HTTP_CODE_OK)

@@ -26,7 +26,7 @@ public class ClientRelationshipDTO extends BaseDTO implements RequestResponse {
 
   @Size(min = CMS_ID_LEN, max = CMS_ID_LEN)
   @ApiModelProperty(value = "ID. String of size 10", example = "AcB3Wu00Rx")
-  private String relationshipId;
+  private String id;
 
   @NotNull
   @Size(min = CMS_ID_LEN, max = CMS_ID_LEN)
@@ -45,9 +45,9 @@ public class ClientRelationshipDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(
       value = "SYS_ID number designated for each type of relationship between two CLIENTs "
           + "(e.g.,  Son/Father, Daughter/Father, Sister/Brother, etc.)."
-      + "Additional info can be reached from system-codes resource by 'CLNTRELC' key. Numeric",
+          + "Additional info can be reached from system-codes resource by 'CLNTRELC' key. Numeric",
       example = "285", required = true)
-  private Short relationshipTypeCode;
+  private Short typeCode;
 
   @NotNull
   @ApiModelProperty(
@@ -62,14 +62,14 @@ public class ClientRelationshipDTO extends BaseDTO implements RequestResponse {
       value = "The date the relationship began",
       example = "2000-10-20"
   )
-  private LocalDate relationshipStartDate;
+  private LocalDate startDate;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
   @ApiModelProperty(
       value = "The date the relationship ended",
       example = "2018-10-20"
   )
-  private LocalDate relationshipEndDate;
+  private LocalDate endDate;
 
   @NotNull
   @OneOf(
@@ -101,14 +101,14 @@ public class ClientRelationshipDTO extends BaseDTO implements RequestResponse {
     ClientRelationshipDTO that = (ClientRelationshipDTO) o;
     return Objects.equals(clientId, that.clientId) &&
         Objects.equals(relatedClientId, that.relatedClientId) &&
-        Objects.equals(relationshipTypeCode, that.relationshipTypeCode) &&
-        Objects.equals(relationshipStartDate, that.relationshipStartDate) &&
-        Objects.equals(relationshipEndDate, that.relationshipEndDate);
+        Objects.equals(typeCode, that.typeCode) &&
+        Objects.equals(startDate, that.startDate) &&
+        Objects.equals(endDate, that.endDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), clientId, relatedClientId, relationshipTypeCode,
-        relationshipStartDate, relationshipEndDate);
+    return Objects.hash(super.hashCode(), clientId, relatedClientId, typeCode,
+        startDate, endDate);
   }
 }
