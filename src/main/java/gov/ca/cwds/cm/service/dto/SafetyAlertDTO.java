@@ -34,7 +34,7 @@ public class SafetyAlertDTO extends BaseDTO implements Response {
             + "Additional info can be reached from system-codes resource by 'GVR_ENTC' key.",
     example = "1068"
   )
-  private Short activationGovermentEntityType;
+  private Short activationGovernmentEntityCode;
 
   @NotNull
   @Date
@@ -69,7 +69,7 @@ public class SafetyAlertDTO extends BaseDTO implements Response {
             + "Additional info can be reached from system-codes resource by 'ACTV_RNC' key.",
     example = "6401"
   )
-  private Short activationReasonType;
+  private Short activationReasonCode;
 
   @Size(max = 4)
   @ApiModelProperty(
@@ -81,7 +81,7 @@ public class SafetyAlertDTO extends BaseDTO implements Response {
             + "Additional info can be reached from system-codes resource by 'GVR_ENTC' key.",
     example = "1068"
   )
-  private Short deactivationGovermentEntityType;
+  private Short deactivationGovernmentEntityCode;
 
   @Date
   @ApiModelProperty(
