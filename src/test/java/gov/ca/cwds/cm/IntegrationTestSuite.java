@@ -2,7 +2,6 @@ package gov.ca.cwds.cm;
 
 import gov.ca.cwds.cm.integration.AddressResourceIT;
 import gov.ca.cwds.cm.integration.CaseResourceIT;
-import gov.ca.cwds.cm.integration.ChildClientResourceIT;
 import gov.ca.cwds.cm.integration.StaffPersonResourceIT;
 import gov.ca.cwds.cm.integration.SystemCodeResourceIT;
 import gov.ca.cwds.cm.test.RestClientTestRule;
@@ -25,7 +24,6 @@ import org.junit.runners.Suite;
     CaseResourceIT.class,
     StaffPersonResourceIT.class,
     SystemCodeResourceIT.class,
-    ChildClientResourceIT.class,
 })
 public class IntegrationTestSuite {
 
