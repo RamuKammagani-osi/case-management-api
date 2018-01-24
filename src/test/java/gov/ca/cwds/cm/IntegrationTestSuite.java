@@ -1,12 +1,12 @@
 package gov.ca.cwds.cm;
 
-import gov.ca.cwds.cm.integration.AddressResourceIT;
-import gov.ca.cwds.cm.integration.CaseResourceIT;
-import gov.ca.cwds.cm.integration.StaffPersonResourceIT;
-import gov.ca.cwds.cm.integration.SystemCodeResourceIT;
 import gov.ca.cwds.cm.test.RestClientTestRule;
 import gov.ca.cwds.cm.test.util.ConfigurationProvider;
 import gov.ca.cwds.cm.test.util.IntegrationTestContextHolder;
+import gov.ca.cwds.cm.web.rest.AddressResourceTest;
+import gov.ca.cwds.cm.web.rest.CaseResourceTest;
+import gov.ca.cwds.cm.web.rest.StaffPersonResourceTest;
+import gov.ca.cwds.cm.web.rest.SystemCodeResourceTest;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -20,10 +20,10 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    AddressResourceIT.class,
-    CaseResourceIT.class,
-    StaffPersonResourceIT.class,
-    SystemCodeResourceIT.class,
+    AddressResourceTest.class,
+    CaseResourceTest.class,
+    StaffPersonResourceTest.class,
+    SystemCodeResourceTest.class,
 })
 public class IntegrationTestSuite {
 

@@ -199,7 +199,6 @@ test {
     systemProperty 'java.net.preferIPv4Stack', 'true'
     exclude '**/SmokeTestSuite.class',
             '**/IntegrationTestSuite.class',
-            '**/*IT.class',
             '**/*ResourceTest.class'
     jacoco {
         excludes = ["**org/drools/**/*"]
