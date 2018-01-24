@@ -81,7 +81,7 @@ logging:
     "org.hibernate.SQL":
       level: INFO
     "org.hibernate.type.descriptor.sql":
-      level: INFO
+      level: DEBUG
     "AUDIT":
       level: ALL
     "gov.ca.cwds":

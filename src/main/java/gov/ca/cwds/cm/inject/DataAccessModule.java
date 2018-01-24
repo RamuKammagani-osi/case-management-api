@@ -37,6 +37,7 @@ import gov.ca.cwds.data.legacy.cms.entity.PlacementHomeProfile;
 import gov.ca.cwds.data.legacy.cms.entity.Referral;
 import gov.ca.cwds.data.legacy.cms.entity.ReferralAssignment;
 import gov.ca.cwds.data.legacy.cms.entity.ReferralClient;
+import gov.ca.cwds.data.legacy.cms.entity.SafetyAlert;
 import gov.ca.cwds.data.legacy.cms.entity.StaffPerson;
 import gov.ca.cwds.data.legacy.cms.entity.StaffPersonCaseLoad;
 import gov.ca.cwds.data.legacy.cms.entity.SubstituteCareProvider;
@@ -58,6 +59,7 @@ import gov.ca.cwds.data.legacy.cms.entity.syscodes.Language;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.MaritalStatus;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.NameType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.Religion;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.SafetyAlertActivationReasonType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.SecondaryAssignmentRoleType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.ServiceContactType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.SexualExploitationType;
@@ -143,7 +145,9 @@ public class DataAccessModule extends AbstractModule {
               DeliveredService.class,
               IndividualType.class,
               CSECHistory.class,
-              SexualExploitationType.class
+              SexualExploitationType.class,
+              SafetyAlert.class,
+              SafetyAlertActivationReasonType.class
           )
           .build();
 
