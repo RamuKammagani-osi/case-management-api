@@ -11,6 +11,7 @@ import gov.ca.cwds.cm.service.dto.ClientDTO;
 import gov.ca.cwds.cm.web.rest.AbstractIntegrationTest;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -18,10 +19,16 @@ import org.junit.Test;
 public class ClientResourceTest extends AbstractIntegrationTest {
 
   private static final String CLIENT_ID = "0Kk7CHj000";
+  private static final String LIQUIBASE_SCRIPT = "liquibase/client/client_test_get_for_client_endpoint.xml";
 
   @BeforeClass
-  public static void beforeClass() throws Exception {
-    DATABASE_HELPER_CMS.runScripts("liquibase/client/client_test_get_for_client_endpoint.xml");
+  public static void init() throws Exception {
+    DATABASE_HELPER_CMS.runScripts(LIQUIBASE_SCRIPT);
+  }
+
+  @AfterClass
+  public static void cleanUp() throws Exception {
+    DATABASE_HELPER_CMS.rollbackScripts(LIQUIBASE_SCRIPT);
   }
 
   @Test

@@ -156,6 +156,10 @@ public class ChildClientResourceTest extends AbstractIntegrationTest {
 
   @Test
   public void testGetRelationshipsByClientId() throws Exception {
+    // TODO(dd): update it to support integration testing
+    if (TestUtils.getApiUrl() != null) {
+      return;
+    }
     // given
     final String path = API.CHILD_CLIENTS + "/GmNMeSx0Hy/" + API.RELATIONSHIPS;
 

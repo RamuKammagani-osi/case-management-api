@@ -1,8 +1,6 @@
 package gov.ca.cwds.cm.web.rest.client;
 
 import static gov.ca.cwds.cm.test.util.AssertFixtureUtils.assertResponseByFixturePath;
-import static org.junit.Assert.assertEquals;
-import static gov.ca.cwds.cm.web.rest.utils.AssertFixtureUtils.assertResponseByFixturePath;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -26,13 +24,12 @@ public class SafetyAlertsResourceTest extends AbstractIntegrationTest {
 
   @BeforeClass
   public static void init() throws Exception {
-    setUpCms();
-    getCmsDatabaseHelper().runScript(LIQUIBASE_SCRIPT);
+    DATABASE_HELPER_CMS.runScript(LIQUIBASE_SCRIPT);
   }
 
   @AfterClass
   public static void cleanUp() throws LiquibaseException {
-    getCmsDatabaseHelper().rollback(LIQUIBASE_SCRIPT);
+    DATABASE_HELPER_CMS.rollbackScripts(LIQUIBASE_SCRIPT);
   }
 
   @Test
