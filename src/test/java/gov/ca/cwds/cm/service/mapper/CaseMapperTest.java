@@ -13,7 +13,7 @@ public class CaseMapperTest {
 
   @Before
   public void before(){
-    caseMapper = new  CaseMapperImpl();
+    caseMapper = new CaseMapperImpl();
   }
 
   @Test

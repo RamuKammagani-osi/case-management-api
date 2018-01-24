@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-  <changeSet id="ccsechistory_get_id" author="mzemlyanoi">
-
+  <changeSet id="get client safety alerts client data" author="TPT3_team">
     <insert tableName="CLIENT_T">
-      <column name="IDENTIFIER" value="BKk7CHj02Y"/>
+      <column name="IDENTIFIER" value="0Kk7CHj000" />
       <column name="ADJDEL_IND" value="null"/>
       <column name="ALN_REG_NO" value="111483672"/>
-      <column name="ADPTN_STCD" value="N"/>
+      <column name="ADPTN_STCD" value="N" />
       <column name="BIRTH_DT" value="1944-01-30"/>
       <column name="BR_FAC_NM" value="San Jose Medical Center"/>
       <column name="B_STATE_C" value="1823"/>
@@ -70,78 +70,15 @@
       <column name="HISP_UD_CD" value="A"/>
       <column name="SOCPLC_CD" value="M"/>
       <column name="CL_INDX_NO" value=" "/>
-      <column name="LST_UPD_TS" value="2000-03-17 17:01:54.924155"/>
+      <column name="LST_UPD_TS" value="2000-03-17 17:01:54.924155" />
       <column name="LST_UPD_ID" value="200"/>
     </insert>
 
-    <insert tableName="CHLD_CLT">
-      <column name="FKCLIENT_T" value="BKk7CHj02Y"/>
-      <column name="FC_ELIGT_B" value="Y"/>
-      <column name="EDONFL_IND" value="N"/>
-      <column name="HLONFL_IND" value="N"/>
-      <column name="CURNT_CSID" value="D9G54xH00Z"/>
-      <column name="DTH_CIRC" value="3145"/>
-      <column name="FC2_APLT_B" value="N"/>
-      <column name="ICWA_ELGCD" value="N"/>
-      <column name="MEDELIGT_B" value="N"/>
-      <column name="MNRMOM_IND" value="N"/>
-      <column name="PRG_TRMT_B" value="N"/>
-      <column name="PTRN_INT_B" value="N"/>
-      <column name="SAWS_CS_NO" value="35"/>
-      <column name="SAW1APLT_B" value="N"/>
-      <column name="SSI_SSPIND" value="N"/>
-      <column name="LST_UPD_ID" value="0JG"/>
-      <column name="ACQ_ED_DSC" value=""/>
-      <column name="ACQ_HTHDSC" value=""/>
-      <column name="HEPDOC_OLD" value=""/>
-      <column name="PRTLIM_IND" value="Y"/>
-      <column name="INDIAN_IND" value="N"/>
-      <column name="PREADPT_CD" value="N"/>
-      <column name="ADPT_AGE" value="12"/>
-      <column name="ADOPTBL_CD" value="NA"/>
-      <column name="DRMSHEPDOC" value="null"/>
-      <column name="BHIST_IND" value="N"/>
-      <column name="SFSURB_IND" value="N"/>
-      <column name="AWOL_AB_CD" value="N"/>
-      <column name="TRBA_NOT_B" value="N"/>
-      <column name="FSTAMP_IND" value="N"/>
-      <column name="DISABLD_CD" value="null"/>
-      <column name="CLG_IND" value="Y"/>
-      <column name="PSVOC_IND" value="Y"/>
-      <column name="TCADPT_IND" value="N"/>
-      <column name="ICADSL_IND" value="Y"/>
-      <column name="ICADSR_IND" value="Y"/>
-      <column name="LST_UPD_TS" value="2000-03-17 17:01:54.924156"/>
-      <column name="LST_UPD_ID" value="300"/>
-    </insert>
-
-    <insert tableName="CSECHIST">
-      <column name="FKCHLD_CLT" value="BKk7CHj02Y"/>
-      <column name="THIRD_ID" value="0000000000"/>
-      <column name="CREATN_TS" value="2004-06-14"/>
-      <column name="CSEC_TPC" value="6867"/>
-      <column name="START_DT" value="2009-06-14"/>
-      <column name="END_DT" value="2017-06-14"/>
-      <column name="LST_UPD_TS" value="2000-03-17 17:01:54.924156"/>
-      <column name="LST_UPD_ID" value="300"/>
-    </insert>
-
-    <insert tableName="CSECHIST">
-      <column name="FKCHLD_CLT" value="BKk7CHj02Y"/>
-      <column name="THIRD_ID" value="0000000000"/>
-      <column name="CREATN_TS" value="2004-06-14"/>
-      <column name="CSEC_TPC" value="6867"/>
-      <column name="START_DT" value="2010-06-14"/>
-      <column name="END_DT" value="2017-06-14"/>
-      <column name="LST_UPD_TS" value="2000-03-17 17:01:54.924156"/>
-      <column name="LST_UPD_ID" value="300"/>
-    </insert>
-
     <insert tableName="CLIENT_T">
-      <column name="IDENTIFIER" value="BKk7CHj01Y"/>
+      <column name="IDENTIFIER" value="0abcde000" />
       <column name="ADJDEL_IND" value="null"/>
       <column name="ALN_REG_NO" value="111483672"/>
-      <column name="ADPTN_STCD" value="N"/>
+      <column name="ADPTN_STCD" value="N" />
       <column name="BIRTH_DT" value="1944-01-30"/>
       <column name="BR_FAC_NM" value="San Jose Medical Center"/>
       <column name="B_STATE_C" value="1823"/>
@@ -202,60 +139,57 @@
       <column name="HISP_UD_CD" value="A"/>
       <column name="SOCPLC_CD" value="M"/>
       <column name="CL_INDX_NO" value=" "/>
-      <column name="LST_UPD_TS" value="2000-03-17 17:01:54.924155"/>
+      <column name="LST_UPD_TS" value="2000-03-17 17:01:54.924155" />
       <column name="LST_UPD_ID" value="200"/>
     </insert>
 
-    <insert tableName="CHLD_CLT">
-      <column name="FKCLIENT_T" value="BKk7CHj01Y"/>
-      <column name="FC_ELIGT_B" value="Y"/>
-      <column name="EDONFL_IND" value="N"/>
-      <column name="HLONFL_IND" value="N"/>
-      <column name="CURNT_CSID" value="D9G54xH00Z"/>
-      <column name="DTH_CIRC" value="3145"/>
-      <column name="FC2_APLT_B" value="N"/>
-      <column name="ICWA_ELGCD" value="N"/>
-      <column name="MEDELIGT_B" value="N"/>
-      <column name="MNRMOM_IND" value="N"/>
-      <column name="PRG_TRMT_B" value="N"/>
-      <column name="PTRN_INT_B" value="N"/>
-      <column name="SAWS_CS_NO" value="35"/>
-      <column name="SAW1APLT_B" value="N"/>
-      <column name="SSI_SSPIND" value="N"/>
-      <column name="LST_UPD_ID" value="0JG"/>
-      <column name="ACQ_ED_DSC" value=""/>
-      <column name="ACQ_HTHDSC" value=""/>
-      <column name="HEPDOC_OLD" value=""/>
-      <column name="PRTLIM_IND" value="Y"/>
-      <column name="INDIAN_IND" value="N"/>
-      <column name="PREADPT_CD" value="N"/>
-      <column name="ADPT_AGE" value="12"/>
-      <column name="ADOPTBL_CD" value="NA"/>
-      <column name="DRMSHEPDOC" value="null"/>
-      <column name="BHIST_IND" value="N"/>
-      <column name="SFSURB_IND" value="N"/>
-      <column name="AWOL_AB_CD" value="N"/>
-      <column name="TRBA_NOT_B" value="N"/>
-      <column name="FSTAMP_IND" value="N"/>
-      <column name="DISABLD_CD" value="null"/>
-      <column name="CLG_IND" value="Y"/>
-      <column name="PSVOC_IND" value="Y"/>
-      <column name="TCADPT_IND" value="N"/>
-      <column name="ICADSL_IND" value="Y"/>
-      <column name="ICADSR_IND" value="Y"/>
-      <column name="LST_UPD_TS" value="2000-03-17 17:01:54.924156"/>
-      <column name="LST_UPD_ID" value="300"/>
-    </insert>
+    <rollback>
+      <delete tableName="CLIENT_T">
+        <where>IDENTIFIER = '0Kk7CHj000'</where>
+      </delete>
+      <delete tableName="CLIENT_T">
+        <where>IDENTIFIER = '0abcde000'</where>
+      </delete>
+    </rollback>
+  </changeSet>
 
-    <insert tableName="CSECHIST">
-      <column name="FKCHLD_CLT" value="BKk7CHj01Y"/>
-      <column name="THIRD_ID" value="0000000000"/>
-      <column name="CREATN_TS" value="2004-06-14"/>
-      <column name="CSEC_TPC" value="6867"/>
-      <column name="START_DT" value="2010-06-14"/>
-      <column name="END_DT" value="2017-06-14"/>
-      <column name="LST_UPD_TS" value="2000-03-17 17:01:54.924156"/>
-      <column name="LST_UPD_ID" value="300"/>
-    </insert>
+  <changeSet id="get client safety alerts data" author="TPT-3 Team">
+    <sql>
+      INSERT INTO ${database.defaultSchemaName}.SAF_ALRT
+      (FKCLIENT_T, THIRD_ID, ACTV_GEC, ACTV_DT, ACTV_TXT, ACTV_RNC, DACT_GEC, DACT_DT, DACT_TXT, LST_UPD_ID, LST_UPD_TS)
+      VALUES('0Kk7CHj000', '7vEL8AG0X5', 1088, '2016-09-01', '0Dz06wW000', 6403, NULL, NULL, NULL, '000', '2016-09-08 08:39:49.927');
+
+      INSERT INTO ${database.defaultSchemaName}.SAF_ALRT
+      (FKCLIENT_T, THIRD_ID, ACTV_GEC, ACTV_DT, ACTV_TXT, ACTV_RNC, DACT_GEC, DACT_DT, DACT_TXT, LST_UPD_ID, LST_UPD_TS)
+      VALUES('0Kk7CHj000', '7MPwBxx00E', 1126, '2013-01-28', '0xvG9WT000', 6402, 1069, '2022-01-28', '0bqbhW1000', '000', '2013-01-28 09:42:54.275');
+
+      INSERT INTO ${database.defaultSchemaName}.LONG_TXT
+      (IDENTIFIER, LST_UPD_ID, LST_UPD_TS, CNTY_SPFCD, TTEXT_DSC)
+      VALUES('0Dz06wW000', '000', '2016-09-08 08:39:49.927', '20', '''tommy gun''');
+
+      INSERT INTO ${database.defaultSchemaName}.LONG_TXT
+      (IDENTIFIER, LST_UPD_ID, LST_UPD_TS, CNTY_SPFCD, TTEXT_DSC)
+      VALUES('0xvG9WT000', '000', '2013-01-28 09:42:54.275', '99', '''Very Dangerous|''');
+
+      INSERT INTO ${database.defaultSchemaName}.LONG_TXT
+      (IDENTIFIER, LST_UPD_ID, LST_UPD_TS, CNTY_SPFCD, TTEXT_DSC)
+      VALUES('0bqbhW1000', '000', '2001-01-24 09:09:02.815', '28', '''Arrange for parents to have demonstrating home maker come to the home twice a week.''');
+
+    </sql>
+
+    <rollback>
+      <delete tableName="SAF_ALRT">
+        <where>FKCLIENT_T = '0Kk7CHj000'</where>
+      </delete>
+      <delete tableName="LONG_TXT">
+        <where>IDENTIFIER = '0Dz06wW000'</where>
+      </delete>
+      <delete tableName="LONG_TXT">
+        <where>IDENTIFIER = '0xvG9WT000'</where>
+      </delete>
+      <delete tableName="LONG_TXT">
+        <where>IDENTIFIER = '0bqbhW1000'</where>
+      </delete>
+    </rollback>
   </changeSet>
 </databaseChangeLog>
