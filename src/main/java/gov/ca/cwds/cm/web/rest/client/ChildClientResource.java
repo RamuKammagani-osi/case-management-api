@@ -110,8 +110,8 @@ public class ChildClientResource {
   @Path("/{" + ID + "}/" + API.RELATIONSHIPS)
   @ApiResponses(
       value = {
-          @ApiResponse(code = 401, message = "Not Authenticated"),
-          @ApiResponse(code = 403, message = "Unauthorized"),
+        @ApiResponse(code = 401, message = "Not Authenticated"),
+        @ApiResponse(code = 403, message = "Unauthorized"),
       }
   )
   @ApiOperation(
