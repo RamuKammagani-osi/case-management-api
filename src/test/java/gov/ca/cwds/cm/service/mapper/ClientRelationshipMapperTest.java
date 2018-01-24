@@ -40,7 +40,7 @@ public class ClientRelationshipMapperTest {
 
   @Test
   public void testFromRightRelationshipToDto() {
-    ClientRelationshipDTO dto = mapper.fromRightRelationshipToDto(clientRelationship());
+    ClientRelationshipDTO dto = mapper.fromRelationshipByLeftSideToDto(clientRelationship());
 
     assertNotNull(dto);
     assertEquals(RELATIONSHIP_ID, dto.getId());
@@ -62,7 +62,7 @@ public class ClientRelationshipMapperTest {
 
   @Test
   public void testFromLeftRelationshipToDto() {
-    ClientRelationshipDTO dto = mapper.fromLeftRelationshipToDto(clientRelationship());
+    ClientRelationshipDTO dto = mapper.fromRelationshipByRightSideToDto(clientRelationship());
 
     assertNotNull(dto);
     assertEquals(RELATIONSHIP_ID, dto.getId());

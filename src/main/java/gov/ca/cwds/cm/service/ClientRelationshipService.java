@@ -5,6 +5,7 @@ import gov.ca.cwds.cm.service.dto.ClientRelationshipDTO;
 import gov.ca.cwds.cm.service.mapper.ClientRelationshipMapper;
 import gov.ca.cwds.data.legacy.cms.dao.ClientRelationshipDao;
 import gov.ca.cwds.data.legacy.cms.entity.ClientRelationship;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
@@ -28,21 +29,23 @@ public class ClientRelationshipService extends CrudServiceAdapter {
 
   public List<ClientRelationshipDTO> findByClientId(final String clientId) {
 
-    List<ClientRelationship> rightRelationships = clientRelationshipDao
-        .findCurrentRightRelationships(clientId);
+    LocalDate localDate = LocalDate.now();
 
-    List<ClientRelationshipDTO> rightRelationshipDtos =
-        rightRelationships.stream().map(clientRelationshipMapper::fromRightRelationshipToDto)
+    List<ClientRelationship> relationshipsByLeftSide = clientRelationshipDao
+        .findRelationshipsByLeftSide(clientId, localDate);
+
+    List<ClientRelationshipDTO> relationshipByLeftSideDtos =
+        relationshipsByLeftSide.stream().map(clientRelationshipMapper::fromRelationshipByLeftSideToDto)
             .collect(Collectors.toList());
 
-    List<ClientRelationship> leftRelationships = clientRelationshipDao
-        .findCurrentLeftRelationships(clientId);
+    List<ClientRelationship> relationshipsByRightSide = clientRelationshipDao
+        .findRelationshipsByRightSide(clientId, localDate);
 
-    List<ClientRelationshipDTO>  leftRelationshipDtos =
-        leftRelationships.stream().map(clientRelationshipMapper::fromLeftRelationshipToDto)
+    List<ClientRelationshipDTO>  relationshipByRightSideDtos =
+        relationshipsByRightSide.stream().map(clientRelationshipMapper::fromRelationshipByRightSideToDto)
             .collect(Collectors.toList());
 
-    List<ClientRelationshipDTO> result = ListUtils.union(rightRelationshipDtos,leftRelationshipDtos);
+    List<ClientRelationshipDTO> result = ListUtils.union(relationshipByLeftSideDtos,relationshipByRightSideDtos);
 
     return ImmutableList.copyOf(result);
   }
