@@ -184,6 +184,7 @@ shadowJar {
         attributes 'Main-Class': mainClassName
     }
     version = ''
+    zip64 = true
 }
 
 run {
