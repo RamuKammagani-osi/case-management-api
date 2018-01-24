@@ -36,9 +36,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-/**
- * @author CWDS TPT-3 Team
- */
+/** @author CWDS TPT-3 Team */
 @Api(tags = CHILD_CLIENTS, value = CHILD_CLIENTS)
 @Path(value = CHILD_CLIENTS)
 @Produces(MediaType.APPLICATION_JSON)
@@ -65,18 +63,19 @@ public class ChildClientResource {
   @GET
   @Path("/{" + ID + "}")
   @ApiResponses(
-      value = {
-          @ApiResponse(code = 401, message = "Not Authorized"),
-          @ApiResponse(code = 404, message = "Not found"),
-          @ApiResponse(code = 406, message = "Accept Header not supported")
-      }
+    value = {
+      @ApiResponse(code = 401, message = "Not Authorized"),
+      @ApiResponse(code = 404, message = "Not found"),
+      @ApiResponse(code = 406, message = "Accept Header not supported")
+    }
   )
   @ApiOperation(value = "Find childClient by client ID", response = ChildClientDTO.class)
   @UnitOfWork(CMS)
   @Timed
   public Response get(
       @PathParam("id")
-      @ApiParam(required = true, value = "The unique client ID", example = "GmNMeSx0Hy") final String id) {
+          @ApiParam(required = true, value = "The unique client ID", example = "GmNMeSx0Hy")
+          final String id) {
     final ClientParameterObject clientParameterObject = new ClientParameterObject();
     clientParameterObject.setClientId(id);
     final gov.ca.cwds.rest.api.Response clientDTO =
@@ -87,21 +86,22 @@ public class ChildClientResource {
   @GET
   @Path("/{" + ID + "}/" + API.ADDRESSES)
   @ApiResponses(
-      value = {
-          @ApiResponse(code = 401, message = "Not Authenticated"),
-          @ApiResponse(code = 403, message = "Unauthorized"),
-          @ApiResponse(code = 404, message = "Not found")
-      }
+    value = {
+      @ApiResponse(code = 401, message = "Not Authenticated"),
+      @ApiResponse(code = 403, message = "Unauthorized"),
+      @ApiResponse(code = 404, message = "Not found")
+    }
   )
   @ApiOperation(
-      value = "ClientAddresses of ChildClient by client Id",
-      response = ClientAddressDTO.class
+    value = "ClientAddresses of ChildClient by client Id",
+    response = ClientAddressDTO.class
   )
   @UnitOfWork(CMS)
   @Timed
   public Response getAddressesByClientId(
       @PathParam("id")
-      @ApiParam(required = true, value = "The unique client ID", example = "GmNMeSx0Hy") final String id) {
+          @ApiParam(required = true, value = "The unique client ID", example = "GmNMeSx0Hy")
+          final String id) {
     final Collection<ClientAddressDTO> addresses = clientAddressService.findByClientId(id);
     return ResponseUtil.responseOrNotFound(addresses);
   }
@@ -115,8 +115,8 @@ public class ChildClientResource {
       }
   )
   @ApiOperation(
-      value = "ClientRelationships of ChildClient by client Id",
-      response = ClientRelationshipDTO.class
+    value = "ClientRelationships of ChildClient by client Id",
+    response = ClientRelationshipDTO.class
   )
   @UnitOfWork(CMS)
   @Timed
@@ -132,19 +132,20 @@ public class ChildClientResource {
   @Produces(MediaType.APPLICATION_JSON)
   @Timed
   @ApiResponses(
-      value = {
-          @ApiResponse(code = 400, message = "Bad request"),
-          @ApiResponse(code = 404, message = "Not Found"),
-          @ApiResponse(code = 401, message = "Not Authorized"),
-          @ApiResponse(code = 406, message = "Accept Header not supported")
-      }
+    value = {
+      @ApiResponse(code = 400, message = "Bad request"),
+      @ApiResponse(code = 404, message = "Not Found"),
+      @ApiResponse(code = 401, message = "Not Authorized"),
+      @ApiResponse(code = 406, message = "Accept Header not supported")
+    }
   )
   @UnitOfWork(CMS)
   @ApiOperation(value = "Update client", response = ChildClientDTO.class)
   public Response update(
       @ApiParam(name = "client", value = "The Form object") @Valid ChildClientDTO childClient,
       @PathParam("id")
-      @ApiParam(required = true, value = "The unique client ID", example = "GmNMeSx0Hy") final String id)
+          @ApiParam(required = true, value = "The unique client ID", example = "GmNMeSx0Hy")
+          final String id)
       throws DataAccessServicesException {
     return ResponseUtil.responseOrNotFound(childClientService.update(id, childClient));
   }

@@ -88,7 +88,7 @@ public class ChildClientDTOTest {
     dto.setCreationDate(LocalDate.of(2010, 10, 10));
     dto.setDeathDate(LocalDate.of(2010, 10, 10));
     dto.setDeathReason("U8SxGBF00c");
-    dto.setDriverLicensNumber("987654321");
+    dto.setDriverLicenseNumber("987654321");
     dto.setDriverLicenseStateCodeType((short) 1828);
     dto.setGenderCode("UNKNOWN");
     dto.setImmigrationCountryCodeType((short) 563);

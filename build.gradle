@@ -197,7 +197,8 @@ runShadow {
 
 test {
     systemProperty 'java.net.preferIPv4Stack', 'true'
-    exclude '**/*IT*'
+//    systemProperty 'api.url', 'http://localhost:8080/'
+    exclude '**/*IT.*', '**/IntegrationTestSuite.class'
     jacoco {
         excludes = ["**org/drools/**/*"]
     }
@@ -213,6 +214,8 @@ jar {
 task integrationTest(type: Test, dependsOn: testClasses) {
     // URL where integration tests will be pointed to (may be changed in gradle.properties)
     systemProperty 'api.url', project.property('api.url')
+    include '**/IntegrationTestSuite.*'
+    outputs.upToDateWhen { false }
 }
 
 task smokeTest(type: Test) {

@@ -2,6 +2,7 @@ package gov.ca.cwds.cm.inject;
 
 import com.google.inject.AbstractModule;
 import gov.ca.cwds.cm.service.mapper.AddressMapper;
+import gov.ca.cwds.cm.service.mapper.CSECHistoryMapper;
 import gov.ca.cwds.cm.service.mapper.ChildClientMapper;
 import gov.ca.cwds.cm.service.mapper.CaseMapper;
 import gov.ca.cwds.cm.service.mapper.ClientAddressMapper;
@@ -31,6 +32,7 @@ public class MappingModule extends AbstractModule {
     bindMapperAsEagerSingleton(SystemCodeMapper.class);
     bindMapperAsEagerSingleton(ReferralMapper.class);
     bindMapperAsEagerSingleton(ReferralByStaffMapper.class);
+    bindMapperAsEagerSingleton(CSECHistoryMapper.class);
     bindMapperAsEagerSingleton(ClientRelationshipMapper.class);
   }
 

@@ -3,15 +3,16 @@ package gov.ca.cwds.cm.web.rest;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
+import gov.ca.cwds.cm.CmApiConfiguration;
+import gov.ca.cwds.cm.web.rest.utils.TestUtils;
 import gov.ca.cwds.security.jwt.JwtConfiguration;
 import gov.ca.cwds.security.jwt.JwtService;
-import gov.ca.cwds.cm.CmApiConfiguration;
-import gov.ca.cwds.cm.web.rest.utils.TestModeUtils;
+import gov.ca.cwds.util.Require;
+import io.dropwizard.jackson.Jackson;
 import io.dropwizard.testing.junit.DropwizardAppRule;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URI;
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
 import java.util.Properties;
@@ -19,7 +20,6 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
-import org.apache.commons.lang3.StringUtils;
 import org.glassfish.jersey.client.ClientProperties;
 import org.glassfish.jersey.client.JerseyClientBuilder;
 import org.junit.rules.TestRule;
@@ -35,24 +35,34 @@ public class RestClientTestRule implements TestRule {
 
   private static final Logger LOG = LoggerFactory.getLogger(RestClientTestRule.class);
 
-  private final DropwizardAppRule<CmApiConfiguration> dropWizardApplication;
-
+  private final ObjectMapper mapper;
+  private final String apiUrl;
+  private final String token;
   private Client client;
-  private ObjectMapper mapper;
-  private String token;
+
+  public RestClientTestRule() {
+    token = initToken();
+    mapper = Jackson.newObjectMapper();
+    apiUrl = TestUtils.getApiUrl();
+    Require.requireNotNullAndNotEmpty(apiUrl);
+  }
 
   public RestClientTestRule(DropwizardAppRule<CmApiConfiguration> dropWizardApplication) {
-    this.dropWizardApplication = dropWizardApplication;
-    if (TestModeUtils.isIntegrationTestsMode()) {
-      try {
-        token = generateToken();
-      } catch (Exception e) {
-        LOG.warn("Cannot generate token");
-      }
+    token = initToken();
+    mapper = dropWizardApplication.getObjectMapper();
+    apiUrl = String.format("http://localhost:%s/", dropWizardApplication.getLocalPort());
+  }
+
+  private String initToken() {
+    try {
+      return generateToken();
+    } catch (Exception e) {
+      LOG.warn("Cannot generate token");
+      return null;
     }
   }
 
-  public String generateToken() throws Exception {
+  private String generateToken() throws Exception {
     JwtConfiguration configuration = getJwtConfiguration();
     JwtService jwtService = new JwtService(configuration);
     return jwtService.generate("id", "subject", "identity");
@@ -86,24 +96,8 @@ public class RestClientTestRule implements TestRule {
   }
 
   public WebTarget target(String pathInfo) {
-    String restUrl = getUriString() + pathInfo;
+    String restUrl = apiUrl + pathInfo;
     return client.target(restUrl).queryParam("token", token).register(new LoggingFilter());
-  }
-
-  protected String getUriString() {
-    String serverUrlStr = System.getProperty(TestModeUtils.API_URL);
-    if (StringUtils.isEmpty(serverUrlStr)) {
-      serverUrlStr = composeUriString();
-    }
-    return serverUrlStr;
-  }
-
-  protected URI getServerUrl() {
-    return dropWizardApplication.getEnvironment().getApplicationContext().getServer().getURI();
-  }
-
-  protected String composeUriString() {
-    return String.format("http://localhost:%s/", dropWizardApplication.getLocalPort());
   }
 
   public ObjectMapper getMapper() {
@@ -117,12 +111,12 @@ public class RestClientTestRule implements TestRule {
       public void evaluate() throws Throwable {
 
         JerseyClientBuilder clientBuilder = new JerseyClientBuilder()
-                .property(ClientProperties.CONNECT_TIMEOUT, 5000)
-                .property(ClientProperties.READ_TIMEOUT, 20000)
-                .hostnameVerifier((hostName, sslSession) -> {
-                  // Just ignore host verification for test purposes
-                  return true;
-                });
+            .property(ClientProperties.CONNECT_TIMEOUT, 5000)
+            .property(ClientProperties.READ_TIMEOUT, 20000)
+            .hostnameVerifier((hostName, sslSession) -> {
+              // Just ignore host verification for test purposes
+              return true;
+            });
 
         client = clientBuilder.build();
 
@@ -140,8 +134,6 @@ public class RestClientTestRule implements TestRule {
         }};
 
         client.getSslContext().init(null, trustAllCerts, new SecureRandom());
-
-        mapper = dropWizardApplication.getObjectMapper();
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         client.register(new JacksonJsonProvider(mapper));
         statement.evaluate();
