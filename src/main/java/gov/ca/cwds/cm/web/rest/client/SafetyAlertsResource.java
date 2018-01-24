@@ -58,7 +58,7 @@ public class SafetyAlertsResource {
   @Timed
   public Response get(
       @PathParam("id")
-      @ApiParam(required = true, value = "The unique client ID", example = "0YIPkZU0S0")
+      @ApiParam(required = true, value = "The unique client ID", example = "R06FKZ20X5")
       final String id) {
     final Collection<SafetyAlert> safetyAlerts = safetyAlertService.findSafetyAlertsByClientId(id);
     final Collection<SafetyAlertDTO> results = safetyAlertMapper.toDto(safetyAlerts);
