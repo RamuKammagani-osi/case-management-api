@@ -1,14 +1,15 @@
 package gov.ca.cwds.cm.web.rest;
 
-import static gov.ca.cwds.cm.web.rest.utils.AssertResponseHelper.assertEqualsResponse;
+import static gov.ca.cwds.cm.test.util.AssertFixtureUtils.assertResponseByFixturePath;
+import static gov.ca.cwds.cm.test.util.AssertResponseHelper.assertEqualsResponse;
 import static io.dropwizard.testing.FixtureHelpers.fixture;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import gov.ca.cwds.cm.BaseResourceTest;
 import gov.ca.cwds.cm.Constants;
 import gov.ca.cwds.cm.Constants.API;
 import gov.ca.cwds.cm.service.dto.CaseDTO;
+import gov.ca.cwds.cm.test.util.TestUtils;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.InternalServerErrorException;
 import javax.ws.rs.client.Entity;
@@ -16,26 +17,39 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import liquibase.exception.LiquibaseException;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class CaseResourceTest extends BaseResourceTest {
+public class CaseResourceTest extends AbstractIntegrationTest {
 
-  public static final String CASE_ID = "ArgnUzi09L";
+  private static final int UNPROCESSABLE_ENTITY_STATUS_CODE = 422;
+  private static final String CASE_ID = "0rgnUzi000";
+  private static final String[] LIQUIBASE_SCRIPTS = {
+      "liquibase/client/client_test_get.xml",
+      "liquibase/client/child_client_test_get.xml",
+      "liquibase/case/case_test.xml",
+  };
 
   @BeforeClass
-  public static void beforeClass() throws Exception {
-    setUpCms();
-    setUpDb();
+  public static void onBeforeClass() throws LiquibaseException {
+    DATABASE_HELPER_CMS.runScripts(LIQUIBASE_SCRIPTS);
+  }
+
+  @AfterClass
+  public static void onAfterClass() throws LiquibaseException {
+    DATABASE_HELPER_CMS.rollbackScripts(LIQUIBASE_SCRIPTS);
   }
 
   @Test
   public void testGetCaseById() throws Exception {
     WebTarget target = clientTestRule.target(Constants.API.CASES + "/" + CASE_ID);
     Response response = target.request(MediaType.APPLICATION_JSON).get();
-    CaseDTO caseDTO = response.readEntity(CaseDTO.class);
-    String fixture = fixture("fixtures/case-by-id-response.json");
-    assertEqualsResponse(fixture, transformDTOtoJSON(caseDTO));
+    assertResponseByFixturePath(
+        response,
+        "fixtures/case-by-id-response.json"
+    );
   }
 
   @Test
@@ -105,8 +119,8 @@ public class CaseResourceTest extends BaseResourceTest {
     caseDTO.setCountryCode((short) 563);
     caseDTO.setCountySpecificCode("10");
     caseDTO.setDrmsNotesDocId("At9HoSn0WJ");
-    caseDTO.setEmancipationDate(localDate("2018-10-20"));
-    caseDTO.setEndDate(localDate("2018-10-20"));
+    caseDTO.setEmancipationDate(TestUtils.localDate("2018-10-20"));
+    caseDTO.setEndDate(TestUtils.localDate("2018-10-20"));
     caseDTO.setChildClientId("8m7hS7i07n");
     caseDTO.setReferralId("7Rgxy9S00T");
     caseDTO.setStaffPersonId("07n");
@@ -115,13 +129,13 @@ public class CaseResourceTest extends BaseResourceTest {
     caseDTO.setLimitedAccessDesc("Text");
     caseDTO.setLimitedAccessCountyCode((short) 1068);
     caseDTO.setCaseName("Sibling Hanson");
-    caseDTO.setNextTilpDueDate(localDate("2018-10-24"));
-    caseDTO.setProjectedEndDate(localDate("2018-10-23"));
+    caseDTO.setNextTilpDueDate(TestUtils.localDate("2018-10-24"));
+    caseDTO.setProjectedEndDate(TestUtils.localDate("2018-10-23"));
     caseDTO.setResponsibleAgency("PRIVATE_ADOPTION_AGENCY");
-    caseDTO.setStartDate(localDate("2016-10-23"));
+    caseDTO.setStartDate(TestUtils.localDate("2016-10-23"));
     caseDTO.setStateCode((short) 1828);
     caseDTO.setActiveServiceComponentCode((short)1692);
-    caseDTO.setActiveServiceComponentStartDate(localDate("2016-10-23"));
+    caseDTO.setActiveServiceComponentStartDate(TestUtils.localDate("2016-10-23"));
 
     return caseDTO;
   }

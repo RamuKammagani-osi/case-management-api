@@ -1,11 +1,11 @@
 package gov.ca.cwds.cm.web.rest.client;
 
-import static gov.ca.cwds.cm.web.rest.utils.AssertFixtureUtils.assertResponseByFixturePath;
+import static gov.ca.cwds.cm.test.util.AssertFixtureUtils.assertResponseByFixturePath;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import gov.ca.cwds.cm.BaseResourceTest;
 import gov.ca.cwds.cm.Constants.API;
+import gov.ca.cwds.cm.web.rest.AbstractIntegrationTest;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import liquibase.exception.LiquibaseException;
@@ -14,7 +14,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /** @author CWDS TPT-3 Team */
-public class SafetyAlertsResourceTest extends BaseResourceTest {
+public class SafetyAlertsResourceTest extends AbstractIntegrationTest {
 
   public static final String CLIENT_WITH_ALERTS = "0Kk7CHj000";
   public static final String CLIENT_WITH_NO_ALERTS = "0abcde000";
@@ -24,13 +24,12 @@ public class SafetyAlertsResourceTest extends BaseResourceTest {
 
   @BeforeClass
   public static void init() throws Exception {
-    setUpCms();
-    getCmsDatabaseHelper().runScript(LIQUIBASE_SCRIPT);
+    DATABASE_HELPER_CMS.runScript(LIQUIBASE_SCRIPT);
   }
 
   @AfterClass
   public static void cleanUp() throws LiquibaseException {
-    getCmsDatabaseHelper().rollback(LIQUIBASE_SCRIPT);
+    DATABASE_HELPER_CMS.rollbackScripts(LIQUIBASE_SCRIPT);
   }
 
   @Test

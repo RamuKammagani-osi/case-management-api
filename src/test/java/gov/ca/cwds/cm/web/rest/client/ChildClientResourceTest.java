@@ -1,51 +1,67 @@
 package gov.ca.cwds.cm.web.rest.client;
 
-import static gov.ca.cwds.cm.web.rest.utils.AssertFixtureUtils.assertResponseByFixturePath;
-import static gov.ca.cwds.cm.web.rest.utils.AssertResponseHelper.assertEqualsResponse;
+import static gov.ca.cwds.cm.test.util.AssertFixtureUtils.assertResponseByFixturePath;
+import static gov.ca.cwds.cm.test.util.AssertResponseHelper.assertEqualsResponse;
 import static gov.ca.cwds.security.test.TestSecurityFilter.PATH_TO_PRINCIPAL_FIXTURE;
 import static io.dropwizard.testing.FixtureHelpers.fixture;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-import gov.ca.cwds.cm.BaseResourceTest;
 import gov.ca.cwds.cm.Constants.API;
 import gov.ca.cwds.cm.service.dto.ChildClientDTO;
+import gov.ca.cwds.cm.test.util.TestUtils;
+import gov.ca.cwds.cm.web.rest.AbstractIntegrationTest;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 /** @author CWDS TPT-3 Team */
-public class ChildClientResourceTest extends BaseResourceTest {
+public class ChildClientResourceTest extends AbstractIntegrationTest {
 
-  public static final String CLIENT_ID = "BKk7CHj00Z";
+  private static final String CLIENT_ID = "0Kk7CHj000";
+  private static final String[] LIQUIBASE_SCRIPTS = {
+      "liquibase/client/address/dml_client_address_test_data.xml",
+      "liquibase/client/child_client_test_update.xml",
+      "liquibase/client/relationship/client_relationship_test_data.xml",
+      "liquibase/staff-person/staff-person.xml",
+  };
+  private static final String[] LIQUIBASE_SCRIPT_RS = {
+      "liquibase/client/client-permissions.xml"
+  };
 
   @BeforeClass
   public static void beforeClass() throws Exception {
-    setUpCwsRs1();
-    setUpCms();
-    setUpDb();
-    runScripts(
-        "liquibase/address/dml_address_test_data.xml",
-        "liquibase/client/address/dml_client_address_test_data.xml",
-        "liquibase/client/relationship/client_relationship_test_data.xml",
-        "liquibase/client/child_client_test_update.xml");
+    DATABASE_HELPER_CMS.runScripts(LIQUIBASE_SCRIPTS);
+    DATABASE_HELPER_RS1.runScripts(LIQUIBASE_SCRIPT_RS);
+  }
+
+  @AfterClass
+  public static void afterClass() throws Exception {
+    DATABASE_HELPER_CMS.rollbackScripts(LIQUIBASE_SCRIPTS);
+    DATABASE_HELPER_RS1.rollbackScripts(LIQUIBASE_SCRIPT_RS);
   }
 
   @Test
   public void getChildClientById_success_whenAuthorizedUser() throws Exception {
+    // skip for integration test
+    // TODO(dd): update when integration tests support authorization
+    if (TestUtils.getApiUrl() != null) {
+      return;
+    }
+
     // given
     // when
-    final ChildClientDTO actual =
-        clientTestRule
-            .target(API.CHILD_CLIENTS + "/" + CLIENT_ID)
-            .queryParam(PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/0Ki-all-authorized.json")
-            .request(MediaType.APPLICATION_JSON)
-            .get()
-            .readEntity(ChildClientDTO.class);
+    final ChildClientDTO actual = clientTestRule
+        .target(API.CHILD_CLIENTS + "/" + CLIENT_ID)
+        .queryParam(PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/000-all-authorized.json")
+        .request(MediaType.APPLICATION_JSON)
+        .get()
+        .readEntity(ChildClientDTO.class);
 
     // then
     final String expectedFixture = fixture("fixtures/child-client-by-id-response.json");
@@ -56,11 +72,10 @@ public class ChildClientResourceTest extends BaseResourceTest {
   public void getChildClientById_notAuthorized_whenUnauthorizedUser() throws Exception {
     // given
     // when
-    final Response response =
-        clientTestRule
-            .target(API.CHILD_CLIENTS + "/" + CLIENT_ID)
-            .request(MediaType.APPLICATION_JSON)
-            .get();
+    final Response response = clientTestRule
+        .target(API.CHILD_CLIENTS + "/" + CLIENT_ID)
+        .request(MediaType.APPLICATION_JSON)
+        .get();
 
     // then
     assertThat(response.getStatus(), is(403));
@@ -68,17 +83,22 @@ public class ChildClientResourceTest extends BaseResourceTest {
 
   @Test
   public void testUpdateChildClient() throws Exception {
-    ChildClientDTO childClientDTO = getChildClientDTO("BKk7CHj00A");
+    // skip for integration test. Authorization is not supported for the moment
+    // TODO(dd): update when integration tests support authorization
+    if (TestUtils.getApiUrl() != null) {
+      return;
+    }
+
+    ChildClientDTO childClientDTO = getChildClientDTO("0Kk7CHj000");
     enrichForUpdate(childClientDTO);
 
-    WebTarget target = clientTestRule.target(API.CHILD_CLIENTS + "/BKk7CHj00A");
-    target
-        .queryParam(PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/0Ki-all-authorized.json")
+    clientTestRule.target(API.CHILD_CLIENTS + "/0Kk7CHj000")
+        .queryParam(PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/000-all-authorized.json")
         .request(MediaType.APPLICATION_JSON_TYPE)
         .put(Entity.entity(childClientDTO, MediaType.APPLICATION_JSON_TYPE), ChildClientDTO.class);
 
     String fixture = fixture("fixtures/child-client-after-update-response.json");
-    ChildClientDTO clientAfterUpdate = getChildClientDTO("BKk7CHj00A");
+    ChildClientDTO clientAfterUpdate = getChildClientDTO("0Kk7CHj000");
     assertEqualsResponse(fixture, transformDTOtoJSON(clientAfterUpdate));
   }
 
@@ -109,7 +129,7 @@ public class ChildClientResourceTest extends BaseResourceTest {
   @Test
   public void getAddressesByClientId_success_whenAddressesExist() throws Exception {
     // given
-    final String path = API.CHILD_CLIENTS + "/GmNMeSx0Hy/" + API.ADDRESSES;
+    final String path = API.CHILD_CLIENTS + "/0mNMeSx000/" + API.ADDRESSES;
 
     // when
     final Response actualResult =
@@ -136,6 +156,10 @@ public class ChildClientResourceTest extends BaseResourceTest {
 
   @Test
   public void testGetRelationshipsByClientId() throws Exception {
+    // TODO(dd): update it to support integration testing
+    if (TestUtils.getApiUrl() != null) {
+      return;
+    }
     // given
     final String path = API.CHILD_CLIENTS + "/GmNMeSx0Hy/" + API.RELATIONSHIPS;
 
@@ -154,7 +178,7 @@ public class ChildClientResourceTest extends BaseResourceTest {
         clientTestRule
             .target(API.CHILD_CLIENTS + "/" + clientId)
             .queryParam(
-                PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/0Ki-all-authorized.json");
+                PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/000-all-authorized.json");
     Response response = target.request(MediaType.APPLICATION_JSON).get();
     return response.readEntity(ChildClientDTO.class);
   }

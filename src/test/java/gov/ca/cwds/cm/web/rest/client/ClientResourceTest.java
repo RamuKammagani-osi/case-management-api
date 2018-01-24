@@ -1,30 +1,34 @@
 package gov.ca.cwds.cm.web.rest.client;
 
-import static gov.ca.cwds.cm.web.rest.utils.AssertResponseHelper.assertEqualsResponse;
+import static gov.ca.cwds.cm.test.util.AssertResponseHelper.assertEqualsResponse;
 import static gov.ca.cwds.security.test.TestSecurityFilter.PATH_TO_PRINCIPAL_FIXTURE;
 import static io.dropwizard.testing.FixtureHelpers.fixture;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import gov.ca.cwds.cm.BaseResourceTest;
 import gov.ca.cwds.cm.Constants;
 import gov.ca.cwds.cm.service.dto.ClientDTO;
+import gov.ca.cwds.cm.web.rest.AbstractIntegrationTest;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 /** @author CWDS TPT-3 Team */
-public class ClientResourceTest extends BaseResourceTest {
+public class ClientResourceTest extends AbstractIntegrationTest {
 
-  public static final String CLIENT_ID = "22223312D0";
+  private static final String CLIENT_ID = "0Kk7CHj000";
+  private static final String LIQUIBASE_SCRIPT = "liquibase/client/client_test_get_for_client_endpoint.xml";
 
   @BeforeClass
-  public static void beforeClass() throws Exception {
-    setUpCwsRs1();
-    setUpCms();
-    setUpDb();
-    runScripts("liquibase/client/client_test_get_for_client_endpoint.xml");
+  public static void init() throws Exception {
+    DATABASE_HELPER_CMS.runScripts(LIQUIBASE_SCRIPT);
+  }
+
+  @AfterClass
+  public static void cleanUp() throws Exception {
+    DATABASE_HELPER_CMS.rollbackScripts(LIQUIBASE_SCRIPT);
   }
 
   @Test
@@ -34,7 +38,7 @@ public class ClientResourceTest extends BaseResourceTest {
 
     // when
     final Response response = clientTestRule.target(Constants.API.CLIENTS + "/" + CLIENT_ID)
-        .queryParam(PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/0Ki-all-authorized.json")
+        .queryParam(PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/000-all-authorized.json")
         .request(MediaType.APPLICATION_JSON)
         .get();
     final ClientDTO client = response.readEntity(ClientDTO.class);

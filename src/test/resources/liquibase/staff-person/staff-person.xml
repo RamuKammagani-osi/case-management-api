@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+  <changeSet author="TPT3" id="create staff persons">
+    <sql>
+      INSERT INTO ${database.defaultSchemaName}.STFPERST
+      (IDENTIFIER, END_DT, FIRST_NM, JOB_TL_DSC, LAST_NM, MID_INI_NM, NMPRFX_DSC, PHONE_NO, TEL_EXT_NO, START_DT, SUFX_TLDSC, TLCMTR_IND, LST_UPD_ID, LST_UPD_TS, FKCWS_OFFT, AVLOC_DSC, SSRS_WKRID, CNTY_SPFCD, DTYWKR_IND, FKCWSADDRT, EMAIL_ADDR)
+      VALUES('000', NULL, 'Joe', 'Minister of Crab Politics', 'Crab', ' ', '      ', 3124563123, 1234568, '1998-06-17', '    ', 'Y', 'q38', '2000-08-29 13:51:39.247', 'LPEjER809L', 'Napa Message Board', '    ', '21', 'N', '3prh3bAq38', 'joe@ministry.crab');
+
+      INSERT INTO ${database.defaultSchemaName}.STFPERST
+      (IDENTIFIER, END_DT, FIRST_NM, JOB_TL_DSC, LAST_NM, MID_INI_NM, NMPRFX_DSC, PHONE_NO, TEL_EXT_NO, START_DT, SUFX_TLDSC, TLCMTR_IND, LST_UPD_ID, LST_UPD_TS, FKCWS_OFFT, AVLOC_DSC, SSRS_WKRID, CNTY_SPFCD, DTYWKR_IND, FKCWSADDRT, EMAIL_ADDR)
+      VALUES('zzz', NULL, 'Jane', 'Crab Court Worker', 'Crabbie', 'A', 'Ms.   ', 5308868668, 8668, '1996-06-03', 'MSW ', 'N', 'q38', '2000-08-29 13:51:39.247', 'K05J6VG00E', '', '    ', '32', 'N', '4k7fzvwq38', 'jane@ministry.crab');
+
+    </sql>
+
+    <rollback>
+      <delete tableName="STFPERST">
+        <where>IDENTIFIER = '000'</where>
+      </delete>
+      <delete tableName="STFPERST">
+        <where>IDENTIFIER = 'zzz'</where>
+      </delete>
+    </rollback>
+
+  </changeSet>
+</databaseChangeLog>

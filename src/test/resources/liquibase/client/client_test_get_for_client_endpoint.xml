@@ -6,7 +6,7 @@
   <changeSet id="correct_data_for_client" author="TPT3_team">
     <insert tableName="CLIENT_T">
       <column name="ALN_REG_NO" value="111483672"/>
-      <column name="IDENTIFIER" value="22223312D0" />
+      <column name="IDENTIFIER" value="0Kk7CHj000" />
       <column name="ADPTN_STCD" value="N" />
       <column name="BIRTH_DT" value="1944-01-30"/>
       <column name="BR_FAC_NM" value="San Jose Medical Center"/>
@@ -74,7 +74,7 @@
     </insert>
 
     <insert tableName="CHLD_CLT">
-      <column name="FKCLIENT_T" value="22223312D0" />
+      <column name="FKCLIENT_T" value="0Kk7CHj000" />
       <column name="FC_ELIGT_B" value="Y" />
       <column name="EDONFL_IND" value="N"/>
       <column name="HLONFL_IND" value="N"/>
@@ -113,5 +113,15 @@
       <column name="LST_UPD_TS" value="2000-03-17 17:01:54.924156" />
       <column name="LST_UPD_ID" value="300"/>
     </insert>
+
+    <rollback>
+      <delete tableName="CLIENT_T">
+        <where>IDENTIFIER = '0Kk7CHj000'</where>
+      </delete>
+      <delete tableName="CHLD_CLT">
+        <where>FKCLIENT_T = '0Kk7CHj000'</where>
+      </delete>
+
+    </rollback>
   </changeSet>
 </databaseChangeLog>
