@@ -25,11 +25,11 @@ This image can be used to run a set of tests on CASE MANAGEMENT API
 **Required:** true, when TEST_TYPE=integration. 
 **Example:** "pass"
 
-#Example commands to run:
-##Run smoke test example
+# Example commands to run:
+## Run smoke test example
 docker run -e "CASE_MANAGEMENT_API_URL=http://tpt3.dev.cwds.io:8089/" -e "TEST_TYPE=smoke" -it cwds/case-management-api-tests
 
-##Run smoke test example
+## Run integration test example
 docker run -e "CASE_MANAGEMENT_API_URL=http://10.10.1.253:8080/" \
 	-e "TEST_TYPE=integration" \
 	-e "DB_CMS_JDBC_URL=jdbc:db2://10.10.1.253:50000/DB0TDEV" \
@@ -38,5 +38,5 @@ docker run -e "CASE_MANAGEMENT_API_URL=http://10.10.1.253:8080/" \
 	-e "DB_CMS_PASSWORD=db2inst1" \
 	-it cwds/case-management-api-tests
 
-#Result
+# Result
 The container returns 0 if tests finished successfully and 1 if tests failed.
