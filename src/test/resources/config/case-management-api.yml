@@ -4,10 +4,10 @@ version: ${APP_VERSION:-local}
 server:
   applicationConnectors:
   - type: http
-    port: 8090
+    port: 28090
   adminConnectors:
   - type: http
-    port: 9081
+    port: 29081
   requestLog:
     appenders:
       - type: console
@@ -81,7 +81,7 @@ logging:
     "org.hibernate.SQL":
       level: INFO
     "org.hibernate.type.descriptor.sql":
-      level: INFO
+      level: DEBUG
     "AUDIT":
       level: ALL
     "gov.ca.cwds":

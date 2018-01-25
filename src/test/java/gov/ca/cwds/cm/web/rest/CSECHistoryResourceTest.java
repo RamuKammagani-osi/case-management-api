@@ -1,9 +1,8 @@
 package gov.ca.cwds.cm.web.rest;
 
-import static gov.ca.cwds.cm.web.rest.utils.AssertFixtureUtils.assertResponseByFixturePath;
+import static gov.ca.cwds.cm.test.util.AssertFixtureUtils.assertResponseByFixturePath;
 import static org.junit.Assert.assertEquals;
 
-import gov.ca.cwds.cm.BaseResourceTest;
 import gov.ca.cwds.cm.Constants.API;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -12,7 +11,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /** @author CWDS TPT-3 Team */
-public class CSECHistoryResourceTest extends BaseResourceTest {
+public class CSECHistoryResourceTest extends AbstractIntegrationTest {
 
   public static final String CLIENT_ID_2 = "BKk7CHj02Y";
   public static final String CLIENT_ID = "BKk7CHj01Y";
@@ -20,11 +19,7 @@ public class CSECHistoryResourceTest extends BaseResourceTest {
 
   @BeforeClass
   public static void beforeClass() throws Exception {
-    setUpCwsRs1();
-    setUpCms();
-    setUpDb();
-    runScripts(
-        "liquibase/csec/csechistory_get.xml");
+    DATABASE_HELPER_CMS.runScripts("liquibase/csec/csechistory_get.xml");
   }
 
   @Test

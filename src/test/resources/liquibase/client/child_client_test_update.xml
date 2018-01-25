@@ -6,7 +6,7 @@
   <changeSet id="correct_data_for_child_client" author="TPT3_team">
 
     <insert tableName="CLIENT_T">
-      <column name="IDENTIFIER" value="BKk7CHj00A"/>
+      <column name="IDENTIFIER" value="0Kk7CHj000"/>
       <column name="ADJDEL_IND" value="null"/>
       <column name="ALN_REG_NO" value="111483672"/>
       <column name="ADPTN_STCD" value="N"/>
@@ -39,7 +39,7 @@
       <column name="P_LANG_TPC" value="1248"/>
       <column name="RLGN_TPC" value="1553"/>
       <column name="S_LANG_TC" value="1249"/>
-      <column name="SENSTV_IND" value="N"/>
+      <column name="SENSTV_IND" value="R"/>
       <column name="SNTV_HLIND" value="Y"/>
       <column name="SS_NO" value="N"/>
       <column name="SSN_CHG_CD" value="N"/>
@@ -74,7 +74,7 @@
       <column name="LST_UPD_ID" value="200"/>
     </insert>
     <insert tableName="CHLD_CLT">
-      <column name="FKCLIENT_T" value="BKk7CHj00A"/>
+      <column name="FKCLIENT_T" value="0Kk7CHj000"/>
       <column name="FC_ELIGT_B" value="Y"/>
       <column name="EDONFL_IND" value="N"/>
       <column name="HLONFL_IND" value="N"/>
@@ -113,5 +113,15 @@
       <column name="LST_UPD_TS" value="2000-03-17 17:01:54.924156"/>
       <column name="LST_UPD_ID" value="300"/>
     </insert>
+
+    <rollback>
+      <delete tableName="CLIENT_T">
+        <where>IDENTIFIER = '0Kk7CHj000'</where>
+      </delete>
+      <delete tableName="CHLD_CLT">
+        <where>FKCLIENT_T = '0Kk7CHj000'</where>
+      </delete>
+    </rollback>
+
   </changeSet>
 </databaseChangeLog>

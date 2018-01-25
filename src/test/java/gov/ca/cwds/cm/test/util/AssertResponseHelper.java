@@ -1,4 +1,4 @@
-package gov.ca.cwds.cm.web.rest.utils;
+package gov.ca.cwds.cm.test.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

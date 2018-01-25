@@ -5,7 +5,7 @@
 
     <changeSet id="correct_data_for_child_client" author="TPT3_team">
         <insert tableName="CHLD_CLT">
-            <column name="FKCLIENT_T" value="BKk7CHj00Z" />
+            <column name="FKCLIENT_T" value="0Kk7CHj000" />
             <column name="FC_ELIGT_B" value="Y" />
             <column name="EDONFL_IND" value="N"/>
             <column name="HLONFL_IND" value="N"/>
@@ -44,5 +44,11 @@
             <column name="LST_UPD_TS" value="2000-03-17 17:01:54.924156" />
             <column name="LST_UPD_ID" value="300"/>
         </insert>
+
+        <rollback>
+            <delete tableName="CHLD_CLT">
+                <where>FKCLIENT_T = '0Kk7CHj000'</where>
+            </delete>
+        </rollback>
     </changeSet>
 </databaseChangeLog>

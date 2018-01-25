@@ -31,11 +31,11 @@ project.ext {
     projectDockerAppName = 'case-management-api'
     projectMajorVersion = '0.5.5'
     dropwizardVersion = '1.1.0'
-    coreApiVersion = '0.5.5_238-RC'
+    coreApiVersion = '0.5.5_243-RC'
     mapstructVersion = '1.2.0.Final'
     lombokVersion = '1.16.18'
     mainClass = 'gov.ca.cwds.cm.CmApiApplication'
-    calsModelVersion = '0.5.5_421-RC'
+    calsModelVersion = '0.5.5_422-RC'
 
     isRelease = System.getProperty("Release") == "true"
     buildNumber = System.getProperty('BuildNumber')
@@ -197,8 +197,10 @@ runShadow {
 
 test {
     systemProperty 'java.net.preferIPv4Stack', 'true'
-//    systemProperty 'api.url', 'http://localhost:8080/'
-    exclude '**/*IT.*', '**/IntegrationTestSuite.class'
+    exclude '**/SmokeTestSuite.class',
+            '**/IntegrationTestSuite.class',
+            '**/*IT.class',
+            '**/*ResourceTest.class'
     jacoco {
         excludes = ["**org/drools/**/*"]
     }
