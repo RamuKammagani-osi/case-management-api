@@ -1,7 +1,6 @@
 package gov.ca.cwds.cm.web.rest.client;
 
 import static gov.ca.cwds.cm.test.util.AssertResponseHelper.assertEqualsResponse;
-import static gov.ca.cwds.security.test.TestSecurityFilter.PATH_TO_PRINCIPAL_FIXTURE;
 import static io.dropwizard.testing.FixtureHelpers.fixture;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -9,6 +8,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import gov.ca.cwds.cm.Constants;
 import gov.ca.cwds.cm.service.dto.ClientDTO;
 import gov.ca.cwds.cm.web.rest.AbstractIntegrationTest;
+import java.io.IOException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.junit.AfterClass;
@@ -40,8 +40,9 @@ public class ClientResourceTest extends AbstractIntegrationTest {
     final String expectedFixture = fixture("fixtures/client-by-id-response.json");
 
     // when
-    final Response response = clientTestRule.target(Constants.API.CLIENTS + "/" + CLIENT_ID)
-        .queryParam(PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/000-all-authorized.json")
+    final Response response = clientTestRule
+        .withSecurityToken(AUTHORIZED_ACCOUNT_FIXTURE)
+        .target(Constants.API.CLIENTS + "/" + CLIENT_ID)
         .request(MediaType.APPLICATION_JSON)
         .get();
     final ClientDTO client = response.readEntity(ClientDTO.class);
@@ -51,11 +52,12 @@ public class ClientResourceTest extends AbstractIntegrationTest {
   }
 
   @Test
-  public void testGetClientById_notAuthorized_whenUnauthorizedUser() {
+  public void testGetClientById_notAuthorized_whenUnauthorizedUser() throws IOException {
     // given
     // when
-    final Response response = clientTestRule.target(Constants.API.CLIENTS + "/" + CLIENT_ID,
-        "fixtures/perry-account/zzz-not-authorized.json")
+    final Response response = clientTestRule
+        .withSecurityToken(NOT_AUTHORIZED_ACCOUNT_FIXTURE)
+        .target(Constants.API.CLIENTS + "/" + CLIENT_ID)
         .request(MediaType.APPLICATION_JSON)
         .get();
 

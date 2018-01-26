@@ -10,6 +10,9 @@ import org.junit.Rule;
  */
 public abstract class AbstractIntegrationTest {
 
+  public static final String NOT_AUTHORIZED_ACCOUNT_FIXTURE = "fixtures/perry-account/zzz-not-authorized.json";
+  public static final String AUTHORIZED_ACCOUNT_FIXTURE = "fixtures/perry-account/000-all-authorized.json";
+
   protected static final DatabaseHelper DATABASE_HELPER_CMS = new DatabaseHelper(
       IntegrationTestContextHolder.cmApiConfiguration.getCmsDataSourceFactory()
   );

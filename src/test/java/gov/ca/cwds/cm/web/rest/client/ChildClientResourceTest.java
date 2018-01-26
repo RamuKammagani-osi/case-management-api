@@ -2,7 +2,6 @@ package gov.ca.cwds.cm.web.rest.client;
 
 import static gov.ca.cwds.cm.test.util.AssertFixtureUtils.assertResponseByFixturePath;
 import static gov.ca.cwds.cm.test.util.AssertResponseHelper.assertEqualsResponse;
-import static gov.ca.cwds.security.test.TestSecurityFilter.PATH_TO_PRINCIPAL_FIXTURE;
 import static io.dropwizard.testing.FixtureHelpers.fixture;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -13,7 +12,6 @@ import gov.ca.cwds.cm.service.dto.ChildClientDTO;
 import gov.ca.cwds.cm.test.util.TestUtils;
 import gov.ca.cwds.cm.web.rest.AbstractIntegrationTest;
 import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.junit.AfterClass;
@@ -58,7 +56,6 @@ public class ChildClientResourceTest extends AbstractIntegrationTest {
     // when
     final ChildClientDTO actual = clientTestRule
         .target(API.CHILD_CLIENTS + "/" + CLIENT_ID)
-        .queryParam(PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/000-all-authorized.json")
         .request(MediaType.APPLICATION_JSON)
         .get()
         .readEntity(ChildClientDTO.class);
@@ -73,7 +70,8 @@ public class ChildClientResourceTest extends AbstractIntegrationTest {
     // given
     // when
     final Response response = clientTestRule
-        .target(API.CHILD_CLIENTS + "/" + CLIENT_ID, "fixtures/perry-account/zzz-not-authorized.json")
+        .withSecurityToken(NOT_AUTHORIZED_ACCOUNT_FIXTURE)
+        .target(API.CHILD_CLIENTS + "/" + CLIENT_ID)
         .request(MediaType.APPLICATION_JSON)
         .get();
 
@@ -93,7 +91,6 @@ public class ChildClientResourceTest extends AbstractIntegrationTest {
     enrichForUpdate(childClientDTO);
 
     clientTestRule.target(API.CHILD_CLIENTS + "/0Kk7CHj000")
-        .queryParam(PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/000-all-authorized.json")
         .request(MediaType.APPLICATION_JSON_TYPE)
         .put(Entity.entity(childClientDTO, MediaType.APPLICATION_JSON_TYPE), ChildClientDTO.class);
 
@@ -174,12 +171,10 @@ public class ChildClientResourceTest extends AbstractIntegrationTest {
   }
 
   private ChildClientDTO getChildClientDTO(String clientId) {
-    WebTarget target =
-        clientTestRule
-            .target(API.CHILD_CLIENTS + "/" + clientId)
-            .queryParam(
-                PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/000-all-authorized.json");
-    Response response = target.request(MediaType.APPLICATION_JSON).get();
+    final Response response = clientTestRule
+        .target(API.CHILD_CLIENTS + "/" + clientId)
+        .request(MediaType.APPLICATION_JSON)
+        .get();
     return response.readEntity(ChildClientDTO.class);
   }
 }

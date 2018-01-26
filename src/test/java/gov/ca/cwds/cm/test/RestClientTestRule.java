@@ -1,5 +1,6 @@
 package gov.ca.cwds.cm.test;
 
+import static gov.ca.cwds.cm.web.rest.AbstractIntegrationTest.AUTHORIZED_ACCOUNT_FIXTURE;
 import static io.dropwizard.testing.FixtureHelpers.fixture;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -38,18 +39,28 @@ public class RestClientTestRule implements TestRule {
 
   private static final Logger LOG = LoggerFactory.getLogger(RestClientTestRule.class);
 
-  private final static String IDENTITY_JSON = fixture("fixtures/perry-account/000-all-authorized.json");
   private static final String QUERY_PARAM_TOKEN = "token";
+  private final static String DEFAULT_IDENTITY_JSON = fixture(AUTHORIZED_ACCOUNT_FIXTURE);
+
+  private static final TrustManager[] TRUST_ALL_CERTS = new TrustManager[]{new X509TrustManager() {
+    public X509Certificate[] getAcceptedIssuers() {
+      return null;
+    }
+    public void checkClientTrusted(X509Certificate[] certs, String authType) {}
+
+    public void checkServerTrusted(X509Certificate[] certs, String authType) {}
+  }};
 
   private final ObjectMapper mapper;
   private final String apiUrl;
-  private final String token;
+  private String token;
   private Client client;
 
   private JwtConfiguration jwtConfiguration;
 
+
   public RestClientTestRule() {
-    token = initToken(null);
+    token = initToken();
     mapper = Jackson.newObjectMapper();
     ObjectMapperUtils.configureObjectMapper(mapper);
     apiUrl = TestUtils.getApiUrl();
@@ -57,24 +68,29 @@ public class RestClientTestRule implements TestRule {
   }
 
   public RestClientTestRule(DropwizardAppRule<CmApiConfiguration> dropWizardApplication) {
-    token = initToken(null);
+    token = initToken();
     mapper = dropWizardApplication.getObjectMapper();
     apiUrl = String.format("http://localhost:%s/", dropWizardApplication.getLocalPort());
   }
 
-  private String initToken(String identityJsonFilePath) {
+  public RestClientTestRule withSecurityToken(String identityJsonFilePath) throws IOException {
+    final String identity = identityJsonFilePath != null
+        ? fixture(identityJsonFilePath)
+        : DEFAULT_IDENTITY_JSON;
+    this.token = generateToken(identity);
+    return this;
+  }
+
+  private String initToken() {
     try {
-      final String identity = identityJsonFilePath != null
-          ? fixture(identityJsonFilePath)
-          : IDENTITY_JSON;
-      return generateToken(identity);
+      return generateToken(DEFAULT_IDENTITY_JSON);
     } catch (Exception e) {
       LOG.warn("Cannot generate token");
       return null;
     }
   }
 
-  private String generateToken(String identity) throws Exception {
+  private String generateToken(String identity) throws IOException {
     JwtConfiguration configuration = getJwtConfiguration();
     JwtService jwtService = new JwtService(configuration);
     return jwtService.generate("id", "subject", identity);
@@ -113,18 +129,8 @@ public class RestClientTestRule implements TestRule {
 
   public WebTarget target(String pathInfo) {
     String restUrl = apiUrl + pathInfo;
-    return prepareClient(restUrl, token);
-  }
-
-  public WebTarget target(String pathInfo, String identityJsonFilePath) {
-    final String restUrl = apiUrl + pathInfo;
-    final String newToken = initToken(identityJsonFilePath);
-    return prepareClient(restUrl, newToken);
-  }
-
-  private WebTarget prepareClient(String restUrl, String clientToken) {
     return client.target(restUrl)
-        .queryParam(QUERY_PARAM_TOKEN, clientToken)
+        .queryParam(QUERY_PARAM_TOKEN, token)
         .register(new LoggingFilter());
   }
 
@@ -147,23 +153,9 @@ public class RestClientTestRule implements TestRule {
             });
 
         client = clientBuilder.build();
-
-        // Trust All certificates for test purposes
-        TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
-          public X509Certificate[] getAcceptedIssuers() {
-            return null;
-          }
-
-          public void checkClientTrusted(X509Certificate[] certs, String authType) {
-          }
-
-          public void checkServerTrusted(X509Certificate[] certs, String authType) {
-          }
-        }};
-
-        client.getSslContext().init(null, trustAllCerts, new SecureRandom());
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         client.register(new JacksonJsonProvider(mapper));
+        client.getSslContext().init(null, TRUST_ALL_CERTS, new SecureRandom());
+        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         statement.evaluate();
       }
     };
