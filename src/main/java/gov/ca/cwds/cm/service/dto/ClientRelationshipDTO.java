@@ -45,9 +45,9 @@ public class ClientRelationshipDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(
       value = "SYS_ID number designated for each type of relationship between two CLIENTs "
           + "(e.g., Son/Father, Daughter/Father, Sister/Brother, etc.). Left part of the type "
-          + "description (for example 'Son' of 'Son/Father' type description) describes the role "
-          + "of the client with clientId and the description right part (for example 'Father' of "
-          + "'Son/Father' type description) describes the role of the clent with relatedClientId. "
+          + "description (for example 'Father' of 'Father/Son' type description) describes the role "
+          + "of the client with relatedClientId and the description right part (for example 'Son' of "
+          + "'Father/Son' type description) describes the role of the clent with clientId. "
           + "Types descriptiones and additional info can be reached from system-codes resource by "
           + "'CLNTRELC' key. Numeric",
       example = "285", required = true)

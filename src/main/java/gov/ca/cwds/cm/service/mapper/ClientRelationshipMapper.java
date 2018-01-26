@@ -19,16 +19,16 @@ public interface ClientRelationshipMapper {
   @InheritConfiguration(name = "fromRelationshipToDtoBase")
   @Mapping(source = "leftSide.identifier", target = "clientId")
   @Mapping(source = "rightSide.identifier", target = "relatedClientId")
-  @Mapping(source = "type.systemId", target = "typeCode")
+  @Mapping(
+      expression = "java(Short.valueOf(clientRelationship.getType().getLongDescription()))",
+      target = "typeCode")
   @Mapping(source = "rightSide", target = "relatedClient")
   ClientRelationshipDTO fromRelationshipByLeftSideToDto(ClientRelationship clientRelationship);
 
   @InheritConfiguration(name = "fromRelationshipToDtoBase")
   @Mapping(source = "rightSide.identifier", target = "clientId")
   @Mapping(source = "leftSide.identifier", target = "relatedClientId")
-  @Mapping(
-      expression = "java(Short.valueOf(clientRelationship.getType().getLongDescription()))",
-      target = "typeCode")
+  @Mapping(source = "type.systemId", target = "typeCode")
   @Mapping(source = "leftSide", target = "relatedClient")
   ClientRelationshipDTO fromRelationshipByRightSideToDto(ClientRelationship clientRelationship);
 }
