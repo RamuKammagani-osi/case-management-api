@@ -73,7 +73,7 @@ public class ChildClientResourceTest extends AbstractIntegrationTest {
     // given
     // when
     final Response response = clientTestRule
-        .target(API.CHILD_CLIENTS + "/" + CLIENT_ID)
+        .target(API.CHILD_CLIENTS + "/" + CLIENT_ID, "fixtures/perry-account/zzz-not-authorized.json")
         .request(MediaType.APPLICATION_JSON)
         .get();
 

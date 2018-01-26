@@ -1,5 +1,7 @@
 package gov.ca.cwds.cm.test;
 
+import static io.dropwizard.testing.FixtureHelpers.fixture;
+
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
@@ -36,13 +38,18 @@ public class RestClientTestRule implements TestRule {
 
   private static final Logger LOG = LoggerFactory.getLogger(RestClientTestRule.class);
 
+  private final static String IDENTITY_JSON = fixture("fixtures/perry-account/000-all-authorized.json");
+  private static final String QUERY_PARAM_TOKEN = "token";
+
   private final ObjectMapper mapper;
   private final String apiUrl;
   private final String token;
   private Client client;
 
+  private JwtConfiguration jwtConfiguration;
+
   public RestClientTestRule() {
-    token = initToken();
+    token = initToken(null);
     mapper = Jackson.newObjectMapper();
     ObjectMapperUtils.configureObjectMapper(mapper);
     apiUrl = TestUtils.getApiUrl();
@@ -50,56 +57,75 @@ public class RestClientTestRule implements TestRule {
   }
 
   public RestClientTestRule(DropwizardAppRule<CmApiConfiguration> dropWizardApplication) {
-    token = initToken();
+    token = initToken(null);
     mapper = dropWizardApplication.getObjectMapper();
     apiUrl = String.format("http://localhost:%s/", dropWizardApplication.getLocalPort());
   }
 
-  private String initToken() {
+  private String initToken(String identityJsonFilePath) {
     try {
-      return generateToken();
+      final String identity = identityJsonFilePath != null
+          ? fixture(identityJsonFilePath)
+          : IDENTITY_JSON;
+      return generateToken(identity);
     } catch (Exception e) {
       LOG.warn("Cannot generate token");
       return null;
     }
   }
 
-  private String generateToken() throws Exception {
+  private String generateToken(String identity) throws Exception {
     JwtConfiguration configuration = getJwtConfiguration();
     JwtService jwtService = new JwtService(configuration);
-    return jwtService.generate("id", "subject", "identity");
+    return jwtService.generate("id", "subject", identity);
   }
 
   private JwtConfiguration getJwtConfiguration() throws IOException {
+    if (jwtConfiguration != null) {
+      return jwtConfiguration;
+    }
+
     Properties properties = new Properties();
     properties.load(new FileInputStream("config/shiro.ini"));
 
-    JwtConfiguration configuration = new JwtConfiguration();
+    jwtConfiguration = new JwtConfiguration();
     //JWT
-    configuration.setTimeout(30);
-    configuration.setIssuer(properties.getProperty("perryRealm.tokenIssuer"));
-    configuration.setKeyStore(new JwtConfiguration.KeyStoreConfiguration());
+    jwtConfiguration.setTimeout(30);
+    jwtConfiguration.setIssuer(properties.getProperty("perryRealm.tokenIssuer"));
+    jwtConfiguration.setKeyStore(new JwtConfiguration.KeyStoreConfiguration());
     //KeyStore
-    configuration.getKeyStore()
+    jwtConfiguration.getKeyStore()
         .setPath(new File(properties.getProperty("perryRealm.keyStorePath")).getPath());
-    configuration.getKeyStore().setPassword(properties.getProperty("perryRealm.keyStorePassword"));
+    jwtConfiguration.getKeyStore().setPassword(properties.getProperty("perryRealm.keyStorePassword"));
     //Sign/Validate Key
-    configuration.getKeyStore().setAlias(properties.getProperty("perryRealm.keyStoreAlias"));
-    configuration.getKeyStore()
+    jwtConfiguration.getKeyStore().setAlias(properties.getProperty("perryRealm.keyStoreAlias"));
+    jwtConfiguration.getKeyStore()
         .setKeyPassword(properties.getProperty("perryRealm.keyStoreKeyPassword"));
     //Enc Key
-    configuration
+    jwtConfiguration
         .setEncryptionEnabled(Boolean.valueOf(properties.getProperty("perryRealm.useEncryption")));
-    configuration.getKeyStore()
+    jwtConfiguration.getKeyStore()
         .setEncKeyPassword(properties.getProperty("perryRealm.encKeyPassword"));
-    configuration.getKeyStore().setEncAlias(properties.getProperty("perryRealm.encKeyAlias"));
-    configuration.setEncryptionMethod(properties.getProperty("perryRealm.encryptionMethod"));
-    return configuration;
+    jwtConfiguration.getKeyStore().setEncAlias(properties.getProperty("perryRealm.encKeyAlias"));
+    jwtConfiguration.setEncryptionMethod(properties.getProperty("perryRealm.encryptionMethod"));
+    return jwtConfiguration;
   }
 
   public WebTarget target(String pathInfo) {
     String restUrl = apiUrl + pathInfo;
-    return client.target(restUrl).queryParam("token", token).register(new LoggingFilter());
+    return prepareClient(restUrl, token);
+  }
+
+  public WebTarget target(String pathInfo, String identityJsonFilePath) {
+    final String restUrl = apiUrl + pathInfo;
+    final String newToken = initToken(identityJsonFilePath);
+    return prepareClient(restUrl, newToken);
+  }
+
+  private WebTarget prepareClient(String restUrl, String clientToken) {
+    return client.target(restUrl)
+        .queryParam(QUERY_PARAM_TOKEN, clientToken)
+        .register(new LoggingFilter());
   }
 
   public ObjectMapper getMapper() {

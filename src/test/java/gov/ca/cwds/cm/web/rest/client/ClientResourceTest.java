@@ -20,15 +20,18 @@ public class ClientResourceTest extends AbstractIntegrationTest {
 
   private static final String CLIENT_ID = "0Kk7CHj000";
   private static final String LIQUIBASE_SCRIPT = "liquibase/client/client_test_get_for_client_endpoint.xml";
+  private static final String LIQUIBASE_SCRIPT_RS = "liquibase/client/client-permissions.xml";
 
   @BeforeClass
   public static void init() throws Exception {
     DATABASE_HELPER_CMS.runScripts(LIQUIBASE_SCRIPT);
+    DATABASE_HELPER_RS1.runScripts(LIQUIBASE_SCRIPT_RS);
   }
 
   @AfterClass
   public static void cleanUp() throws Exception {
     DATABASE_HELPER_CMS.rollbackScripts(LIQUIBASE_SCRIPT);
+    DATABASE_HELPER_RS1.rollbackScripts(LIQUIBASE_SCRIPT_RS);
   }
 
   @Test
@@ -48,10 +51,11 @@ public class ClientResourceTest extends AbstractIntegrationTest {
   }
 
   @Test
-  public void testGetClientById_notAuthorized_whenUnauthorizedUser() throws Exception {
+  public void testGetClientById_notAuthorized_whenUnauthorizedUser() {
     // given
     // when
-    final Response response = clientTestRule.target(Constants.API.CLIENTS + "/" + CLIENT_ID)
+    final Response response = clientTestRule.target(Constants.API.CLIENTS + "/" + CLIENT_ID,
+        "fixtures/perry-account/zzz-not-authorized.json")
         .request(MediaType.APPLICATION_JSON)
         .get();
 

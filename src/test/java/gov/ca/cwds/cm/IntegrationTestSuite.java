@@ -8,6 +8,7 @@ import gov.ca.cwds.cm.web.rest.CaseResourceTest;
 import gov.ca.cwds.cm.web.rest.StaffPersonResourceTest;
 import gov.ca.cwds.cm.web.rest.SystemCodeResourceTest;
 import gov.ca.cwds.cm.web.rest.client.ChildClientResourceTest;
+import gov.ca.cwds.cm.web.rest.client.ClientResourceTest;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -24,6 +25,7 @@ import org.junit.runners.Suite;
     AddressResourceTest.class,
     CaseResourceTest.class,
     ChildClientResourceTest.class,
+    ClientResourceTest.class,
     StaffPersonResourceTest.class,
     SystemCodeResourceTest.class,
 })
