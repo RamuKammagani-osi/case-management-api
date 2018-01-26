@@ -32,6 +32,22 @@ elif [[ "$TEST_TYPE" == "integration" ]]; then
     echo "DB_CMS_PASSWORD variable is required"
     exit 1
   fi
+  if ([ -z "$DB_RS_JDBC_URL" ]); then
+    echo "DB_RS_JDBC_URL variable is required"
+    exit 1
+  fi
+  if ([ -z "$DB_RS_SCHEMA" ]); then
+    echo "DB_RS_SCHEMA variable is required"
+    exit 1
+  fi
+  if ([ -z "$DB_RS_USER" ]); then
+    echo "DB_RS_USER variable is required"
+    exit 1
+  fi
+  if ([ -z "$DB_RS_PASSWORD" ]); then
+    echo "DB_RS_PASSWORD variable is required"
+    exit 1
+  fi
   echo "Executing the Integration Test..."
   TEST_CLASS=gov.ca.cwds.cm.IntegrationTestSuite
 else
@@ -48,5 +64,9 @@ echo "DB_CMS_JDBC_URL = '$DB_CMS_JDBC_URL'"
 echo "DB_CMS_SCHEMA = '$DB_CMS_SCHEMA'"
 echo "DB_CMS_USER = '$DB_CMS_USER'"
 echo "DB_CMS_PASSWORD = ********"
+echo "DB_RS_JDBC_URL = '$DB_RS_JDBC_URL'"
+echo "DB_RS_SCHEMA = '$DB_RS_SCHEMA'"
+echo "DB_RS_USER = '$DB_RS_USER'"
+echo "DB_RS_PASSWORD = ********"
 
 java ${JAVA_OPT} -Dapi.url="${CASE_MANAGEMENT_API_URL}" -cp /opt/case-management-api-tests/resources:case-management-api-tests.jar org.junit.runner.JUnitCore ${TEST_CLASS}

@@ -24,6 +24,18 @@ This image can be used to run a set of tests on CASE MANAGEMENT API
 - **DB_CMS_PASSWORD** -- DB2 instance password.
 **Required:** true, when TEST_TYPE=integration. 
 **Example:** "pass"
+- **DB_RS_JDBC_URL** -- JDBC URL of the RS1 schema in DB2 instance the case-management-api under test is using.
+**Required:** true, when TEST_TYPE=integration.
+**Example:** "jdbc:db2://localhost:50000/DB0TDEV"
+- **DB_RS_SCHEMA** -- RS1 Schema name in the DB2 instance. 
+**Required:** true, when TEST_TYPE=integration.
+**Example:** "CWSRS1"
+- **DB_RS_USER** -- RS1 schema in DB2 instance username.
+**Required:** true, when TEST_TYPE=integration.
+**Example:** "user"
+- **DB_RS_PASSWORD** -- RS1 schema in DB2 instance password.
+**Required:** true, when TEST_TYPE=integration. 
+**Example:** "pass"
 
 # Example commands to run:
 ## Run smoke test example
@@ -36,6 +48,10 @@ docker run -e "CASE_MANAGEMENT_API_URL=http://10.10.1.253:8080/" \
 	-e "DB_CMS_SCHEMA=CWSINT" \
 	-e "DB_CMS_USER=db2inst1" \
 	-e "DB_CMS_PASSWORD=db2inst1" \
+	-e "DB_RS_JDBC_URL=jdbc:db2://10.10.1.253:50000/DB0TDEV" \
+  -e "DB_RS_SCHEMA=CWSRS1" \
+  -e "DB_RS_USER=db2inst1" \
+  -e "DB_RS_PASSWORD=db2inst1" \
 	-it cwds/case-management-api-tests
 
 # Result
