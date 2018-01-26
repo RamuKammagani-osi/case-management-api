@@ -4,6 +4,7 @@ import gov.ca.cwds.cm.test.RestClientTestRule;
 import gov.ca.cwds.cm.test.util.ConfigurationProvider;
 import gov.ca.cwds.cm.test.util.IntegrationTestContextHolder;
 import gov.ca.cwds.cm.web.rest.AddressResourceTest;
+import gov.ca.cwds.cm.web.rest.CSECHistoryResourceTest;
 import gov.ca.cwds.cm.web.rest.CaseResourceTest;
 import gov.ca.cwds.cm.web.rest.StaffPersonResourceTest;
 import gov.ca.cwds.cm.web.rest.SystemCodeResourceTest;
@@ -26,6 +27,7 @@ import org.junit.runners.Suite;
     CaseResourceTest.class,
     ChildClientResourceTest.class,
     ClientResourceTest.class,
+    CSECHistoryResourceTest.class,
     StaffPersonResourceTest.class,
     SystemCodeResourceTest.class,
 })

@@ -7,19 +7,33 @@ import gov.ca.cwds.cm.Constants.API;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import liquibase.exception.LiquibaseException;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-/** @author CWDS TPT-3 Team */
+/**
+ * @author CWDS TPT-3 Team
+ */
 public class CSECHistoryResourceTest extends AbstractIntegrationTest {
 
-  public static final String CLIENT_ID_2 = "BKk7CHj02Y";
-  public static final String CLIENT_ID = "BKk7CHj01Y";
+  public static final String CLIENT_ID_2 = "0Kk7CHj000";
+  public static final String CLIENT_ID = "1Kk7CHj000";
   public static final String WRONG_CLIENT_ID = "0000000000";
+  private static final String[] LIQUIBASE_SCRIPTS = {
+      "liquibase/client/client_test_get.xml",
+      "liquibase/client/child_client_test_get.xml",
+      "liquibase/csec/csechistory_get.xml",
+  };
 
   @BeforeClass
   public static void beforeClass() throws Exception {
-    DATABASE_HELPER_CMS.runScripts("liquibase/csec/csechistory_get.xml");
+    DATABASE_HELPER_CMS.runScripts(LIQUIBASE_SCRIPTS);
+  }
+
+  @AfterClass
+  public static void cleanUp() throws LiquibaseException {
+    DATABASE_HELPER_CMS.rollbackScripts(LIQUIBASE_SCRIPTS);
   }
 
   @Test
