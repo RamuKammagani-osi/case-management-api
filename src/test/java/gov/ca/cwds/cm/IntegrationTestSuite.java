@@ -11,6 +11,7 @@ import gov.ca.cwds.cm.web.rest.SystemCodeResourceTest;
 import gov.ca.cwds.cm.web.rest.client.ChildClientResourceTest;
 import gov.ca.cwds.cm.web.rest.client.ClientResourceTest;
 import gov.ca.cwds.cm.web.rest.client.SafetyAlertsResourceTest;
+import gov.ca.cwds.cm.web.rest.system.SystemInformationResourceTest;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -32,6 +33,7 @@ import org.junit.runners.Suite;
     SafetyAlertsResourceTest.class,
     StaffPersonResourceTest.class,
     SystemCodeResourceTest.class,
+    SystemInformationResourceTest.class,
 })
 public class IntegrationTestSuite {
 
