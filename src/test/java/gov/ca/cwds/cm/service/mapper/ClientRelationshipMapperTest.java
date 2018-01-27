@@ -46,7 +46,7 @@ public class ClientRelationshipMapperTest {
     assertEquals(RELATIONSHIP_ID, dto.getId());
     assertEquals(LEFT_SIDE_CLIENT_ID, dto.getClientId());
     assertEquals(RIGHT_SIDE_CLIENT_ID, dto.getRelatedClientId());
-    assertEquals(RELATIONSHIP_TYPE_SYSTEMID, dto.getTypeCode());
+    assertEquals(Short.valueOf((short)211), dto.getTypeCode());
     assertEquals(ABSENT_PARENT_INDICATOR, dto.getAbsentParentIndicator());
     assertEquals(START_DATE, dto.getStartDate());
     assertEquals(END_DATE, dto.getEndDate());
@@ -68,7 +68,7 @@ public class ClientRelationshipMapperTest {
     assertEquals(RELATIONSHIP_ID, dto.getId());
     assertEquals(RIGHT_SIDE_CLIENT_ID, dto.getClientId());
     assertEquals(LEFT_SIDE_CLIENT_ID, dto.getRelatedClientId());
-    assertEquals(Short.valueOf((short)211), dto.getTypeCode());
+    assertEquals(RELATIONSHIP_TYPE_SYSTEMID, dto.getTypeCode());
     assertEquals(ABSENT_PARENT_INDICATOR, dto.getAbsentParentIndicator());
     assertEquals(START_DATE, dto.getStartDate());
     assertEquals(END_DATE, dto.getEndDate());

@@ -3,7 +3,7 @@
     "id" : "0btlf7s000",
     "client_id" : "GmNMeSx0Hy",
     "related_client_id" : "0IMcINQ000",
-    "type_code" : 285,
+    "type_code" : 211,
     "absent_parent_indicator" : true,
     "same_home_status" : "NO",
     "related_client" : {
@@ -68,7 +68,7 @@
     "id" : "0bEaIth000",
     "client_id" : "GmNMeSx0Hy",
     "related_client_id" : "0V67BrQ000",
-    "type_code" : 291,
+    "type_code" : 252,
     "absent_parent_indicator" : false,
     "same_home_status" : "YES",
     "related_client" : {
