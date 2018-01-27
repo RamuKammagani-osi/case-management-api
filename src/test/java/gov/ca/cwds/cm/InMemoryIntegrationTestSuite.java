@@ -36,15 +36,15 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-//    AddressResourceTest.class,
-//    CaseResourceTest.class,
-//    ChildClientResourceTest.class,
-//    ClientResourceTest.class,
-//    CSECHistoryResourceTest.class,
-//    SafetyAlertsResourceTest.class,
-//    StaffPersonResourceTest.class,
-//    SystemCodeResourceTest.class,
-//    SystemInformationResourceTest.class,
+    AddressResourceTest.class,
+    CaseResourceTest.class,
+    ChildClientResourceTest.class,
+    ClientResourceTest.class,
+    CSECHistoryResourceTest.class,
+    SafetyAlertsResourceTest.class,
+    StaffPersonResourceTest.class,
+    SystemCodeResourceTest.class,
+    SystemInformationResourceTest.class,
     CollateralsResourceTest.class
 })
 public class InMemoryIntegrationTestSuite {
