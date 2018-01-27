@@ -48,6 +48,7 @@ public class SafetyAlertsResourceTest extends AbstractIntegrationTest {
         .get().readEntity(SafetyAlertDTO[].class);
 
     // then
+    assertThat(actualAlerts.length, is(expectedAlerts.length));
     assertThat(actualAlerts, arrayContainingInAnyOrder(expectedAlerts));
   }
 
