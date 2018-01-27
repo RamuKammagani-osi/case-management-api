@@ -55,9 +55,11 @@ public class CollateralsResource {
 
   private List<CollateralDTO> getMockedData() {
     String name = "Sandy";
+    LocalDate date = LocalDate.of(2001, 02, 21);
+
     CollateralDTO collateral1 = new CollateralDTO();
     collateral1.setBadgeNumber("654654");
-    collateral1.setBirthDate(LocalDate.of(2001, 02, 21));
+    collateral1.setBirthDate(date);
     collateral1.setCityName("Winnepeg");
     collateral1.setCommentDescription("Description");
     collateral1.setEmail("test@mail.ru");
@@ -66,7 +68,7 @@ public class CollateralsResource {
     collateral1.setEstablishedForId("ffr1033der4");
     collateral1.setFaxNumber("4654564654");
     collateral1.setFirstName(name);
-    collateral1.setForeignAddressIndicator(true);
+    collateral1.setForeignAddressIndicator(Boolean.TRUE);
     collateral1.setGenderCode("M");
     collateral1.setId("0YIPkZU0S0");
     collateral1.setLastName(name);
@@ -75,7 +77,7 @@ public class CollateralsResource {
     collateral1.setNamePrefixDescription("Mr.");
     collateral1.setPrimaryPhoneExtensionNumber("6666666");
     collateral1.setPrimaryPhoneNumber("9161111111");
-    collateral1.setResidedOutOfStateIndicator(true);
+    collateral1.setResidedOutOfStateIndicator(Boolean.TRUE);
     collateral1.setStateCodeType("1828");
     collateral1.setStreetName("Double Dice Lane");
     collateral1.setStreetNumber("5602");
@@ -85,7 +87,7 @@ public class CollateralsResource {
 
     CollateralDTO collateral2 = new CollateralDTO();
     collateral2.setBadgeNumber("654655");
-    collateral2.setBirthDate(LocalDate.of(2001, 02, 21));
+    collateral2.setBirthDate(date);
     collateral2.setCityName("Winnepeg");
     collateral2.setCommentDescription("Description");
     collateral2.setEmail("test@mail.ru");
@@ -94,7 +96,7 @@ public class CollateralsResource {
     collateral2.setEstablishedForId("ffr1033der4");
     collateral2.setFaxNumber("4654564654");
     collateral2.setFirstName(name);
-    collateral2.setForeignAddressIndicator(true);
+    collateral2.setForeignAddressIndicator(Boolean.TRUE);
     collateral2.setGenderCode("M");
     collateral2.setId("0YIPkZU0S0");
     collateral2.setLastName(name);
@@ -103,7 +105,7 @@ public class CollateralsResource {
     collateral2.setNamePrefixDescription("Mr.");
     collateral2.setPrimaryPhoneExtensionNumber("6666666");
     collateral2.setPrimaryPhoneNumber("9161111111");
-    collateral2.setResidedOutOfStateIndicator(true);
+    collateral2.setResidedOutOfStateIndicator(Boolean.TRUE);
     collateral2.setStateCodeType("1828");
     collateral2.setStreetName("Double Dice Lane");
     collateral2.setStreetNumber("5602");
