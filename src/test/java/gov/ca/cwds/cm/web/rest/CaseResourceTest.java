@@ -84,13 +84,7 @@ public class CaseResourceTest extends AbstractIntegrationTest {
 
     WebTarget target = clientTestRule.target(
         API.CASES + "/" + CASE_ID);
-    try {
-      updateCase(target, caseDTO);
-      fail();
-    } catch (ClientErrorException e) {
-      Response response = e.getResponse();
-      assertEquals(UNPROCESSABLE_ENTITY_STATUS_CODE, response.getStatus());
-    }
+    updateCase(caseDTO, target);
   }
 
   @Test
@@ -99,6 +93,10 @@ public class CaseResourceTest extends AbstractIntegrationTest {
     caseDTO.setAlertTextId("123");
 
     WebTarget target = clientTestRule.target(API.CASES + "/" + CASE_ID);
+    updateCase(caseDTO, target);
+  }
+
+  private void updateCase(CaseDTO caseDTO, WebTarget target) {
     try {
       updateCase(target, caseDTO);
       fail();

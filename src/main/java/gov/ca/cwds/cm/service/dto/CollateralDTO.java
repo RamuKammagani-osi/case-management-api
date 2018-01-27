@@ -1,0 +1,285 @@
+package gov.ca.cwds.cm.service.dto;
+
+import static gov.ca.cwds.rest.api.domain.DomainObject.DATE_FORMAT;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import gov.ca.cwds.cm.service.mapper.tool.RemoveTrailingSpaces;
+import io.dropwizard.validation.OneOf;
+import io.swagger.annotations.ApiModelProperty;
+import java.time.LocalDate;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import lombok.Data;
+
+/** @author CWDS TPT-3 Team */
+@Data
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
+public class CollateralDTO {
+  @NotNull
+  @Size(max = 6)
+  @ApiModelProperty(
+    value =
+        "BADGE_NUMBER - The unique badge number assigned for each COLLATERAL INDIVIDUAL "
+            + "who works for a Law Enforcement Agency.",
+    example = "654654"
+  )
+  private String badgeNumber;
+
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+  @ApiModelProperty(
+    value = "BIRTH_DATE - Date of birth of the COLLATERAL_INDIVIDUAL",
+    example = "2001-02-21"
+  )
+  private LocalDate birthDate;
+
+  @NotNull
+  @Size(max = 20)
+  @RemoveTrailingSpaces
+  @ApiModelProperty(
+    value = "CITY_NAME - The name of the city where the COLLATERAL INDIVIDUAL lives or works.",
+    example = "Winnepeg"
+  )
+  private String cityName;
+
+  @NotNull
+  @Size(max = 254)
+  @RemoveTrailingSpaces
+  @ApiModelProperty(
+    value =
+        "COMMENT_DESCRIPTION - A brief description of any unusual circumstances concerning the "
+            + "COLLATERAL_INDIVIDUAL which can be captured through the CLIENT_COLLATERAL entity "
+            + "type (e.g. communication difficulty, special religion practices, or any other "
+            + "relevant information which could be used in planning services for the "
+            + "COLLATERAL_INDIVIDUAL).",
+    example = "Description"
+  )
+  private String commentDescription;
+
+  @Size(max = 50)
+  @RemoveTrailingSpaces
+  @ApiModelProperty(
+    value = "EMAIL_ADDRESS - The e-mail address for the COLLATERAL_INDIVIDUAL.",
+    example = "test@mail.ru"
+  )
+  private String email;
+
+  @NotNull
+  @Size(max = 35)
+  @RemoveTrailingSpaces
+  @ApiModelProperty(
+    value =
+        "EMPLOYER_NAME - The name of the COLLATERAL INDIVIDUAL's employer.  This is only "
+            + "necessary if the individual is not working for a LAW ENFORCEMENT AGENCY or "
+            + "EDUCATION PROVIDER defined in the CWS system.  The employer is only relevant if "
+            + "the COLLATERAL INDIVIDUAL will be contacted at work. This attribute should be "
+            + "blank if the relationship to either the LAW ENFORCEMENT AGENCY or the EDCUATION "
+            + "ENROLLMENT exist.",
+    example = "County Mental Health"
+  )
+  private String employerName;
+
+  @Size(max = 1)
+  @ApiModelProperty(
+    value =
+        "ESTABLISHED_FOR_CODE - This code defines each type of recipient entity for which a "
+            + "specific COLLATERAL_INDIVIDUAL was identified "
+            + "(e.g. S = SUBSTITUTE_CARE_PROVIDER).",
+    example = "S"
+  )
+  private String establishedForCode;
+
+  @Size(max = 10)
+  @ApiModelProperty(
+    value =
+        "ESTABLISHED_FOR_ID - The logical foreign key representing the ID from the recipient "
+            + "entity for which a COLLATERAL_INDIVIDUAL was identified "
+            + "(e.g., ID from SUBSTITUTE_CARE_PROVIDER entity).",
+    example = "ffr1033der4"
+  )
+  private String establishedForId;
+
+  @NotNull
+  @Size(max = 10)
+  @ApiModelProperty(
+    value = "FAX_NUMBER - A fax number associated with the COLLATERAL  INDIVIDUAL's address.",
+    example = "4654564654"
+  )
+  private String faxNumber;
+
+  @NotNull
+  @Size(max = 20)
+  @RemoveTrailingSpaces
+  @ApiModelProperty(
+    value = "FIRST_NAME - The first name of the COLLATERAL INDIVIDUAL.",
+    example = "Sandy"
+  )
+  private String firstName;
+
+  @NotNull
+  @ApiModelProperty(
+    value =
+        "FOREIGN_ADDRESS_IND_VAR - This indicator variable is used to indicate if there are any "
+            + "occurrences of FOREIGN_ADDRESSs related to this COLLATERAL_INDIVIDUAL. "
+            + "This will save unnecessary processing time from searching for information "
+            + "that does not exist in the database.",
+    example = "Y"
+  )
+  private boolean foreignAddressIndicator;
+
+  @NotNull
+  @Size(max = 1)
+  @ApiModelProperty(value = "GENDER_CODE - Indicates the gender of a CLIENT", example = "M")
+  @OneOf(
+    value = {"F", "M", "U"},
+    ignoreCase = true,
+    ignoreWhitespace = true
+  )
+  private String genderCode;
+
+  @NotNull
+  @Size(max = 10)
+  @ApiModelProperty(
+    value =
+        "ID - A system generated number used to uniquely identify each non-client "
+            + "COLLATERAL_INDIVIDUAL. This ID is composed of a base 62 Creation "
+            + "Timestamp and the STAFF_PERSON ID (a sequential 3 digit base 62 number "
+            + "generated by the system). This value eliminates the need for an additional "
+            + "set of Creation Timestamp and Creation User ID which is needed to satisfy "
+            + "the Audit Trail requirement.",
+    example = "0YIPkZU0S0"
+  )
+  private String id;
+
+  @NotNull
+  @Size(max = 25)
+  @RemoveTrailingSpaces
+  @ApiModelProperty(
+    value = "LAST_NAME - The last name of the COLLATERAL INDIVIDUAL.",
+    example = "Sandy"
+  )
+  private String lastName;
+
+  @NotNull
+  @Size(max = 4)
+  @ApiModelProperty(
+    value =
+        "MARITAL_STATUS_TYPE - The system generated number which identifies the type of"
+            + " marital status for the COLLATERAL_INDIVIDUAL "
+            + "(e.g., single, married, divorced, etc.).",
+    example = "1122"
+  )
+  private String materialStatusType;
+
+  @NotNull
+  @Size(max = 1)
+  @ApiModelProperty(
+    value = "MIDDLE_INITIAL_NAME - The middle initial of the COLLATERAL INDIVIDUAL.",
+    example = "C"
+  )
+  private String middleInitialName;
+
+  @NotNull
+  @Size(max = 6)
+  @ApiModelProperty(
+    value =
+        "NAME_PREFIX_DESCRIPTION - The salutation form to be used in the mailing address of "
+            + "a COLLATERAL INDIVIDUAL (e.g., Mr., Ms., Mrs., Dr., Miss, Rev., etc.)..",
+    example = "Mr."
+  )
+  private String namePrefixDescription;
+
+  @NotNull
+  @Size(max = 7)
+  @ApiModelProperty(
+    value =
+        "PRIMARY_PHONE_EXTENSION_NUMBER - The primary phone extension number "
+            + "of the COLLATERAL INDIVIDUAL.",
+    example = "6666666"
+  )
+  private String primaryPhoneExtensionNumber;
+
+  @NotNull
+  @Size(max = 10)
+  @ApiModelProperty(
+    value =
+        "PRIMARY_PHONE_NUMBER - The primary phone number including area code of the "
+            + "COLLATERAL INDIVIDUAL.",
+    example = "9161111111"
+  )
+  private String primaryPhoneNumber;
+
+  @ApiModelProperty(
+    value =
+        "RESIDED_OUT_OF_STATE_IND - Indicates whether the COLLATERAL INDIVIDUAL has resided "
+            + "out of the State of California (Y), or has not resided out of the "
+            + "State of California (N) in the last five (5) years.",
+    example = "Y"
+  )
+  private Boolean residedOutOfStateIndicator;
+
+  @NotNull
+  @Size(max = 4)
+  @ApiModelProperty(
+    value =
+        "STATE_CODE_TYPE - The system generated number which identifies the  State for the "
+            + "COLLATERAL INDIVIDUAL's mailing address (e.g., California, Texas, Nevada, etc.).",
+    example = "1828"
+  )
+  private String stateCodeType;
+
+  @NotNull
+  @Size(max = 40)
+  @RemoveTrailingSpaces
+  @ApiModelProperty(
+    value =
+        "STREET_NAME - The actual name of the street associated with the COLLATERAL "
+            + "INDIVIDUAL's address.  Do not abbreviate if at all possible "
+            + "for matching purposes.",
+    example = "Double Dice Lane"
+  )
+  private String streetName;
+
+  @NotNull
+  @Size(max = 10)
+  @ApiModelProperty(
+    value =
+        "STREET_NUMBER - The street or house number associated with the street name as part of "
+            + "the COLLATERAL INDIVIDUAL's address.  This may include the fractional or "
+            + "alphabetic modifier, e.g., A-17, 119-10, 39.2, 100 1/2, etc.",
+    example = "5602"
+  )
+  private String streetNumber;
+
+  @NotNull
+  @Size(max = 4)
+  @ApiModelProperty(
+    value =
+        "SUFFIX_TITLE_DESCRIPTION - The suffix name of a COLLATERAL "
+            + "INDIVIDUAL (e.g., Esq., M.D., Ph.D., D.D.S., etc.).",
+    example = "LCSW"
+  )
+  private String suffixTitleDescription;
+
+  @NotNull
+  @Size(max = 7)
+  @ApiModelProperty(
+    value =
+        "ZIP_NUMBER - The first five digits of the zip code for the "
+            + "COLLATERAL INDIVIDUAL's address..",
+    example = "31040"
+  )
+  private String zipNumber;
+
+  @NotNull
+  @Size(max = 4)
+  @ApiModelProperty(
+    value =
+        "ZIP_SUFFIX_NUMBER - The last four digits of the zip code for a "
+            + "COLLATERAL INDIVIDUAL's address",
+    example = "2233"
+  )
+  private String zipSuffixNumber;
+
+}

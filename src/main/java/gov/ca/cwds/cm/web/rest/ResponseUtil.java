@@ -23,7 +23,7 @@ public final class ResponseUtil {
    * @return Response with HTTP OK code and dto as a payload, or response with HTTP Not Found code
    *     with no payload
    */
-  public static Response responseOrNotFound(final gov.ca.cwds.rest.api.Response dto) {
+  public static Response responseOrNotFound(final Object dto) {
     return Response.status(dto == null ? HTTP_CODE_NOT_FOUND : HTTP_CODE_OK).entity(dto).build();
   }
 
@@ -35,7 +35,7 @@ public final class ResponseUtil {
    *     with no payload
    */
   public static Response responseOrNotFound(
-      final Collection<? extends gov.ca.cwds.rest.api.Response> collection) {
+      final Collection<? extends Object> collection) {
     final boolean isCollectionEmpty = CollectionUtils.isEmpty(collection);
     return Response.status(isCollectionEmpty ? HTTP_CODE_NOT_FOUND : HTTP_CODE_OK)
         .entity(isCollectionEmpty ? null : collection)
@@ -43,11 +43,11 @@ public final class ResponseUtil {
   }
 
   public static Response responseOk(
-      final Collection<? extends gov.ca.cwds.rest.api.Response> collection) {
+      final Collection<? extends Object> collection) {
     return Response.status(HTTP_CODE_OK).entity(collection).build();
   }
 
-  public static Response responseOrNotFound(final gov.ca.cwds.rest.api.Response[] response) {
+  public static Response responseOrNotFound(final Object[] response) {
     boolean isCollectionEmpty = response == null || response.length == 0;
     return Response.status(isCollectionEmpty ? HTTP_CODE_NOT_FOUND : HTTP_CODE_OK)
         .entity(isCollectionEmpty ? null : response)

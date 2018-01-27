@@ -1,4 +1,4 @@
-package gov.ca.cwds.cm.web.rest.system;
+package gov.ca.cwds.cm.web.rest.filters;
 
 import static gov.ca.cwds.cm.Constants.API.SYSTEM_INFORMATION_PATH;
 

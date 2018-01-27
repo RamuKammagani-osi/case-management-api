@@ -1,4 +1,4 @@
-package gov.ca.cwds.cm.web.rest.client;
+package gov.ca.cwds.cm.web.rest;
 
 import static gov.ca.cwds.cm.Constants.API.CHILD_CLIENTS;
 import static gov.ca.cwds.cm.Constants.API.ID;

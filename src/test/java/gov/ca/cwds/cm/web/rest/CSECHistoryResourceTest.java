@@ -44,7 +44,6 @@ public class CSECHistoryResourceTest extends AbstractIntegrationTest {
     assertResponseByFixturePath(response, "fixtures/csechistories-by-clientid-response.json");
   }
 
-
   @Test
   public void getCSECHistoryByChildClientIdFailure() {
     Response response =

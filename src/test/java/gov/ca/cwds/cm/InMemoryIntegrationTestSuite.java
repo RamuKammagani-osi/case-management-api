@@ -8,6 +8,7 @@ import gov.ca.cwds.cm.web.rest.AddressResourceTest;
 import gov.ca.cwds.cm.test.RestClientTestRule;
 import gov.ca.cwds.cm.web.rest.CSECHistoryResourceTest;
 import gov.ca.cwds.cm.web.rest.CaseResourceTest;
+import gov.ca.cwds.cm.web.rest.CollateralsResourceTest;
 import gov.ca.cwds.cm.web.rest.StaffPersonResourceTest;
 import gov.ca.cwds.cm.web.rest.SystemCodeResourceTest;
 import gov.ca.cwds.cm.web.rest.client.ChildClientResourceTest;
@@ -35,15 +36,16 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    AddressResourceTest.class,
-    CaseResourceTest.class,
-    ChildClientResourceTest.class,
-    ClientResourceTest.class,
-    CSECHistoryResourceTest.class,
-    SafetyAlertsResourceTest.class,
-    StaffPersonResourceTest.class,
-    SystemCodeResourceTest.class,
-    SystemInformationResourceTest.class,
+//    AddressResourceTest.class,
+//    CaseResourceTest.class,
+//    ChildClientResourceTest.class,
+//    ClientResourceTest.class,
+//    CSECHistoryResourceTest.class,
+//    SafetyAlertsResourceTest.class,
+//    StaffPersonResourceTest.class,
+//    SystemCodeResourceTest.class,
+//    SystemInformationResourceTest.class,
+    CollateralsResourceTest.class
 })
 public class InMemoryIntegrationTestSuite {
 

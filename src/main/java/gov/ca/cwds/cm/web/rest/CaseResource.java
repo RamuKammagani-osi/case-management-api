@@ -53,9 +53,9 @@ public class CaseResource {
   @Timed
   @ApiOperation(value = "Find Case by case ID", response = CaseDTO.class)
   public Response get(
-    @PathParam(ID)
-    @ApiParam(required = true, value = "The unique case ID", example = "AadfKnG07n")
-    final String id) {
+      @PathParam(ID)
+          @ApiParam(required = true, value = "The unique case ID", example = "AadfKnG07n")
+          final String id) {
     CaseDTO caseDTO = caseService.find(id);
     return ResponseUtil.responseOrNotFound(caseDTO);
   }
@@ -76,13 +76,10 @@ public class CaseResource {
   @ApiOperation(value = "Update Case", response = CaseDTO.class)
   public Response update(
       @PathParam("id")
-      @ApiParam(required = true, value = "The unique case ID", example = "AadfKnG07n")
-      @NotEmpty
-      final String id,
-      @ApiParam(name = "caseData", value = "The Case data")
-      @NotNull
-      @Valid
-      CaseDTO caseDTO) {
+          @ApiParam(required = true, value = "The unique case ID", example = "AadfKnG07n")
+          @NotEmpty
+          final String id,
+      @ApiParam(name = "caseData", value = "The Case data") @NotNull @Valid CaseDTO caseDTO) {
 
     caseDTO.setId(id);
     return ResponseUtil.responseOrNotFound(caseDTO);

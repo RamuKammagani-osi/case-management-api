@@ -25,9 +25,9 @@ public class StaffPersonResourceTest extends AbstractIntegrationTest {
 
   public static final String WRONG_STAFF_PERSON_ID = "-1";
   private static final String[] LIQUIBASE_SCRIPTS = {
-      "liquibase/staff-person/staff-person.xml",
-      "liquibase/case/get-cases-by-staff-id_test-data.xml",
-      "liquibase/referral/get_referrals_by_staff_id.xml"
+    "liquibase/staff-person/staff-person.xml",
+    "liquibase/case/get-cases-by-staff-id_test-data.xml",
+    "liquibase/referral/get_referrals_by_staff_id.xml"
   };
 
   @BeforeClass
