@@ -1,10 +1,12 @@
 package gov.ca.cwds.cm.web.rest.client;
 
-import static gov.ca.cwds.cm.test.util.AssertFixtureUtils.assertResponseByFixturePath;
+import static io.dropwizard.testing.FixtureHelpers.fixture;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.arrayContainingInAnyOrder;
 import static org.junit.Assert.assertThat;
 
 import gov.ca.cwds.cm.Constants.API;
+import gov.ca.cwds.cm.service.dto.SafetyAlertDTO;
 import gov.ca.cwds.cm.web.rest.AbstractIntegrationTest;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -34,11 +36,19 @@ public class SafetyAlertsResourceTest extends AbstractIntegrationTest {
 
   @Test
   public void getSafetyAlertsByClientId_success_whenClientWithAlerts() throws Exception {
-    final Response response = clientTestRule
-            .target(API.CLIENTS + SLASH + CLIENT_WITH_ALERTS + SLASH + API.SAFETY_ALERTS)
-            .request(MediaType.APPLICATION_JSON)
-            .get();
-    assertResponseByFixturePath(response, "fixtures/safety-alerts-by-clientid-response.json");
+    // given
+    final String expectedFixture = fixture("fixtures/safety-alerts-by-clientid-response.json");
+    final SafetyAlertDTO[] expectedAlerts = clientTestRule.getMapper()
+        .readValue(expectedFixture, SafetyAlertDTO[].class);
+
+    // when
+    final SafetyAlertDTO[] actualAlerts = clientTestRule
+        .target(API.CLIENTS + SLASH + CLIENT_WITH_ALERTS + SLASH + API.SAFETY_ALERTS)
+        .request(MediaType.APPLICATION_JSON)
+        .get().readEntity(SafetyAlertDTO[].class);
+
+    // then
+    assertThat(actualAlerts, arrayContainingInAnyOrder(expectedAlerts));
   }
 
   @Test

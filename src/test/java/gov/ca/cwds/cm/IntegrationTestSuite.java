@@ -10,6 +10,7 @@ import gov.ca.cwds.cm.web.rest.StaffPersonResourceTest;
 import gov.ca.cwds.cm.web.rest.SystemCodeResourceTest;
 import gov.ca.cwds.cm.web.rest.client.ChildClientResourceTest;
 import gov.ca.cwds.cm.web.rest.client.ClientResourceTest;
+import gov.ca.cwds.cm.web.rest.client.SafetyAlertsResourceTest;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -28,6 +29,7 @@ import org.junit.runners.Suite;
     ChildClientResourceTest.class,
     ClientResourceTest.class,
     CSECHistoryResourceTest.class,
+    SafetyAlertsResourceTest.class,
     StaffPersonResourceTest.class,
     SystemCodeResourceTest.class,
 })
